@@ -1,0 +1,72 @@
+<!--miniprogram/pages/poemDetail/poemDetail.wxml-->
+<view class='poemDetail'>
+  <!--标题栏-->
+  <view class='topic'>
+    <image bindtap='goHome' id='back' src='../../images/back.png'></image>
+    <image id='share' src='../../images/share.png'></image>
+  </view>
+  <!--显示内容区域-->
+  <view class='mainArea'>
+    <image id='flowerBack' src='../../images/flowerBack.png'></image>
+    <view wx:if="{{isMain}}" class='main'>
+      <view id='poemTitle'>菩萨蛮·小山重叠金明灭</view>
+      <view id='author'>北宋|李清照</view>
+      <text id='poem'>
+      小山重叠金明灭，鬓云欲渡香腮雪。
+      懒起画峨眉，弄妆梳洗迟。
+      照花前后镜，花面交相映。
+      新帖绣罗襦，双双金鹧鸪。
+      </text>
+    </view>
+    <view wx:if="{{isNote}}" class='note'>
+     <view id='poemTitle'>菩萨蛮·小山重叠金明灭</view>
+      <view id='author'>注释</view>
+      <textarea id='noteCon'>（1）小山：眉妆的名目，指小山眉，弯弯的眉毛。另外一种理解为：小山是指屏风上的图案，由于屏风是折叠的，所以说小山重叠。（2）金：指唐时妇女眉际妆饰之“额黄”。（3）明灭：隐现明灭的样子。金明灭：形容阳光照在屏风上金光闪闪的样子。一说描写女子头上插戴的饰金小梳子重叠闪烁的情形，或指女子额上涂成梅花图案的额黄有所脱落而或明或暗。
+（4）鬓云：像云朵似的鬓发。形容发髻蓬松如云。（5）度：覆盖，过掩，形容鬓角延伸向脸颊，逐渐轻淡，像云影轻度。欲度：将掩未掩的样子。（6）香腮雪：香雪腮，雪白的面颊。
+（7）蛾眉：女子的眉毛细长弯曲像蚕蛾的触须，故称蛾眉。一说指元和以后叫浓阔的时新眉式“蛾翅眉”。
+（8）弄妆：梳妆打扮， 修饰仪容。
+（9）罗襦：丝绸短袄。
+（10）鹧鸪：贴绣上去的鹧鸪图，这说的是当时的衣饰，就是用金线绣好花样，再绣贴在衣服上，谓之“贴金”。</textarea>
+    </view>
+    <view wx:if="{{isTrans}}" class='translate'>
+      <view id='poemTitle'>菩萨蛮·小山重叠金明灭</view>
+      <view id='author'>译文</view>
+      <text id='noteCon'>
+        眉妆漫染，叠盖了部分额黄，鬓边发丝飘过。\n
+        洁白的香腮似雪，懒得起来，画一画蛾眉，整一整衣裳，梳洗打扮，慢吞吞，意迟迟。\n
+        照一照新插的花朵，对了前镜，又对后镜，红花与容颜，交相辉映，刚穿上的绫罗裙襦，绣着一双双的金鹧鸪。
+      </text>
+    </view>
+    <view wx:if="{{isAppr}}" class='appreciate'>
+      <view id='poemTitle'>菩萨蛮·小山重叠金明灭</view>
+      <view id='author'>赏析</view>
+      <text id='noteCon'>
+      这首《菩萨蛮》词以精致的构思，精美的语言，写贵重思妇独处的情怀，刻画出一位典型环境中的典型女性形象
+      </text>
+    </view>
+    <view wx:if="{{isAut}}" class='author'>
+      <view id='poemTitle'>菩萨蛮·小山重叠金明灭</view>
+      <view id='author'>作者</view>
+      <textarea id='noteCon'>
+      温庭筠，原名岐，字飞卿，唐代诗人、词人。太原祁（今山西祁县）人。
+温庭筠是唐初宰相温彦博之后裔，出生于没落贵族家庭，富有天赋，文思敏捷，每入试，押官韵，八叉手而成八韵，故有“温八叉”或“温八吟”之称。然恃才不羁，又好讥刺权贵，多犯忌讳，又不受羁束，纵酒放浪。因此得罪权贵，屡试不第，一生坎坷，终身潦倒。唐宣宗朝试宏辞，温庭筠代人作赋，因扰乱科场，贬为隋县尉。后襄阳刺史署为巡官，授检校员外郎，不久离开襄阳，客于江陵。唐懿宗时曾任方城尉，官终国子助教。
+      </textarea>
+    </view>
+  </view>
+  <!--五个按钮区域-->
+  <view class='bth'>
+    <image id='select' style="position:absolute;left:{{left}}rpx;top:{{top}}rpx;" src='../../images/select.png'></image>
+    <image bindtap='goMain' id='btnItem' src='../../images/main.png'></image>
+    <image bindtap='goNote' id='btnItem' src='../../images/note.png'></image>
+    <image bindtap='goTran' id='btnItem' src='../../images/translate.png'></image>
+    <image bindtap='goAppr' id='btnItem' src='../../images/appreciate.png'></image>
+    <image bindtap='goAut' id='btnItem' src='../../images/author.png'></image>
+  </view>
+  <!--评论区域-->
+  <view class='comment'>
+    <view class='comTap'>
+      <text id='comNum'>521条评论</text>
+      <text>></text>
+    </view>
+  </view>
+</view>
