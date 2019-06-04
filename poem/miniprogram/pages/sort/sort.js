@@ -1,11 +1,16 @@
-// miniprogram/pages/search/search.js
+// miniprogram/pages/sort/sort.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hotSearch: ["李白", "苏轼", "白居易", "唐寅", "孟浩然", "慕然", "舒婷", "毛泽东", "戴望舒"]
+    lebel:["近现代","毛泽东","咏物"],
+    kind: [
+      { class: "朝代", url: "../../images/sort1.png" },
+      { class: "作者", url: "../../images/sort2.png" }, 
+      { class: "诗集", url: "../../images/sort3.png" },
+      { class: "季节", url: "../../images/sort4.png"}]
   },
 
   /**
@@ -13,11 +18,6 @@ Page({
    */
   onLoad: function (options) {
 
-  },
-  goPoemHome:function(){
-    wx.redirectTo({
-      url: '../poemHome/poemHome',
-    })
   },
 
   /**

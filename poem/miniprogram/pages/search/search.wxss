@@ -1,1 +1,79 @@
 /* miniprogram/pages/search/search.wxss */
+.search{
+  width: 100%;
+  height: 100%;
+}
+
+.searchBroad{
+  width: 100%;
+  height: 7%;
+  position: absolute;
+  top: 120rpx;
+  display: flex;
+  vertical-align: middle;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1rpx solid rgb(211, 211, 211);
+}
+
+.back{
+  width: 50rpx;
+  height: 50rpx;
+}
+.back image{
+  width: 30rpx;
+  height: 50rpx;
+}
+
+.board{
+  width: 75%;
+  height: 60%;
+  border: 1rpx solid black;
+  border-radius: 30rpx;
+  margin-left: 10rpx;
+}
+
+.btn{
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: 20rpx;
+  display: flex;
+  vertical-align: middle;
+}
+.btn image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 5rpx;
+}
+.hotSearch{
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  top: 220rpx;
+}
+
+.title{
+  color: rgb(139, 139, 139);
+  margin-left: 50rpx;
+}
+
+.name{
+  width: 20%;
+  height: 15%;
+  border: 1rpx solid rgb(211, 211, 211);
+  border-radius: 10rpx;
+  text-align: center;
+  align-items: center;
+  float: left;
+  margin-left: 25rpx;
+  margin-top: 30rpx;
+}
+
+#backGround{
+  position: absolute;
+  top: 700rpx;
+  width: 90%;
+  height: 20%;
+  left: 30rpx;
+}

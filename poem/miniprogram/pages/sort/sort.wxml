@@ -1,0 +1,14 @@
+<!--miniprogram/pages/sort/sort.wxml-->
+<view class='sort'>
+  <!--顶部标签栏-->
+  <view class='label'>
+    <view class='labelItem' wx:for="{{lebel}}">{{item}}</view>
+  </view>
+  <!--分类栏-->
+  <view class='kind'>
+    <view class='kindItem' wx:for="{{kind}}">
+      {{item.class}} 
+      <image src='{{item.url}}'></image>
+    </view>
+  </view>
+</view>

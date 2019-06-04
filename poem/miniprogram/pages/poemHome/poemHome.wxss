@@ -153,3 +153,203 @@
   z-index: 2;
   margin-top: 30rpx;
 }
+
+.comWrap{
+  width: 100%;
+}
+
+.more, .hideCard, .showCard {
+  position: fixed;
+  background: rgba(0, 0, 0, .7);
+  width: 100vw;
+  height: 100vh;
+  transition: all .3s;
+  transform-origin: left top;
+  z-index: 5;
+}
+
+.more .moreCard {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 506rpx;
+  height: 100vh;
+  background: #2f2f2f;
+  color: white;
+}
+
+.hideCard {
+  top: 0;
+  left: 0;
+  transform: rotate(90deg);
+  transform: skewX(0.5);
+  border-radius: 50%;
+}
+
+.showCard {
+  left: 0;
+  top: 0;
+  transform: rotateX(0deg);
+  transform: skewX(1);
+  border-radius: 0;
+}
+
+.personalCenter {
+  position: absolute;
+  left: 0;
+  top: 50rpx;
+  width: 100%;
+  height: 350rpx;
+  margin: 91rpx 0 0 0;
+}
+
+.personalCenter .avatarImg {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin: 0 172rpx;
+}
+
+.personalCenter .nickName {
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  margin: 10rpx 0;
+}
+
+.personalCenter .mineDetail {
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.mineDetail .fans {
+  margin-right: 50rpx;
+}
+
+.mineDetail .concern {
+  margin-left: 50rpx;
+}
+
+.personalCenter .mineDetail image {
+  width: 2rpx;
+  height: 30rpx;
+}
+
+.longLine {
+  width: 339rpx;
+  height: 2rpx;
+  margin: 0 75rpx;
+  position: relative;
+  bottom: 12px;
+}
+
+.category {
+  position: absolute;
+  top: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  font-size: 18px;
+  font-family: PingFangSC-Regular, sans-serif;
+}
+
+.categoryItem {
+  margin: 20rpx 0 0 0;
+  position: relative;
+}
+
+switch {
+  position: absolute;
+  bottom: 8rpx;
+  right: 74rpx;
+}
+
+.wx-switch-input {
+  width: 80rpx !important;
+  height: 40rpx !important;
+}
+
+.wx-switch-input::before {
+  width: 79rpx !important;
+  height: 37rpx !important;
+}
+
+.wx-switch-input::after {
+  width: 37rpx !important;
+  height: 37rpx !important;
+}
+
+.categoryItem .caIcon {
+  padding: 5rpx 20rpx 0 75rpx;
+  position: relative;
+  overflow: visible;
+}
+
+.categoryItem .ge {
+  width: 50rpx;
+  height: 36rpx;
+}
+
+.categoryItem .mark {
+  width: 30rpx;
+  height: 43rpx;
+  padding-left: 85rpx;
+}
+
+.categoryItem .msg {
+  width: 37rpx;
+  height: 38rpx;
+  padding-left: 82rpx;
+}
+
+.categoryItem .set {
+  width: 36rpx;
+  height: 38rpx;
+  padding-left: 82rpx;
+}
+
+.categoryItem .night {
+  width: 40rpx;
+  height: 35rpx;
+  padding-left: 82rpx;
+}
+
+.categoryItem .ge::after {
+  content: "茶斋";
+  position: absolute;
+  bottom: 0;
+  right: -110rpx;
+}
+
+.categoryItem .set::after {
+  content: "系统设置";
+  position: absolute;
+  bottom: 0;
+  right: -150rpx;
+}
+
+.categoryItem .mark::after {
+  content: "我的收藏";
+  position: absolute;
+  bottom: 0;
+  right: -155rpx;
+}
+
+.categoryItem .msg::after {
+  content: "我的消息";
+  position: absolute;
+  bottom: 0;
+  right: -150rpx;
+}
+
+.categoryItem .night::after {
+  content: "夜间模式";
+  position: absolute;
+  bottom: 0;
+  right: -150rpx;
+}

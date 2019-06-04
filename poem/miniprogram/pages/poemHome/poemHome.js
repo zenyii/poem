@@ -5,7 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    imgSrc: '../../images/',
+    moreCardShow: false,
+    commendList:[
+      { 
+        title:"菩萨蛮·小山重叠金明灭",
+        author: "北宋 | 李清照",
+        poem:"小山重叠金明灭，鬓云欲渡香腮雪。"
+      },
+      {
+        title: "秋思",
+        author: "宋代|陆游",
+        poem: "利欲驱人万火牛，江湖浪迹一沙鸥。"
+      }
+    ]
   },
 
   /**
@@ -15,8 +28,28 @@ Page({
 
   },
   goDetail:function(){
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../poemDetail/poemDetail',
+    })
+  },
+  moreCard: function () {//显示更多
+    let that = this;
+    that.setData({
+      moreCardShow: true
+    })
+  },
+  hideCard: function (e) {//隐藏更多
+    let that = this;
+    //console.log(e,'hideCard')
+    if (e.target.id === "hideCard") {
+      that.setData({
+        moreCardShow: false
+      })
+    }
+  },
+  goSearch:function(){
+    wx.redirectTo({
+      url: '../search/search',
     })
   },
   /**
