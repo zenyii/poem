@@ -10,7 +10,7 @@
   <view class='search'>
     <view bindtap='goSearch' id='searchBroad'><input placeholder='搜索'></input></view>
     <image id='search' src='../../images/search.png'></image>
-    <image id='sort' src='../../images/sort.png'></image>
+    <image bindtap='gopoemHome' id='sort' src='../../images/sort.png'></image>
   </view>
   <!--背景栏-->
   <view class='back'>
