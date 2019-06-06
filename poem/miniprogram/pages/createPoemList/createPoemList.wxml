@@ -1,0 +1,21 @@
+<!--miniprogram/pages/createPoemList/createPoemList.wxml-->
+<view class='myPoem'>
+    <!--标题栏-->
+  <view class='topic'>
+    <image bindtap='goHome' id='back' src='../../images/back.png'></image>
+    <text>我的诗集</text>
+    <image id='edit' src='../../images/编辑.png'></image>
+  </view>
+  <!--诗集创建与展示区域-->
+  <view class='poemList'>
+    <!--创建诗集按钮-->
+    <view class='poemBox' style='background:rgb(232,232,232);display:flex'>
+        <image src='../../images/添加.png'></image>
+    </view>
+    <!--已创建诗集框-->
+    <view class='poemBox' wx:for="{{poemList}}" wx:key="this">
+        <view id='listPic'><image src='{{item.url}}'></image></view>
+        <view id='name'>{{item.name}}</view>
+    </view>
+  </view>
+</view>

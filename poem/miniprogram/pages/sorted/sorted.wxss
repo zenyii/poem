@@ -1,0 +1,96 @@
+/* miniprogram/pages/sorted/sorted.wxss */
+/* miniprogram/pages/sort/sort.wxss */
+.sort{
+  width: 100%;
+  height: 100%;
+}
+
+.label{
+  width: 100%;
+  height: 8%;
+  border-bottom: 1rpx solid black;
+  position: absolute;
+  top: 50rpx;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+.scroll{
+  width: 70%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+.label image{
+  width: 30rpx;
+  height: 50rpx;
+  margin-left: 10rpx;
+}
+.labelItem{
+  width: 20%;
+  height: 80%;
+  border: 1rpx solid black;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rpx;
+  display: inline-block;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+
+.kind{
+  width: 15%;
+  position: absolute;
+  top: 150rpx;
+  margin-left: 10rpx;
+}
+
+.kindItem{
+  max-width: 100%;
+  width: 100%;
+  height: 270rpx;
+  margin: auto auto;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+#title{
+  width: 100%;
+  height: 100%;
+  background: rgb(244, 227, 147);
+  font-size: 60rpx;
+  border: 1rpx solid  black;
+  border-radius: 5rpx;
+  display: flex;
+  align-items: center;
+}
+
+.sortLab{
+  width: 78%;
+  position: absolute;
+  top: 160rpx;
+  left: 140rpx;
+}
+
+.sortItem{
+  width: 100%;
+  height: 115rpx;
+  border: 1rpx solid black;
+  margin-top: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.sortItem image{
+  width: 90rpx;
+  height: 80rpx;
+  margin-left: 10rpx;
+}
+
+.sortItem text{
+  margin-left: 30rpx;
+}

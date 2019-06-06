@@ -8,7 +8,7 @@
   <!--分类栏-->
   <view class='kind'>
     <view class='kindItem' wx:for="{{kind}}" wx:key="this">
-      <view id='title'>{{item.class}}</view>
+      <view bindtap='goSorted' id='title'>{{item.class}}</view>
       <view id="sortPic"><image src='{{item.url}}'></image>
       </view>
     </view>

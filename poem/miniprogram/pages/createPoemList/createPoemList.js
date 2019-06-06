@@ -1,31 +1,21 @@
-// miniprogram/pages/sort/sort.js
+// miniprogram/pages/createPoemList/createPoemList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    lebel:["近现代","毛泽东","咏物"],
-    kind: [
-      { class: "朝代", url: "../../images/sort1.png" },
-      { class: "作者", url: "../../images/sort2.png" }, 
-      { class: "类型", url: "../../images/sort3.png" },
-      { class: "诗集", url: "../../images/sort4.png"},
+    poemList:[
+      {name:"诗集一" , url:"../../images/myPoem1.png"},
+      {name: "诗集二", url: "../../images/myPoem2.png" },
     ]
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
 
-  },
-  gopoemHome:function(){
-    wx.redirectTo({
-      url: '../poemHome/poemHome',
-    })
-  },
-
-  goSorted:function(){
-    wx.redirectTo({
-      url: '../sorted/sorted',
-    })
   },
 
   /**
