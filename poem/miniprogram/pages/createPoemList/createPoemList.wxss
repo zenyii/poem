@@ -44,10 +44,10 @@ page{
 }
 
 .poemBox{
-  width: 40%;
+  width: 42%;
   height: 450rpx;
   border: 1rpx solid rgb(190, 190, 190);
-  margin-left: 50rpx;
+  margin-left: 40rpx;
   margin-bottom: 40rpx;
   box-shadow: 5rpx 7rpx 10rpx rgb(148, 148, 148);
   background: white;
@@ -58,6 +58,13 @@ page{
   width: 100rpx;
   height: 100rpx;
   margin: auto auto;
+}
+
+#radio{
+  width: 45rpx;
+  height: 45rpx;
+  float: right;
+  margin: 5rpx;
 }
 
 #listPic{
@@ -77,4 +84,33 @@ page{
   text-align: center;
   color:rgb(88, 87, 87);
   margin-top: 100rpx;
+}
+
+/*checkbox 整体大小  */
+checkbox {
+  width: 50rpx;
+  height: 60rpx;
+  float: right;
+}
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background:white;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: black;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
 }

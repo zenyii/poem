@@ -8,7 +8,9 @@ Page({
     poemList:[
       {name:"诗集一" , url:"../../images/myPoem1.png"},
       {name: "诗集二", url: "../../images/myPoem2.png" },
-    ]
+    ],
+    isEdit:false,
+    selectItem:[]
   },
 
   /**
@@ -16,6 +18,37 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  toEdit:function(){
+    this.setData({
+      isEdit:true
+    })
+  },
+
+  delete:function(){
+    for (let x = 0; x < this.data.selectItem.length;x++){
+      let temp = parseInt(this.data.selectItem[x]);
+      this.data.poemList.splice(temp,1);
+    }
+    this.setData({
+      isEdit: false,
+      poemList:this.data.poemList
+    })
+  },
+
+  select:function(e){
+    this.data.selectItem = e.detail.value;
+  },
+
+  goHome:function(){
+    let temp = this.data.isEdit?true:false;
+    if(temp){
+      this.setData({
+        isEdit:false
+      })
+    }else{
+      console.log("页面跳转");
+    }
   },
 
   /**

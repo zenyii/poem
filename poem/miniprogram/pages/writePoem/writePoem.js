@@ -1,27 +1,18 @@
-// miniprogram/pages/detailTopic/detailTopic.js
+// miniprogram/pages/writePoem/writePoem.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    topicContent:{
-      _id:'ff',
-      class: '诗',
-      date:'2019-4-25',
-      poem: ['谈天谈地，谈上谈下谈左谈右，',
-        '谈来谈去，谈人生不过一场闹剧。'],
-      showImg: 'showbg.png',
-      authorId:'112233',
-      authorAvatar: 'eye.png',
-      nickName: '白马非马',
-      collectPeopleID: ['112233', '111133'],
-      collectNum: 6,
-      commentNum: 3
-    }
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let topicID = options.topicID;//取数据查询
+
   },
 
   /**
