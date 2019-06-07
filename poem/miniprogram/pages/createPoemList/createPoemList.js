@@ -50,7 +50,16 @@ Page({
       console.log("页面跳转");
     }
   },
-
+  goAdd:function(){
+    wx.redirectTo({
+      url: '../writePoem/writePoem',
+    })
+  },
+  goListDetail:function(){
+    wx.redirectTo({
+      url: '../ListDetail/ListDetail',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

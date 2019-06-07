@@ -1,13 +1,14 @@
 {
   "pages": [
+    "pages/poemHome/poemHome",
+    "pages/homepage/homepage",
+    "pages/ListDetail/ListDetail",
     "pages/writePoem/writePoem",
     "pages/createPoemList/createPoemList",
     "pages/sorted/sorted",
     "pages/sort/sort",
     "pages/search/search",
-    "pages/poemHome/poemHome",
     "pages/poemDetail/poemDetail",
-    "pages/homepage/homepage",
     "pages/index/index",
     "pages/login/login"
   ],

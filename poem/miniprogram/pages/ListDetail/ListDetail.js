@@ -1,12 +1,22 @@
-// miniprogram/pages/writePoem/writePoem.js
+// miniprogram/pages/ListDeatil/ListDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    Name:'',
-    tempFilePaths: '../../images/poemBack.png'
+    poemItem:[
+      {
+        content:"就让得到的淡淡的来，就让失去的好好的去。来便来了，来了就珍惜，去便去了，去了就回忆。" ,
+        like:3,
+        comment:2
+      },
+      {
+        content: "岁月你别催，该来的我不催，该还的还，该给我的给。走远的我不追，走过的不后悔",
+        like: 3,
+        comment: 2
+      }
+    ]
   },
 
   /**
@@ -16,31 +26,12 @@ Page({
 
   },
 
-  poemName:function(e){
-    this.setData({
-      Name:e.detail.value
-    })
-  },
-  gocreatPoem:function(){
+  gopoemList:function(){
     wx.redirectTo({
       url: '../createPoemList/createPoemList',
     })
   },
 
-  chooseImage: function () {
-    var _this = this;
-    wx.chooseImage({
-      count: 1, // 默认9 
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有 
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有 
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
-        _this.setData({
-          tempFilePaths: res.tempFilePaths
-        })
-      }
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -10,12 +10,12 @@
   <!--诗集创建与展示区域-->
   <view class='poemList'>
     <!--创建诗集按钮-->
-    <view  wx:if="{{!isEdit}}" class='poemBox' style='background:rgb(232,232,232);display:flex'>
+    <view bindtap='goAdd' wx:if="{{!isEdit}}" class='poemBox' style='background:rgb(232,232,232);display:flex'>
         <image src='../../images/添加.png'></image>
     </view>
     <!--已创建诗集框-->
     <checkbox-group bindchange="select">
-      <view class='poemBox' wx:for="{{poemList}}" wx:key="this" wx:for-index="index">
+      <view bindtap='goListDetail' class='poemBox' wx:for="{{poemList}}" wx:key="this" wx:for-index="index">
         <checkbox wx:if="{{isEdit}}" value='{{index}}'></checkbox>
         <view id='listPic'><image src='{{item.url}}'></image></view>
         <view id='name'>{{item.name}}</view>
