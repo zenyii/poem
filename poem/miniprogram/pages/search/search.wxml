@@ -15,7 +15,7 @@
   <!--热门搜索-->
   <view class='hotSearch'>
     <view class='title'>热门搜索</view>
-    <view class='name' wx:for="{{hotSearch}}">
+    <view class='name' wx:for="{{hotSearch}}" wx:key="this">
       {{item}}
     </view>
   </view>
