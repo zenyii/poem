@@ -15,10 +15,11 @@
     </view>
     <!--已创建诗集框-->
     <checkbox-group bindchange="select">
-      <view bindtap='goListDetail' class='poemBox' wx:for="{{poemList}}" wx:key="this" wx:for-index="index">
+      <!--测试数据诗集-->
+      <view class='poemBox' wx:for="{{poemList}}" wx:key="this" wx:for-index="index">
         <checkbox wx:if="{{isEdit}}" value='{{index}}'></checkbox>
-        <view id='listPic'><image src='{{item.url}}'></image></view>
-        <view id='name'>{{item.name}}</view>
+        <view bindtap='goListDetail' data-index='{{index}}' id='listPic'><image src='{{item.tempFilePaths}}'></image></view>
+        <view bindtap='goListDetail' data-index='{{index}}' id='name'>{{item.poemName}}</view>
       </view>
     </checkbox-group>
   </view>

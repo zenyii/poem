@@ -12,23 +12,23 @@
   <!--创建诗集封面-->
     <view class='topBan'>
       <view id='poemBack'><image src='../../images/诗集梅.png'></image></view>
-      <view id='userName'>用户名</view>
-      <view id='introduce'>灵感随记</view>
-      <view id='poemName'>无悔</view>
+      <view id='userName'>{{userInfo.nickName}}</view>
+      <view id='introduce'>{{poemIntro}}</view>
+      <view id='poemName'>{{poemName}}</view>
     </view>
     <!--页码-->
-    <view class='pageNum'>1/3</view>
+    <view class='pageNum'>1/{{pages+1}}</view>
   </swiper-item>
-  <swiper-item  wx:for="{{poemItem}}" wx:key="this">
+  <swiper-item  wx:for="{{poemItem}}" wx:key="this" wx:for-index="index">
     <view class='topBan'>
-      <textarea id='content'>{{item.content}}</textarea>
+      <textarea id='content'>{{item.poemCon}}</textarea>
       <view id='userName'>用户名</view>
       <view class='bottomLab'>
         <image id='like' src='../../images/收藏.png'>{{item.like}}</image>{{item.like}}
         <image id='comment' src='../../images/评论.png'>{{item.like}}</image>{{item.comment}}
       </view>
     </view>
-    <view class='pageNum'>2/3</view>
+    <view class='pageNum'>{{index+2}}/{{pages+1}}</view>
   </swiper-item>
   </swiper>
 </view>

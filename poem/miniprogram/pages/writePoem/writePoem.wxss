@@ -75,6 +75,7 @@ page{
   position: absolute;
   bottom: 150rpx;
   left: 100rpx;
+  word-break: break-all;
 }
 
 #introduce{

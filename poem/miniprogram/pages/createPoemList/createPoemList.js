@@ -1,4 +1,5 @@
 // miniprogram/pages/createPoemList/createPoemList.js
+const app = getApp()
 Page({
 
   /**
@@ -6,8 +7,9 @@ Page({
    */
   data: {
     poemList:[
-      {name:"诗集一" , url:"../../images/myPoem1.png"},
-      {name: "诗集二", url: "../../images/myPoem2.png" },
+      {
+        poemName: "诗集一",tempFilePaths:"../../images/myPoem1.png"},
+      { poemName: "诗集二", tempFilePaths: "../../images/myPoem2.png" },
     ],
     isEdit:false,
     selectItem:[]
@@ -17,7 +19,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    const db = wx.cloud.database();
+    db.collection("poemList").where({
+      _openid: app.globalData.selfOpenId
+    }).get().then(res => {
+      that.setData({
+        poemList:that.data.poemList.concat(res.data)
+      })
+    })
   },
   toEdit:function(){
     this.setData({
@@ -38,6 +48,7 @@ Page({
 
   select:function(e){
     this.data.selectItem = e.detail.value;
+    console.log(e.detail.value);
   },
 
   goHome:function(){
@@ -55,9 +66,13 @@ Page({
       url: '../writePoem/writePoem',
     })
   },
-  goListDetail:function(){
+  goListDetail:function(e){
+    var that = this;
+    let index = e.currentTarget.dataset.index;
+    let poemName = that.data.poemList[index].poemName;
+    console.log(poemName);
     wx.redirectTo({
-      url: '../ListDetail/ListDetail',
+      url: '../ListDetail/ListDetail?poemName=' + poemName,
     })
   },
   /**

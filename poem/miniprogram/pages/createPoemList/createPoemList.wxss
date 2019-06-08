@@ -52,6 +52,7 @@ page{
   box-shadow: 5rpx 7rpx 10rpx rgb(148, 148, 148);
   background: white;
   float: left;
+  z-index: 1;
 }
 
 .poemBox image{
@@ -91,12 +92,14 @@ checkbox {
   width: 50rpx;
   height: 60rpx;
   float: right;
+  z-index: 3;
 }
 /*checkbox 选项框大小  */
 checkbox .wx-checkbox-input {
   width: 40rpx;
   height: 40rpx;
   border-radius: 50%;
+  z-index: 3;
 }
 /*checkbox选中后样式  */
 checkbox .wx-checkbox-input.wx-checkbox-input-checked {

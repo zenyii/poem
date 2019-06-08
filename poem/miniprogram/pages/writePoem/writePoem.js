@@ -1,29 +1,53 @@
 // miniprogram/pages/writePoem/writePoem.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    Name:'',
-    tempFilePaths: '../../images/poemBack.png'
+    TopUrl:'',
+    poemName:'',
+    poemIntro:'',
+    tempFilePaths: '../../images/poemBack.png',
+    userInfo:null,
+    poemCon:'',
+    poemList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      userInfo: app.globalData.userInfo
+    })
   },
 
   poemName:function(e){
     this.setData({
-      Name:e.detail.value
+      poemName:e.detail.value
     })
   },
+
   gocreatPoem:function(){
+    wx.showToast({
+      title: '已发布',
+    })
     wx.redirectTo({
       url: '../createPoemList/createPoemList',
+    })
+  },
+
+  inputIntro:function(e){
+    this.setData({
+      poemIntro: e.detail.value
+    })
+  },
+
+  inputCon:function(e){
+    this.setData({
+      poemCon: e.detail.value
     })
   },
 
@@ -40,6 +64,41 @@ Page({
         })
       }
     })
+  },
+
+  publish:function(){
+    var that = this;
+    let a = this.data;
+    if (a.poemName && a.poemIntro && a.poemCon && a.tempFilePaths){
+    const db = wx.cloud.database();
+    db.collection("poemCon").add({
+      data:{
+      poemName: that.data.poemName,          //诗名
+      poemIntro:that.data.poemIntro,         //诗简介
+      poemCon:that.data.poemCon,             //诗内容
+      nickName:that.data.userInfo.nickName,  //作者昵称
+      tempFilePaths:that.data.tempFilePaths, //封面链接
+        like:0,                              //点赞数
+        comment:0                            //评论数
+      }
+    })
+    db.collection("poemList").add({
+      data:{
+        poemName: that.data.poemName,
+        nickName: that.data.userInfo.nickName,
+        tempFilePaths: that.data.tempFilePaths
+      }
+    })
+      wx.redirectTo({
+        url: '../createPoemList/createPoemList',
+      })
+    }
+    else{
+      wx.showToast({
+        title: '请填写所有信息噢~',
+      })
+    }
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
