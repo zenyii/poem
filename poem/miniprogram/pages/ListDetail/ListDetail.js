@@ -1,30 +1,34 @@
-// miniprogram/pages/sort/sort.js
+// miniprogram/pages/ListDeatil/ListDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    lebel:["近现代","毛泽东","咏物"],
-    kind: [
-      { class: "朝代", url: "../../images/sort1.png" },
-      { class: "作者", url: "../../images/sort2.png" }, 
-      { class: "类型", url: "../../images/sort3.png" },
-      { class: "诗集", url: "../../images/sort4.png"},
+    poemItem:[
+      {
+        content:"就让得到的淡淡的来，就让失去的好好的去。来便来了，来了就珍惜，去便去了，去了就回忆。" ,
+        like:3,
+        comment:2
+      },
+      {
+        content: "岁月你别催，该来的我不催，该还的还，该给我的给。走远的我不追，走过的不后悔",
+        like: 3,
+        comment: 2
+      }
     ]
   },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
 
   },
-  gopoemHome:function(){
-    wx.redirectTo({
-      url: '../poemHome/poemHome',
-    })
-  },
 
-  goSorted:function(){
+  gopoemList:function(){
     wx.redirectTo({
-      url: '../sorted/sorted',
+      url: '../createPoemList/createPoemList',
     })
   },
 

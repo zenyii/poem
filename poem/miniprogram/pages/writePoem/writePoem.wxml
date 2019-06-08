@@ -1,0 +1,33 @@
+<!--miniprogram/pages/writePoem/writePoem.wxml-->
+<view class='wirtePoem'>
+  <!--标题栏-->
+  <view class='topic'>
+    <image bindtap='gocreatPoem' id='back' src='../../images/back.png'></image>
+    <text>创建诗集</text>
+  </view>
+  <swiper class='content'>
+  <swiper-item>
+  <!--创建诗集封面-->
+    <view class='topBan'>
+      <view bindtap='chooseImage' id='poemBack'><image src='{{tempFilePaths}}'></image></view>
+      <view id='userName'>用户名</view>
+      <textarea id='introduce' placeholder='输入诗集简介'></textarea>
+      <textarea id='poemName' value='{{Name}}' placeholder='输入诗集名称' bindinput='poemName'></textarea>
+    </view>
+    <!--页码-->
+    <view class='pageNum'>1/2</view>
+  </swiper-item>
+  <swiper-item>
+    <view class='topBan'>
+    <view class='wrap'>
+      <textarea id='inputArea' placeholder='话题介绍最多可以输入120字'>
+      </textarea>
+    </view>
+      <view class='submit'>发布</view>
+      <view id='userName'>用户名</view>
+    </view>
+    <!--页码-->
+    <view class='pageNum'>2/2</view>
+  </swiper-item>
+  </swiper>
+</view>

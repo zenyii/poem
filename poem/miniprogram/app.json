@@ -1,20 +1,16 @@
 {
   "pages": [
     "pages/poemHome/poemHome",
+    "pages/homepage/homepage",
+    "pages/ListDetail/ListDetail",
+    "pages/writePoem/writePoem",
+    "pages/createPoemList/createPoemList",
+    "pages/sorted/sorted",
     "pages/sort/sort",
     "pages/search/search",
     "pages/poemDetail/poemDetail",
-    "pages/homepage/homepage",
     "pages/index/index",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/login/login",
-    "pages/detailTopic/detailTopic"
+    "pages/login/login"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

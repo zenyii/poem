@@ -1,24 +1,16 @@
-// miniprogram/pages/poemHome/poemHome.js
+// miniprogram/pages/createPoemList/createPoemList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgSrc: '../../images/',
-    moreCardShow: false,
-    commendList:[
-      { 
-        title:"菩萨蛮·小山重叠金明灭",
-        author: "北宋 | 李清照",
-        poem:"小山重叠金明灭，鬓云欲渡香腮雪。"
-      },
-      {
-        title: "秋思",
-        author: "宋代|陆游",
-        poem: "利欲驱人万火牛，江湖浪迹一沙鸥。"
-      }
-    ]
+    poemList:[
+      {name:"诗集一" , url:"../../images/myPoem1.png"},
+      {name: "诗集二", url: "../../images/myPoem2.png" },
+    ],
+    isEdit:false,
+    selectItem:[]
   },
 
   /**
@@ -27,34 +19,45 @@ Page({
   onLoad: function (options) {
 
   },
-  goDetail:function(){
-    wx.redirectTo({
-      url: '../poemDetail/poemDetail',
+  toEdit:function(){
+    this.setData({
+      isEdit:true
     })
   },
-  moreCard: function () {//显示更多
-    let that = this;
-    that.setData({
-      moreCardShow: true
+
+  delete:function(){
+    for (let x = 0; x < this.data.selectItem.length;x++){
+      let temp = parseInt(this.data.selectItem[x]);
+      this.data.poemList.splice(temp,1);
+    }
+    this.setData({
+      isEdit: false,
+      poemList:this.data.poemList
     })
   },
-  hideCard: function (e) {//隐藏更多
-    let that = this;
-    //console.log(e,'hideCard')
-    if (e.target.id === "hideCard") {
-      that.setData({
-        moreCardShow: false
+
+  select:function(e){
+    this.data.selectItem = e.detail.value;
+  },
+
+  goHome:function(){
+    let temp = this.data.isEdit?true:false;
+    if(temp){
+      this.setData({
+        isEdit:false
       })
+    }else{
+      console.log("页面跳转");
     }
   },
-  goSearch:function(){
+  goAdd:function(){
     wx.redirectTo({
-      url: '../search/search',
+      url: '../writePoem/writePoem',
     })
   },
-  gopoemHome:function(){
+  goListDetail:function(){
     wx.redirectTo({
-      url: '../sort/sort',
+      url: '../ListDetail/ListDetail',
     })
   },
   /**
