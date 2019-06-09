@@ -27,6 +27,7 @@ Page({
       that.setData({
         poemList:that.data.poemList.concat(res.data)
       })
+      console.log(res.data);
     })
   },
   toEdit:function(){

@@ -21,7 +21,9 @@ Page({
     userInfo:null,
     poemIntro:'灵感随记',
     poemName:'无悔',
-    pages:0
+    pages:0,
+    tempFilePaths:'../../images/诗集梅.png',
+    newPoemCon:''
   },
 
   /**
@@ -49,6 +51,7 @@ Page({
         that.setData({
           poemIntro: res.data[0].poemIntro,
           poemName: res.data[0].poemName,
+          tempFilePaths: res.data[0].tempFilePaths,
           poemItem: that.data.poemItem,
           pages: that.data.poemItem.length
         })
@@ -58,6 +61,7 @@ Page({
           pages: that.data.poemItem.length
         })
       }
+      console.log(that.data.poemItem);
     })
   },
 
@@ -65,6 +69,47 @@ Page({
     wx.redirectTo({
       url: '../createPoemList/createPoemList',
     })
+  },
+  inputCon: function (e) {
+    this.setData({
+      newpoemCon: e.detail.value
+    })
+  },
+
+  publish:function(){
+    var that = this;
+    let a = this.data;
+    if (a.poemName && a.poemIntro && a.newpoemCon && a.tempFilePaths) {
+      const db = wx.cloud.database();
+      db.collection("poemCon").add({
+        data: {
+          poemName: that.data.poemName,          //诗名
+          poemIntro: that.data.poemIntro,         //诗简介
+          poemCon: that.data.newpoemCon,             //诗内容
+          nickName: that.data.userInfo.nickName,  //作者昵称
+          tempFilePaths: that.data.tempFilePaths, //封面链接
+          like: 0,                                //点赞数
+          comment: 0                              //评论数
+        }
+      })
+      let obj = {
+        comment:0,
+        like: 0, 
+        poemCon: that.data.newpoemCon
+      }
+      that.data.poemItem.push(obj);
+      that.setData({
+        poemItem: that.data.poemItem,
+        newpoemCon:'',
+        pages: that.data.poemItem.length
+      })
+      console.log(that.data.poemItem);
+    }
+    else {
+      wx.showToast({
+        title: '请填写所有信息噢~',
+      })
+    }
   },
 
   /**
@@ -112,7 +157,16 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+    }
+    return {
+      title: '转发',
+      path: '/pages/ListDetail/listDetail',
+      imageUrl: "../../images/logo.png",
+      success: function (res) {
 
+      }
+    }
   }
 })

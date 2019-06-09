@@ -26,14 +26,14 @@
   <view class='recommend'>
 <view class='comWrap' wx:for="{{commendList}}" wx:key="this" wx:for-index="com">
     <!--今日推荐-->
-    <view wx:if="{{com == 0}}" bindtap='goDetail' class='today'>
+    <view wx:if="{{com == 0}}" bindtap='goDetail' data-id="{{com}}" class='today'>
       <image id="Commend" src='../../images/todayCommend.png'></image>
       <view id='poemTitle'>{{item.title}}</view>
       <view id='author'>{{item.author}}</view>
       <view id='poem'>{{item.poem}}</view>
     </view>
     <!--往日推荐-->
-    <view wx:if="{{com>0}}" class='ago'>
+    <view wx:if="{{com>0}}" bindtap='goDetail' data-id="{{com}}"  class='ago'>
       <image id='Commend' src='../../images/Commend.png'></image>
       <view id='poemTitle'>{{item.title}}</view>
       <view id='author'>{{item.author}}</view>
@@ -41,6 +41,8 @@
         </view>
     </view>
   </view>
+
+
   <!--左滑栏-->
   <view class="more {{moreCardShow?'showCard':'hideCard'}}" bindtap="hideCard" id="hideCard">
     <view class="moreCard {{!moreCardShow&&'hideCard'}}" id="card">

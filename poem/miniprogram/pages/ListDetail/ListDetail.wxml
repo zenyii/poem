@@ -4,20 +4,32 @@
   <view class='topic'>
     <image bindtap='gopoemList' id='back' src='../../images/back.png'></image>
     <text id='title'>诗集详情</text>
-    <image id='share' src='../../images/share.png'></image>
+    <button id='share' open-type='share'><image src='../../images/share.png'></image></button>
   </view>
   <!--展示诗集内容栏-->
   <swiper class='content'>
   <swiper-item>
   <!--创建诗集封面-->
     <view class='topBan'>
-      <view id='poemBack'><image src='../../images/诗集梅.png'></image></view>
+      <view id='poemBack'><image src='{{tempFilePaths}}'></image></view>
       <view id='userName'>{{userInfo.nickName}}</view>
       <view id='introduce'>{{poemIntro}}</view>
       <view id='poemName'>{{poemName}}</view>
     </view>
     <!--页码-->
-    <view class='pageNum'>1/{{pages+1}}</view>
+    <view class='pageNum'>1/{{pages+2}}</view>
+  </swiper-item>
+     <swiper-item>
+    <view class='topBan'>
+    <view class='wrap'>
+      <textarea id='inputArea' bindinput='inputCon' value='{{newpoemCon}}' placeholder='话题介绍最多可以输入120字'>
+      </textarea>
+    </view>
+      <view class='submit' bindtap='publish'>发布</view>
+      <view id='userName'>{{userInfo.nickName}}</view>
+    </view>
+    <!--页码-->
+    <view class='pageNum'>2/{{pages+2}}</view>
   </swiper-item>
   <swiper-item  wx:for="{{poemItem}}" wx:key="this" wx:for-index="index">
     <view class='topBan'>
@@ -28,7 +40,7 @@
         <image id='comment' src='../../images/评论.png'>{{item.like}}</image>{{item.comment}}
       </view>
     </view>
-    <view class='pageNum'>{{index+2}}/{{pages+1}}</view>
+    <view class='pageNum'>{{index+3}}/{{pages+2}}</view>
   </swiper-item>
   </swiper>
 </view>

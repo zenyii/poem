@@ -1,5 +1,6 @@
 // miniprogram/pages/writePoem/writePoem.js
-var app = getApp();
+var app = getApp()
+import util from '../../utils/util.js'
 Page({
 
   /**
@@ -59,9 +60,26 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有 
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
-        _this.setData({
-          tempFilePaths: res.tempFilePaths
+        let date = util.formatTime(new Date()).replace(/\/|\s|:/g,"");
+        let photeSrc = res.tempFilePaths[0];
+        console.log(photeSrc);
+        wx.showLoading({
+          title: '上传中...',
         })
+
+        wx.cloud.init({
+          env: 'test-cf0c34'
+        })
+        wx.cloud.uploadFile({
+          cloudPath: `images/${date}.jpg`,
+          filePath: photeSrc, // 文件路径
+        }).then(res => {
+          console.log(res.fileID);
+           _this.setData({
+             tempFilePaths: res.fileID
+          })
+          wx.hideLoading();
+        })       
       }
     })
   },
@@ -78,8 +96,8 @@ Page({
       poemCon:that.data.poemCon,             //诗内容
       nickName:that.data.userInfo.nickName,  //作者昵称
       tempFilePaths:that.data.tempFilePaths, //封面链接
-        like:0,                              //点赞数
-        comment:0                            //评论数
+      like:0,                                //点赞数
+      comment:0                              //评论数
       }
     })
     db.collection("poemList").add({

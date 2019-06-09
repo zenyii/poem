@@ -7,29 +7,25 @@ Page({
   data: {
     imgSrc: '../../images/',
     moreCardShow: false,
-    commendList:[
-      { 
-        title:"菩萨蛮·小山重叠金明灭",
-        author: "北宋 | 李清照",
-        poem:"小山重叠金明灭，鬓云欲渡香腮雪。"
-      },
-      {
-        title: "秋思",
-        author: "宋代|陆游",
-        poem: "利欲驱人万火牛，江湖浪迹一沙鸥。"
-      }
-    ]
+    commendList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    const db = wx.cloud.database();
+    db.collection("Commend").get().then(res=>{
+      that.setData({
+        commendList:res.data
+      })
+    })
   },
-  goDetail:function(){
+  goDetail:function(e){
+    let index = e.currentTarget.dataset.id;
     wx.redirectTo({
-      url: '../poemDetail/poemDetail',
+      url: '../poemDetail/poemDetail?title='+this.data.commendList[index].title,
     })
   },
   moreCard: function () {//显示更多

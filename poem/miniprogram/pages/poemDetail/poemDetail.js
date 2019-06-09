@@ -11,14 +11,23 @@ Page({
     isAppr: false,
     isAut: false,
     left:120,
-    top:20
+    top:20,
+    poemDetail:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    const db = wx.cloud.database();
+    db.collection("poemDetail").where({
+      title: options.title
+    }).get().then(res=>{
+      that.setData({
+        poemDetail: res.data[0]
+      })
+    })
   },
   goMain:function(){
     this.setData({

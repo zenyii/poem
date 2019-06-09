@@ -30,10 +30,16 @@ page{
   margin: 20rpx;
 }
 
-#share{
+#share {
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 180rpx;
+  background: white;
+}
+
+#share image{
   width: 40rpx;
   height: 40rpx;
-  margin-left: 200rpx;
 }
 #title{
   margin-left:30rpx; 
@@ -130,4 +136,27 @@ page{
   width: 30rpx;
   height: 30rpx;
   margin: 0 15rpx;
+}
+
+.wrap{
+  width: 90%;
+  height: 50%;
+  background: rgb(232, 232, 232);
+  margin: 30rpx auto;
+}
+#inputArea{
+  width: 85%;
+  height: 45%;
+  position: absolute;
+  top: 50rpx;
+  margin-left: 15rpx;
+  font-family: STXingkai; 
+  font-size: 30rpx;
+}
+
+.submit{
+  font-family: STXingkai; 
+  font-size: 50rpx;
+  float: right;
+  margin-right: 40rpx;
 }

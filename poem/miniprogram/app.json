@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/createPoemList/createPoemList",
     "pages/poemHome/poemHome",
+    "pages/createPoemList/createPoemList",
     "pages/writePoem/writePoem",
     "pages/homepage/homepage",
     "pages/ListDetail/ListDetail",
