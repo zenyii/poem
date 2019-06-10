@@ -7,7 +7,8 @@ Page({
   data: {
     imgSrc: '../../images/',
     moreCardShow: false,
-    commendList:[]
+    commendList:[],
+    lastPages:1           //上一页面标识，默认0,1为poemHome，2为searchDetail
   },
 
   /**
@@ -25,7 +26,7 @@ Page({
   goDetail:function(e){
     let index = e.currentTarget.dataset.id;
     wx.redirectTo({
-      url: '../poemDetail/poemDetail?title='+this.data.commendList[index].title,
+      url: '../poemDetail/poemDetail?title=' + this.data.commendList[index].title + '&lastPages=' + this.data.lastPages,
     })
   },
   moreCard: function () {//显示更多

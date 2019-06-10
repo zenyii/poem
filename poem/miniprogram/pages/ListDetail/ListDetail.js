@@ -8,12 +8,12 @@ Page({
   data: {
     poemItem:[
       {
-        poemCon:"就让得到的淡淡的来，就让失去的好好的去。来便来了，来了就珍惜，去便去了，去了就回忆。" ,
+        poemCon:["就让得到的淡淡的来，","就让失去的好好的去。","来便来了，来了就珍惜，","去便去了，去了就回忆。" ],
         like:3,
         comment:2
       },
       {
-        poemCon: "岁月你别催，该来的我不催，该还的还，该给我的给。走远的我不追，走过的不后悔",
+        poemCon: ["岁月你别催，","该来的我不催，该还的还，该给我的给。","走远的我不追，走过的不后悔"],
         like: 3,
         comment: 2
       }
@@ -23,7 +23,8 @@ Page({
     poemName:'无悔',
     pages:0,
     tempFilePaths:'../../images/诗集梅.png',
-    newPoemCon:''
+    newPoemCon:[],
+    poemCon:''
   },
 
   /**
@@ -61,7 +62,6 @@ Page({
           pages: that.data.poemItem.length
         })
       }
-      console.log(that.data.poemItem);
     })
   },
 
@@ -71,15 +71,16 @@ Page({
     })
   },
   inputCon: function (e) {
+    this.data.newPoemCon = e.detail.value.split("\n");
     this.setData({
-      newpoemCon: e.detail.value
+      newpoemCon: this.data.newPoemCon
     })
   },
 
   publish:function(){
     var that = this;
     let a = this.data;
-    if (a.poemName && a.poemIntro && a.newpoemCon && a.tempFilePaths) {
+    if (a.poemName && a.poemIntro && a.newpoemCon.length && a.tempFilePaths) {
       const db = wx.cloud.database();
       db.collection("poemCon").add({
         data: {
@@ -100,10 +101,9 @@ Page({
       that.data.poemItem.push(obj);
       that.setData({
         poemItem: that.data.poemItem,
-        newpoemCon:'',
+        poemCon:'',
         pages: that.data.poemItem.length
       })
-      console.log(that.data.poemItem);
     }
     else {
       wx.showToast({
@@ -161,7 +161,7 @@ Page({
     if (res.from === 'button') {
     }
     return {
-      title: '转发',
+      title: '来看看我作的诗',
       path: '/pages/ListDetail/listDetail',
       imageUrl: "../../images/logo.png",
       success: function (res) {

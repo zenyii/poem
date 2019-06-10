@@ -8,7 +8,7 @@ Page({
   data: {
     poemList:[
       {
-        poemName: "诗集一",tempFilePaths:"../../images/myPoem1.png"},
+        poemName: "诗集一", tempFilePaths:"../../images/诗集梅.png"},
       { poemName: "诗集二", tempFilePaths: "../../images/myPoem2.png" },
     ],
     isEdit:false,
@@ -27,7 +27,6 @@ Page({
       that.setData({
         poemList:that.data.poemList.concat(res.data)
       })
-      console.log(res.data);
     })
   },
   toEdit:function(){
@@ -49,7 +48,6 @@ Page({
 
   select:function(e){
     this.data.selectItem = e.detail.value;
-    console.log(e.detail.value);
   },
 
   goHome:function(){
@@ -71,7 +69,6 @@ Page({
     var that = this;
     let index = e.currentTarget.dataset.index;
     let poemName = that.data.poemList[index].poemName;
-    console.log(poemName);
     wx.redirectTo({
       url: '../ListDetail/ListDetail?poemName=' + poemName,
     })

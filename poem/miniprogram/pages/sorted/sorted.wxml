@@ -15,7 +15,7 @@
   </view>
   <!--具体分类栏-->
   <view class='sortLab'>
-    <view class='sortItem' wx:for="{{sortItems}}" wx:key="this">
+    <view class='sortItem' bindtap='gosearchDetail' wx:for="{{sortItems}}" wx:for-index="index" data-index='{{index}}' wx:key="this">
       <image src='{{item.url}}'></image>
       <text>{{item.title}}</text>
     </view>

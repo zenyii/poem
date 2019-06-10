@@ -1,30 +1,45 @@
-// miniprogram/pages/search/search.js
+// miniprogram/pages/searchDetail/searchDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    hotSearch: ["李白", "苏轼", "白居易", "唐寅", "孟浩然", "慕然", "舒婷", "毛泽东", "戴望舒"]
+    title:'',
+    label:'',
+    poemList:[],
+    lastPages: 2           //上一页面标识，默认0,1为poemHome，2为searchDetail
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    this.setData({
+      label: options.label
+    })
+    const db = wx.cloud.database();
+    db.collection("Commend").where({
+      label: that.data.label
+    }).get().then(res=>{
+      console.log(res.data);
+      that.setData({
+        poemList:res.data
+      })
+    })
   },
-  goPoemHome:function(){
+  goDetail:function(e){
+    var that = this;
+    let index = e.currentTarget.dataset.id;
     wx.redirectTo({
-      url: '../poemHome/poemHome',
+      url: '/pages/poemDetail/poemDetail?title=' + that.data.poemList[index].title + '&lastPages=' + that.data.lastPages,
     })
   },
 
-  gosearchDetail:function(e){
-    var that = this;
-    let index = e.currentTarget.dataset.index;
+  gosorted:function(){
     wx.redirectTo({
-      url: '/pages/searchDetail/searchDetail?label=' + that.data.hotSearch[index],
+      url: '/pages/sorted/sorted',
     })
   },
 

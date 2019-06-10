@@ -15,7 +15,7 @@
   <!--热门搜索-->
   <view class='hotSearch'>
     <view class='title'>热门搜索</view>
-    <view class='name' wx:for="{{hotSearch}}" wx:key="this">
+    <view bindtap='gosearchDetail' class='name' wx:for="{{hotSearch}}" wx:key="this" wx:for-index="index" data-index='{{index}}'>
       {{item}}
     </view>
   </view>

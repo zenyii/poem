@@ -12,7 +12,8 @@ Page({
     isAut: false,
     left:120,
     top:20,
-    poemDetail:{}
+    poemDetail:{},
+    lastPages: 0           //上一页面标识，默认0,1为poemHome，2为searchDetail
   },
 
   /**
@@ -21,11 +22,14 @@ Page({
   onLoad: function (options) {
     var that = this;
     const db = wx.cloud.database();
+    console.log(options);
     db.collection("poemDetail").where({
       title: options.title
     }).get().then(res=>{
+      console.log(res);
       that.setData({
-        poemDetail: res.data[0]
+        poemDetail: res.data[0],
+        lastPages: options.lastPages
       })
     })
   },
@@ -82,9 +86,17 @@ Page({
     })
   },
   goHome:function(){
-    wx.redirectTo({
-      url: '../poemHome/poemHome',
-    })
+    var that = this;
+    if(this.data.lastPages==1){
+      wx.redirectTo({
+        url: '../poemHome/poemHome',
+      })
+    }
+    if (this.data.lastPages == 2) {
+      wx.redirectTo({
+        url: '../searchDetail/searchDetail?label=' + that.data.poemDetail.label,
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -131,7 +143,16 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+    }
+    return {
+      title: '一起来欣赏这首诗',
+      path: '/pages/poemDetail/poemDetail',
+      imageUrl: "../../images/logo.png",
+      success: function (res) {
 
-  }
+        }
+      }
+    }
 })

@@ -21,11 +21,13 @@
   </swiper-item>
      <swiper-item>
     <view class='topBan'>
+    <view class='wrapper'>
     <view class='wrap'>
-      <textarea id='inputArea' bindinput='inputCon' value='{{newpoemCon}}' placeholder='话题介绍最多可以输入120字'>
+      <textarea id='inputArea' bindinput='inputCon' value='{{poemCon}}' placeholder='话题介绍最多可以输入120字'>
       </textarea>
     </view>
       <view class='submit' bindtap='publish'>发布</view>
+      </view>
       <view id='userName'>{{userInfo.nickName}}</view>
     </view>
     <!--页码-->
@@ -33,8 +35,9 @@
   </swiper-item>
   <swiper-item  wx:for="{{poemItem}}" wx:key="this" wx:for-index="index">
     <view class='topBan'>
-      <textarea id='content'>{{item.poemCon}}</textarea>
-      <view id='userName'>用户名</view>
+    <view class='contentLab'>
+      <view id='content' wx:for="{{item.poemCon}}" wx:key="this">{{item}}</view></view>
+      <view id='userName'>{{userInfo.nickName}}</view>
       <view class='bottomLab'>
         <image id='like' src='../../images/收藏.png'>{{item.like}}</image>{{item.like}}
         <image id='comment' src='../../images/评论.png'>{{item.like}}</image>{{item.comment}}

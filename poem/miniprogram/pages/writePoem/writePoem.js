@@ -13,7 +13,7 @@ Page({
     tempFilePaths: '../../images/poemBack.png',
     userInfo:null,
     poemCon:'',
-    poemList:[]
+    poemList:[],
   },
 
   /**
@@ -87,13 +87,15 @@ Page({
   publish:function(){
     var that = this;
     let a = this.data;
+    let poemConArr = this.data.poemCon.split("\n");
+    console.log(poemConArr);
     if (a.poemName && a.poemIntro && a.poemCon && a.tempFilePaths){
     const db = wx.cloud.database();
     db.collection("poemCon").add({
       data:{
       poemName: that.data.poemName,          //诗名
       poemIntro:that.data.poemIntro,         //诗简介
-      poemCon:that.data.poemCon,             //诗内容
+      poemCon: poemConArr,                   //诗内容
       nickName:that.data.userInfo.nickName,  //作者昵称
       tempFilePaths:that.data.tempFilePaths, //封面链接
       like:0,                                //点赞数

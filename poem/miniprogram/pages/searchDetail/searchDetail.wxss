@@ -1,0 +1,107 @@
+/* miniprogram/pages/searchDetail/searchDetail.wxss */
+.poemHome{
+  width: 100%;
+  height: 100%;
+
+}
+
+.topic{
+  position: absolute;
+  top: 50rpx;
+  width: 100%;
+  height: 6%;
+  display: flex;
+  align-items: center;
+  font-size: 50rpx;
+  vertical-align: middle;
+  border-bottom: 1rpx solid rgb(211, 211, 211);
+}
+
+#back{
+  width: 30rpx;
+  height: 45rpx;
+  margin: 0 30rpx;
+}
+
+#title{
+  margin-left:5rpx; 
+}
+
+#news{
+  width: 40rpx;
+  height: 50rpx;
+  margin-left: 30rpx;
+}
+
+.search{
+  width: 100%;
+  height: 6%;
+  position: absolute;
+  top: 150rpx;
+}
+
+#searchBroad{
+  width: 80%;
+  height: 90%;
+  position: absolute;
+  left: 5%;
+  border-radius:40rpx;
+  border: 1rpx solid black;
+  display: flex;
+  align-items: center;
+}
+#searchBroad input{
+  width: 85%;
+  margin-left: 10rpx;
+}
+
+#search{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 20%;
+  left: 77%;
+}
+
+#sort{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 5%;
+  top: 15%;
+}
+
+.poemList{
+  width: 100%;
+  position: absolute;
+  top: 200rpx;
+}
+
+.poemItem{
+  width: 100%;
+  height: 350rpx;
+  text-align: center;
+  border-bottom: 1rpx solid rgb(211, 211, 211);
+}
+
+#poemTitle{
+  font-weight: bold;
+  width: 100%;
+  margin-top: 60rpx;
+  z-index: 2;
+}
+
+#author{
+  width: 100%;
+  font-size: 30rpx;
+  margin-top: 30rpx;
+  z-index: 2;
+}
+
+#poem{
+  max-width: 75%;
+  font-size: 35rpx;
+  line-height: 60rpx;
+  z-index: 2;
+  margin: 30rpx auto;
+}

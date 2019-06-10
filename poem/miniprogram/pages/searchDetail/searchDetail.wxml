@@ -1,0 +1,23 @@
+<!--miniprogram/pages/searchDetail/searchDetail.wxml-->
+<view class='poemHome'>
+<!--标题栏-->
+  <view class='topic'>
+    <image bindtap='gosorted' id='back' src='../../images/back.png'></image>
+    <text id='title'>{{sort}}</text>
+    <image id='news' src='../../images/news.png'></image>
+  </view>
+  <!--搜索栏-->
+  <view class='search'>
+    <view bindtap='goSearch' id='searchBroad'><input placeholder='搜索'></input></view>
+    <image id='search' src='../../images/search.png'></image>
+    <image bindtap='gopoemHome' id='sort' src='../../images/sort.png'></image>
+  </view>
+  <!--搜索出的诗词-->
+  <view class='poemList'>
+    <view bindtap='goDetail' wx:for="{{poemList}}" wx:for-index="index" wx:key="this" data-id="{{index}}"  class='poemItem'>
+      <view id='poemTitle'>{{item.title}}</view>
+      <view id='author'>{{item.author}}</view>
+      <view id='poem'>{{item.poem}}</view>
+    </view>
+  </view>
+</view>

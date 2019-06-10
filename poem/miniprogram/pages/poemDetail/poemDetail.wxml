@@ -3,7 +3,7 @@
   <!--标题栏-->
   <view class='topic'>
     <image bindtap='goHome' id='back' src='../../images/back.png'></image>
-    <image id='share' src='../../images/share.png'></image>
+    <button id='share' open-type='share'><image src='../../images/share.png'></image></button>
   </view>
   <!--显示内容区域-->
   <view class='mainArea'>

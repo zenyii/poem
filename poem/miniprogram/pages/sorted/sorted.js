@@ -33,7 +33,14 @@ Page({
   },
   gopoemHome:function(){
     wx.redirectTo({
-      url: '../poemHome/poemHome',
+      url: '../sort/sort',
+    })
+  },
+  gosearchDetail:function(e){
+    var that = this;
+    let index = e.currentTarget.dataset.index;
+    wx.redirectTo({
+      url: '/pages/searchDetail/searchDetail?label=' + that.data.sortItems[index].title,
     })
   },
   /**
