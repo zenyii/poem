@@ -1,20 +1,15 @@
+<!--miniprogram/pages/myCollect/myCollect.wxml-->
 <!--miniprogram/pages/poemHome/poemHome.wxml-->
 <view class='poemHome'>
 <!--标题栏-->
   <view class='topic'>
     <image id="more" bindtap='moreCard' src='../../images/more.png'></image>
-    <text id='title'>藏诗阁</text>
+    <text id='title'>我的收藏</text>
     <image id='news' src='../../images/news.png'></image>
-  </view>
-  <!--搜索栏-->
-  <view class='search'>
-    <view bindtap='goSearch' id='searchBroad'><input placeholder='搜索'></input></view>
-    <image id='search' src='../../images/search.png'></image>
-    <image bindtap='gopoemHome' id='sort' src='../../images/sort.png'></image>
   </view>
   <!--背景栏-->
   <view class='back'>
-    <image id='backGround' src='cloud://test-cf0c34.7465-test-cf0c34/images/backGround.png'></image>
+    <image id='backGround' src='cloud://test-cf0c34.7465-test-cf0c34/images/首页插图@2x.png'></image>
   </view>
   <!--时间栏-->
   <view class='time'>
@@ -27,14 +22,17 @@
 <view class='comWrap' wx:for="{{commendList}}" wx:key="this" wx:for-index="com">
     <!--今日推荐-->
     <view wx:if="{{com == 0}}" bindtap='goDetail' data-id="{{com}}" class='today'>
-      <image id="Commend" src='../../images/todayCommend.png'></image>
+      <image id="Commend" src='../../images/题目框@2x.png'></image>
+      <text id="class">詩</text>
       <view id='poemTitle'>{{item.title}}</view>
       <view id='author'>{{item.author}}</view>
       <view id='poem'>{{item.poem}}</view>
+      <image id='pic' src='{{src}}'></image>
     </view>
     <!--往日推荐-->
     <view wx:if="{{com>0}}" bindtap='goDetail' data-id="{{com}}"  class='ago'>
-      <image id='Commend' src='../../images/Commend.png'></image>
+      <image id='Commend' src='../../images/题目框@2x.png'></image>
+      <text id="class">詩</text>
       <view id='poemTitle'>{{item.title}}</view>
       <view id='author'>{{item.author}}</view>
       <view id='poem'>{{item.poem}}</view>
@@ -86,3 +84,4 @@
       </view>
     </view>
 </view>
+

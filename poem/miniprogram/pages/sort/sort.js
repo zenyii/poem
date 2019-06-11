@@ -7,10 +7,10 @@ Page({
   data: {
     lebel:["近现代","毛泽东","咏物"],
     kind: [
-      { class: "朝代", url: "../../images/sort1.png" },
-      { class: "作者", url: "../../images/sort2.png" }, 
-      { class: "类型", url: "../../images/sort3.png" },
-      { class: "诗集", url: "../../images/sort4.png"},
+      { class: "朝代", url: "cloud://test-cf0c34.7465-test-cf0c34/images/sort1.png" },
+      { class: "作者", url: "cloud://test-cf0c34.7465-test-cf0c34/images/sort2.png" }, 
+      { class: "类型", url: "cloud://test-cf0c34.7465-test-cf0c34/images/sort3.png" },
+      { class: "诗集", url: "cloud://test-cf0c34.7465-test-cf0c34/images/sort4.png"},
     ]
   },
   onLoad: function (options) {

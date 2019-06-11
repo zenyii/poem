@@ -5,44 +5,61 @@
     <image bindtap='goHome' id='back' src='../../images/back.png'></image>
     <button id='share' open-type='share'><image src='../../images/share.png'></image></button>
   </view>
+  <!--收藏-->
+  <view class='collect' bindtap='collect'>
+    <image wx:if="{{!isStar}}" src='../../images/star.png'></image>
+    <image wx:if="{{isStar}}" src='../../images/stared.png'></image>  
+  </view>
   <!--显示内容区域-->
   <view class='mainArea'>
+    <swiper current="{{current}}" bindchange="scrollSwiper" class='swiper'>
+    <swiper-item>
     <image id='flowerBack' src='../../images/flowerBack.png'></image>
-    <view wx:if="{{isMain}}" class='main'>
+    <view class='main'>
       <view id='poemTitle'>{{poemDetail.title}}</view>
       <view id='author'>{{poemDetail.author}}</view>
       <text id='poem' wx:for="{{poemDetail.poemCon}}" wx:key="this">
       {{item}}
       </text>
     </view>
-    <view wx:if="{{isNote}}" class='note'>
+    </swiper-item>
+    <swiper-item>
+    <view class='note'>
      <view id='poemTitle'>{{poemDetail.title}}</view>
       <view id='author'>注释</view>
       <textarea id='noteCon'>{{poemDetail.noteCon}}</textarea>
     </view>
-    <view wx:if="{{isTrans}}" class='translate'>
+    </swiper-item>
+    <swiper-item>
+    <view class='translate'>
       <view id='poemTitle'>{{poemDetail.title}}</view>
       <view id='author'>译文</view>
       <text id='noteCon' wx:for="{{poemDetail.translate}}" wx:key="this">
       {{item}}
       </text>
     </view>
-    <view wx:if="{{isAppr}}" class='appreciate'>
+    </swiper-item>
+    <swiper-item>
+    <view class='appreciate'>
       <view id='poemTitle'>{{poemDetail.title}}</view>
       <view id='author'>赏析</view>
       <text id='noteCon'>{{poemDetail.appreciate}}
       </text>
     </view>
-    <view wx:if="{{isAut}}" class='author'>
+    </swiper-item>
+    <swiper-item>
+    <view class='author'>
       <view id='poemTitle'>{{poemDetail.title}}</view>
       <view id='author'>作者</view>
       <textarea id='noteCon'>{{poemDetail.authorMsg}}
       </textarea>
     </view>
+    </swiper-item>
+    </swiper>
   </view>
   <!--五个按钮区域-->
   <view class='bth'>
-    <image id='select' style="position:absolute;left:{{left}}rpx;top:{{top}}rpx;" src='../../images/select.png'></image>
+    <image id='select' style="position:absolute;left:{{left[current]}}rpx;top:{{top}}rpx;" src='../../images/select.png'></image>
     <image bindtap='goMain' id='btnItem' src='../../images/main.png'></image>
     <image bindtap='goNote' id='btnItem' src='../../images/note.png'></image>
     <image bindtap='goTran' id='btnItem' src='../../images/translate.png'></image>

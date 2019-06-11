@@ -22,7 +22,7 @@ Page({
     poemIntro:'灵感随记',
     poemName:'无悔',
     pages:0,
-    tempFilePaths:'../../images/诗集梅.png',
+    tempFilePaths:'cloud://test-cf0c34.7465-test-cf0c34/images/诗集梅.png',
     newPoemCon:[],
     poemCon:''
   },

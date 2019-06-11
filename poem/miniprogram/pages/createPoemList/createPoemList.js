@@ -8,8 +8,8 @@ Page({
   data: {
     poemList:[
       {
-        poemName: "诗集一", tempFilePaths:"../../images/诗集梅.png"},
-      { poemName: "诗集二", tempFilePaths: "../../images/myPoem2.png" },
+        poemName: "诗集一", tempFilePaths:"cloud://test-cf0c34.7465-test-cf0c34/images/诗集梅.png"},
+      { poemName: "诗集二", tempFilePaths: "cloud://test-cf0c34.7465-test-cf0c34/images/myPoem2.png" },
     ],
     isEdit:false,
     selectItem:[]

@@ -10,7 +10,7 @@ Page({
     TopUrl:'',
     poemName:'',
     poemIntro:'',
-    tempFilePaths: '../../images/poemBack.png',
+    tempFilePaths: 'cloud://test-cf0c34.7465-test-cf0c34/images/poemBack.png',
     userInfo:null,
     poemCon:'',
     poemList:[],
