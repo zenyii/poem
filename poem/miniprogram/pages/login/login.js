@@ -33,6 +33,8 @@ Page({
           loading: false
         });
 
+        console.log(that.data.redirect_url,'url')
+
         if (that.data.redirect_url) {
           //console.log('重定向！')
           wx.reLaunch({

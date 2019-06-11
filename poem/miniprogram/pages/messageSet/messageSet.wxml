@@ -1,0 +1,12 @@
+<view class="zhaiHeader">
+    <image class="mine back verticalCenter" src="{{imgSrc}}back.png" />
+    <span class="zhaiTitle">消息管理</span>
+</view>
+<view class="set">
+    <span class="verticalCenter">新消息通知</span><switch color="#C09550" bindchange="newMsg" />
+</view>
+<view class="line"></view>
+<view class="set">
+    <span class="verticalCenter">通知显示消息详情</span><switch color="#C09550" bindchange="showMsg" />
+</view>
+<view class="line"></view>

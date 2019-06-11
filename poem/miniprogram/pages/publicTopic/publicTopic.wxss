@@ -1,0 +1,104 @@
+/* miniprogram/pages/publicTopic/publicTopic.wxss */
+view{
+    box-sizing: border-box;
+}
+.teaZhai {
+    box-sizing: border-box;
+    padding: 70rpx 44rpx;
+}
+
+.zhaiHeader image {
+    width: 32rpx;
+    height: 48rpx;
+}
+
+.header {
+    margin-top: 100rpx;
+}
+
+.header textarea {
+    height: 92rpx;
+}
+
+.header input {
+   width: 80%;
+   height: 74rpx;
+   background: #f2f2f2;
+   line-height: 74rpx;
+}
+
+.topicName {
+    font-size: 18px;
+}
+
+textarea,.inputbg {
+    width: 664rpx;
+    font-size: 14px;
+    background: #f2f2f2;
+    padding: 15rpx 15rpx;
+    box-sizing: border-box;
+    margin-top: 16rpx;
+    position: relative;
+}
+.inputbg{
+    line-height: 100rpx;
+}
+.header span{
+    bottom: 0;
+}
+textarea span ,.header span {
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+    color: gray;
+}
+
+.contentNum {
+    bottom: 28rpx;
+}
+
+.main {
+    margin: 45rpx 0;
+}
+
+.uploadImage {
+    width: 300rpx;
+    height: 300rpx;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: #f2f2f2;
+    margin-top: 40rpx;
+    position: relative;
+}
+
+.uploadImage .image{
+    width: 300rpx;
+    height: 300rpx;
+}
+
+.uploadImage .photeIcon {
+    width: 76rpx;
+    height: 66rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.deleteIcon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 46rpx;
+    height: 48rpx;
+  /*   -webkit-transform: translateX(50%) translateY(-50%);
+    -webkit-transform: translateX(50%) translateY(-50%);
+    -moz-transform: translateX(50%) translateY(-50%);
+    -ms-transform: translateX(50%) translateY(-50%);
+    transform: translateX(50%) translateY(-50%); */
+}

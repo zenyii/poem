@@ -1,0 +1,31 @@
+<view style="height:100vh;overflow:hidden;">
+    <view class="teaZhai">
+        <view class="zhaiHeader">
+            <image  bindtap="goBack" class="mine verticalCenter" src="{{imgSrc}}back.png" bindtap="moreCard" />
+            <span class="zhaiTitle">创建话题</span>
+            <span class="zhaiTitle" bindtap="submitForm">提交审核</span>
+        </view>
+        <view>
+            <view class="header">
+                <view class="topicName">话题名称</view>
+                <view class="inputbg">
+                    <input class="content" bindinput="title" maxlength="15" placeholder="标题最多可以输入15个字" />
+                    <span class="verticalCenter">{{titleNum}}/15</span>
+                </view>
+            </view>
+            <view class="main">
+                <view class="topicName">话题简介</view>
+                <textarea  class="content" bindinput="content" maxlength="120" 
+                placeholder="话题介绍最多可以输入120个字,空格代表换行哦">
+                    <span class=" contentNum">{{contentNum}}/120</span>
+                </textarea>
+            </view>
+            <view class="uploadImage">
+                <image wx:if="{{photeSrc}}" class="image" src="{{photeSrc}}" mode="aspectFill" 
+                bindtap="previewImage" />
+                <image wx:if="{{!photeSrc}}" class="photeIcon" src="{{imgSrc}}phote.png" bindtap="chooseImg" />
+                <image wx:if="{{photeSrc}}" class="deleteIcon" src="{{imgSrc}}delete.png" bindtap="deleteImg" />
+            </view>
+        </view>
+    </view>
+</view>

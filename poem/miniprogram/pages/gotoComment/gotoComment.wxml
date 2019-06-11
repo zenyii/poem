@@ -1,0 +1,68 @@
+<view bindtap="keyboardShou">
+    <view class="zhaiHeader">
+        <image bindtap="goBack" class="mine back verticalCenter" src="{{imgSrc}}back.png" />
+        <span class="zhaiTitle">查看原文</span>
+        <image class="inform share verticalCenter" src="{{imgSrc}}share.png" />
+    </view>
+    <view class="content">
+        <image class="avatar" data-id="{{page.reviewerId}}" bindtap="gotoMine" src="{{page.reviewerAvatar}}" />
+        <view class="mainBody">
+            <view class="name">{{page.reviewerName}}</view>
+            <view class="body">{{page.content}}</view>
+            <view wx:if="{{page.comment.length!==0}}" class="comment">
+                <block wx:for="{{page.comment}}" wx:key="this">
+                    <view catchtap="commentSend" data-id="{{item.reviewerId}}" data-name="{{item.reviewerName}}">
+                        <view class="header verticalCenter">
+                            <span class="reviewer" data-id="{{item.reviewerId}}" catchtap="gotoMine">
+                                {{item.reviewerName}}
+                            </span>
+                            <span class="dates verticalCenter">{{item.date}}</span>
+                        </view>
+                        <span wx:if="{{item.beReviewerId}}">回复</span>
+                        <span wx:if="{{item.beReviewerId}}" data-id="{{item.beReviewerId}}" catchtap="gotoMine" class="beReviewer">
+                            {{item.beReviewerName}}
+                        </span>
+                        <span wx:if="{{item.beReviewerId}}">:</span>
+                        {{item.content}}
+                    </view>
+                    <view wx:if="{{index!==page.comment.length-1}}" class="line"></view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="bottom">
+        <span class="date">{{page.firstSend}}</span>
+        <view class="collect verticalCenter">
+            <image class="{{collectYoN&&'collectAct'}}" id="collect"
+            src="{{collectYoN?imgSrc+'collectAct.png':imgSrc+'collect.png'}}" bindtap="interact" />
+            <span>{{page.collectPeopleID.length}}</span>
+        </view>
+        <view class="comment verticalCenter">
+            <image src="{{imgSrc}}commont.png" data-id="" data-name="" catchtap="commentSend" />
+            <span>{{page.comment.length}}</span>
+        </view>
+    </view>
+</view>
+<view class="line"></view>
+<view class="keyBoard" style="bottom:{{keyboard}}px">
+    <image class="image verticalCenter" src="{{imgSrc}}image.png" />
+    <input type="text" focus="{{focus}}" adjust-position="{{false}}" cursor-spacing="10" 
+    bindfocus="inputFocus"  bindconfirm="send" bindinput="bindinput" value="{{value}}" class="verticalCenter" placeholder="{{placeholder}}" />
+    <image class="emoji verticalCenter" bindtap="emojiShow" src="{{imgSrc}}emoji.png" />
+    <text class="send verticalCenter {{sendAct?'sendAct':'sendNoAct'}}" bindtap="send">发送</text>
+</view>
+<view class="emojiBoard {{emojiShow&&'emojiShow'}}">
+    <view style="width:750rpx;height:155px;flex-direction:row;">
+        <swiper>
+            <block wx:for="{{emojiSwiper}}" wx:key="this" wx:for-item="parentItem" wx:for-index="parentIndex">
+                <swiper-item style="display:flex;flex-wrap:wrap; align-self:center">
+                    <block wx:for="{{parentItem}}" wx:key="this">
+                        <span data-parentindex="{{parentIndex}}" data-index="{{index}}" class="emojiItem" bindtap="emojiInput">
+                            {{item}}
+                        </span>
+                    </block>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+</view>

@@ -1,0 +1,20 @@
+page{
+    height: 100vh;
+}
+.zhaiHeader{
+    position: relative;
+    padding:25px 20px 0 20px;
+}
+view{
+    box-sizing: border-box; 
+}
+.zhaiTitle {
+    height: 36px;
+    margin: 0 auto;
+}
+
+.zhaiHeader .back {
+    width: 32rpx;
+    height: 48rpx;
+    position: absolute;
+}

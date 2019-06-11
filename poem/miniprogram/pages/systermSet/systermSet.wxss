@@ -1,0 +1,32 @@
+/* miniprogram/pages/detailTopic/detailTopic.wxss */
+page{
+    height: 100vh;
+}
+.zhaiHeader{
+    position: relative;
+    padding:25px 20px 0 20px;
+}
+view{
+    box-sizing: border-box; 
+}
+.zhaiTitle {
+    height: 36px;
+    margin: 0 auto;
+}
+
+.zhaiHeader .back {
+    width: 32rpx;
+    height: 48rpx;
+    position: absolute;
+}
+.set{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20rpx;
+    font-size: 18px;
+}
+.set image{
+    width: 25rpx;
+    height: 30rpx;
+}

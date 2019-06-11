@@ -1,0 +1,4 @@
+<view class="zhaiHeader">
+    <image class="mine back verticalCenter" src="{{imgSrc}}back.png" />
+    <span class="zhaiTitle">账号管理</span>
+</view>

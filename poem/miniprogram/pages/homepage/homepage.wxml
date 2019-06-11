@@ -1,114 +1,121 @@
-<view style="padding-bottom:50px">
+<scroll-view scroll-y="true" style="height:100vh;">
+  <view style="padding-bottom:50px;">
     <view class="teaZhai">
-        <view class="zhaiHeader">
-            <image class="mine" src="{{imgSrc}}mine.png" bindtap="moreCard" />
-            <span class="zhaiTitle">茶斋</span>
-            <image class="inform" src="{{imgSrc}}news.png" />
-        </view>
-        <view class="zhaiBanner banner">
-            <image src="{{imgSrc}}首页插图@2x.png" />
-        </view>
-        <view class="zhaiContent">
-            <block wx:for="{{zhaiItem}}" wx:key="this" wx:for-item="GparentItem" wx:for-index="GparentIndex">
-                <view class="zhaiDate">
-                    <image class="left" src="{{imgSrc}}timeLeft.png" />
-                    <span class="dateChinese">{{GparentItem.date}}</span>
-                    <!-- 动态 -->
-                    <!-- <image src="{{imgSrc}}己亥年己巳月辛亥日@2x.png" /> -->
-                    <image class="right" src="{{imgSrc}}timeRight.png" />
-                </view>
-                <block wx:for="{{GparentItem.content}}" wx:key="this" wx:for-item="parentItem" wx:for-index="parentIndex">
-                    <view class="zhaiItem" data-gparentindex="{{GparentIndex}}" data-parentindex="{{parentIndex}}" bindtap="detailMsg">
-                        <image class="line" src="{{imgSrc}}line.png" />
-                        <span class="displayClass" style="background-image:url('{{imgSrc}}题目框@2x.png')">
-                            {{parentItem.class}}
-                        </span>
-                        <view class="ItemText">
-                            <block wx:for="{{parentItem.poem}}" wx:key="this">
-                                <view class="textList">{{item}}</view>
-                            </block>
-                        </view>
-                        <view wx:if="{{parentItem.showImg}}" class="zhaiBanner">
-                            <image src="{{imgSrc}}{{parentItem.showImg}}" />
-                        </view>
-                        <view class="detailMsg" data-gparentindex="{{GparentIndex}}" data-parentindex="{{parentIndex}}" catchtap="interact">
-                            <view class="author">
-                                <image src="{{imgSrc}}{{parentItem.authorAvatar}}" id="author" />
-                                <span>{{parentItem.nickName}}</span>
-                            </view>
-                            <view class="interact">
-                                <view class="collect">
-                                    <image class="{{parentItem.collectYoN&&'collectAct'}}" src="{{parentItem.collectYoN?imgSrc+'collectAct.png':imgSrc+'collect.png'}}" id="collect" />
-                                    <text>{{parentItem.collectNum}}</text>
-                                </view>
-                                <view class="comment">
-                                    <image src="{{imgSrc}}commont.png" id="commont" />
-                                    <text>{{parentItem.commentNum}}</text>
-                                </view>
-                            </view>
-                        </view>
-                    </view>
+      <view class="zhaiHeader" style="{{night&&'background:#DDDDDD;border-bottom:1px solid gray;'}}">
+        <image class="mine verticalCenter" src="{{imgSrc}}more.png" bindtap="moreCard" />
+        <span class="zhaiTitle">茶斋</span>
+        <image class="inform verticalCenter" src="{{imgSrc}}news.png" />
+      </view>
+      <view class="zhaiBanner banner">
+        <image src="{{imgSrc}}首页插图@2x.png" />
+      </view>
+      <view class="zhaiContent">
+        <block wx:for="{{zhaiItem}}" wx:key="this" wx:for-item="GparentItem" wx:for-index="GparentIndex">
+          <view class="zhaiDate">
+            <image class="left" src="{{imgSrc}}timeLeft.png" />
+            <span class="dateChinese">{{GparentItem.date}}</span>
+            <!-- 动态 -->
+            <!-- <image src="{{imgSrc}}己亥年己巳月辛亥日@2x.png" /> -->
+            <image class="right" src="{{imgSrc}}timeRight.png" />
+          </view>
+          <block wx:for="{{GparentItem.content}}" wx:key="this" wx:for-item="parentItem" wx:for-index="parentIndex">
+            <view class="zhaiItem" >
+              <image class="line" src="{{imgSrc}}line.png" />
+              <span class="displayClass" style="background-image:url('{{imgSrc}}题目框@2x.png')">
+                {{parentItem.class}}
+              </span>
+              <view class="ItemText" data-gparentindex="{{GparentIndex}}" data-parentindex="{{parentIndex}}" bindtap="detailMsg">
+                <block wx:for="{{parentItem.poem}}" wx:key="this">
+                  <view class="textList">{{item}}</view>
                 </block>
-            </block>
-        </view>
+              </view>
+              <view wx:if="{{parentItem.showImg}}" class="zhaiBanner">
+                <image src="{{parentItem.showImg}}" />
+              </view>
+              <view class="detailMsg" data-gparentindex="{{GparentIndex}}" data-parentindex="{{parentIndex}}" 
+              catchtap="interact">
+                <view class="author">
+                  <image src="{{parentItem.authorAvatar}}" id="author" />
+                  <span>{{parentItem.nickName}}</span>
+                </view>
+                <view class="interact">
+                  <view class="collect">
+                    <image class="{{parentItem.collectYoN&&'collectAct'}}" src="{{parentItem.collectYoN?imgSrc+'collectAct.png':imgSrc+'collect.png'}}" id="collect" />
+                    <text>{{parentItem.collectPeopleID.length}}</text>
+                  </view>
+                  <view class="comment">
+                    <image src="{{imgSrc}}commont.png" id="commont" />
+                    <text>{{parentItem.commentNum}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </block>
+      </view>
     </view>
+    <view wx:if="{{night}}" class="switchNight" catchtap="mapNight"></view>
+  </view>
+</scroll-view>
+<view class="buildMap {{buildMap?'buildMapShow':'buildMapHide'}}">
+  <view class="buildItem" bindtap="pubilcPoem">
+    <image src="{{imgSrc}}publicPoem.png" />
+    <view>发布诗集</view>
+  </view>
+  <view class="buildItem" bindtap="publicTopic">
+    <image src="{{imgSrc}}publicTopic.png" />
+    <view>发布话题</view>
+  </view>
 </view>
-<view class="tab-bar">
-    <!-- <cover-view class="tab-bar-border"></cover-view> -->
-    <view wx:for="{{list}}" wx:key="index" class="tab-bar-item bar{{index}}" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
-        <image wx:if="{{index!=1}}" class="image" src="{{selected === index ? item.selectedIconPath : item.iconPath}}">
-            <!-- <view class="cross" wx:if="{{index===1}}"></view> -->
-        </image>
-        <image wx:if="{{index==1}}" class="image  {{selected === index ? 'barson2':'barson1'}}" src="{{selected === index ? item.selectedIconPath : item.iconPath}}">
-            <!-- <view class="cross" wx:if="{{index===1}}"></view> -->
-        </image>
-        <view class="view" style="color: {{selected === index ? selectedColor : color}};">
-            {{item.text}}
-        </view>
-    </view>
+<view class="unBuildIcon">
+  <image bindtap="toggleBuild" class="bar1 image {{buildMap?'barson2':'barson1'}}" src="{{imgSrc}}创建@2x.png" />
 </view>
-<!-- <view class="more {{moreCardShow?'showCard':'hideCard'}}">
-    <view class="moreCard {{!moreCardShow&&'hideCard'}}">
-
-    </view> -->
-<view class="more {{moreCardShow?'showCard':'hideCard'}}" bindtap="hideCard" id="hideCard">
-    <view class="moreCard {{!moreCardShow&&'hideCard'}}" id="card">
-        <view class="personalCenter">
-            <image class="avatarImg" src="{{userInfo.avatarUrl}}" />
-            <view class="nickName">{{userInfo.nickName}}</view>
-            <view class="mineDetail">
-                <view class="fans">粉丝 : 0</view>
-                <image src="{{imgSrc}}shortLine.png" />
-                <view class="concern">关注 : 0</view>
-            </view>
-            <image class="longLine" src="{{imgSrc}}longLine.png" />
-        </view>
-        <view class="category" bindtap="moreDepth">
-            <view class="categoryItem">
-                <image class="caIcon ge" src="{{imgSrc}}藏诗阁@2x(1).png" data-id="ge"/>
-               <!--  <span>藏诗阁</span> -->
-                <image class="longLine" src="{{imgSrc}}longLine.png" />
-            </view>
-            <view class="categoryItem" id="mark">
-                <image class="caIcon mark" src="{{imgSrc}}mark.png" data-id="mark"/>
-               <!--  <span>藏诗阁</span> -->
-                <image class="longLine" src="{{imgSrc}}longLine.png" />
-            </view>
-            <view class="categoryItem" id="msg">
-                <image class="caIcon msg" src="{{imgSrc}}msg.png" data-id="msg" />
-               <!--  <span>藏诗阁</span> -->
-                <image class="longLine" src="{{imgSrc}}longLine.png"  />
-            </view>
-            <view class="categoryItem" id="set">
-                <image class="caIcon set" src="{{imgSrc}}set.png" data-id="set" />
-               <!--  <span>藏诗阁</span> -->
-                <image class="longLine" src="{{imgSrc}}longLine.png" />
-            </view>
-            <view class="categoryItem">
-                <image class="caIcon night" src="{{imgSrc}}night.png" />
-               <!--  <span>藏诗阁</span> -->
-               <switch color="#C09550" bindchange="switchChange" />
-            </view>
-        </view>
+<view class="tab-bar" style="{{night&&'background:#DDDDDD;border-top:1px solid lightgray'}}">
+  <view wx:for="{{list}}" wx:key="index" class="tab-bar-item bar{{index}}" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab">
+    <image wx:if="{{index!=1}}" class="image" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
+    <image wx:if="{{index==1}}" bindtap="toggleBuild" class="bar1 image  {{toggleBuild ? 'barson2':'barson1'}}" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
+    <view class="view" style="color: {{selected === index ? selectedColor : color}};">
+      {{item.text}}
     </view>
+  </view>
+</view>
+<view class=" {{moreCardShow?'showCard':'hideCard'}}" bindtap="hideCard" id="hideCard"></view>
+<view class=" {{moreCardShow?'showSmallCard':'hideCard'}}" id="card">
+  <view class="personalCenter">
+    <image class="avatarImg" bindtap="gotoHome" src="{{userInfo.avatarUrl}}" />
+    <view class="nickName">{{userInfo.nickName}}</view>
+    <view class="mineDetail">
+      <view class="fans">粉丝 : 0</view>
+      <image src="{{imgSrc}}shortLine.png" />
+      <view class="concern">关注 : 0</view>
+    </view>
+    <image class="longLine" src="{{imgSrc}}longLine.png" />
+  </view>
+  <view class="category" bindtap="moreDepth">
+    <view class="categoryItem">
+      <image class="caIcon ge" src="{{imgSrc}}藏诗阁@2x(1).png" data-id="ge" />
+      <!-- <span>藏诗阁</span> -->
+      <image class="longLine" src="{{imgSrc}}longLine.png" />
+    </view>
+    <view class="categoryItem" id="mark">
+      <image class="caIcon mark" src="{{imgSrc}}mark.png" data-id="mark" />
+      <!-- <span>藏诗阁</span> -->
+      <image class="longLine" src="{{imgSrc}}longLine.png" />
+    </view>
+    <view class="categoryItem" id="msg">
+      <image class="caIcon msg" src="{{imgSrc}}msg.png" data-id="msg" />
+      <!-- <span>藏诗阁</span> -->
+      <image class="longLine" src="{{imgSrc}}longLine.png" />
+    </view>
+    <view class="categoryItem" id="set">
+      <image class="caIcon set" src="{{imgSrc}}set.png" data-id="set" />
+      <!-- <span>藏诗阁</span> -->
+      <image class="longLine" src="{{imgSrc}}longLine.png" />
+    </view>
+    <view class="categoryItem">
+      <image class="caIcon night" src="{{imgSrc}}night.png" />
+      <!-- <span>藏诗阁</span> -->
+      <switch color="#C09550" bindchange="switchChange" />
+    </view>
+  </view>
 </view>
