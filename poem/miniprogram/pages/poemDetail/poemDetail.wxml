@@ -66,6 +66,8 @@
     <image bindtap='goAppr' id='btnItem' src='../../images/appreciate.png'></image>
     <image bindtap='goAut' id='btnItem' src='../../images/author.png'></image>
   </view>
+  <!--语音朗诵区域-->
+  <audio class='audioPlayer' poster="{{poster}}" name="{{title}}" author='' src="{{audiosrc}}" id="myAudio" controls></audio>
   <!--评论区域-->
   <view class='comment'>
     <view class='comTap'>

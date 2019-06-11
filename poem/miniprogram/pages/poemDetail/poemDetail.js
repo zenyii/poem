@@ -7,31 +7,44 @@ Page({
    */
   data: {
     left:120,
-    top:20,
+    top:5,
     poemDetail:{},
     lastPages: 0,           //上一页面标识，默认0,1为poemHome，2为searchDetail
     current:0,
     left:[120,255,385,515,650],
     isStar:false,              //是否收藏，
     collect:[],                //用户收藏列表,
-    title:'滁州西涧'                   //当前诗名
+    title:'',                   //当前诗名
+    text:'',
+    poster: '../../images/朗诵@2x.png',
+    audiosrc: 'http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=3&text=',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.audioCtx = wx.createAudioContext('myAudio');
     var that = this;
     const db = wx.cloud.database();
+    //从诗词表中获取此首诗的详细数据
     db.collection("poemDetail").where({
       title: options.title
     }).get().then(res=>{
+      let text = res.data[0].poemCon.join("");
       that.setData({
         poemDetail: res.data[0],
         lastPages: options.lastPages,
-        title: res.data[0].title
+        title: res.data[0].title,
+        text: text
+      })
+    }).then(()=>{
+      that.setData({
+        audiosrc: 'http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=2.5&text=' + that.data.text
       })
     })
+
+    //从用户表中查询此首诗的点赞情况
     db.collection("poemUsers").where({
       _openid: app.globalData.selfOpenId
     }).field({
