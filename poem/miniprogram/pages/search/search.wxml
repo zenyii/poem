@@ -1,0 +1,23 @@
+<!--miniprogram/pages/search/search.wxml-->
+<view class='search'>
+  <!--搜索框-->
+  <view class='searchBroad'>
+    <view bindtap='goPoemHome' class='back'>
+      <image src='../../images/back.png'></image>
+    </view>
+    <view class='board'>
+      <input id='input'></input>
+    </view>
+    <view class='btn'>
+      <image src='../../images/search.png'></image>
+    </view>
+  </view>
+  <!--热门搜索-->
+  <view class='hotSearch'>
+    <view class='title'>热门搜索</view>
+    <view bindtap='gosearchDetail' class='name' wx:for="{{hotSearch}}" wx:key="this" wx:for-index="index" data-index='{{index}}'>
+      {{item}}
+    </view>
+  </view>
+  <image id='backGround' src='../../images/hotSearch.png'></image>
+</view>

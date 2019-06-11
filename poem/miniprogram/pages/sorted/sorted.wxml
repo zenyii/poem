@@ -1,0 +1,23 @@
+<!--miniprogram/pages/sorted/sorted.wxml-->
+<view class='sorted'>
+  <!--顶部标签栏-->
+  <view class='label'>
+    <image bindtap='gopoemHome' src='../../images/back.png'></image>
+    <scroll-view scroll-x class='scroll'>
+    <view class='labelItem' wx:for="{{lebel}}" wx:key="this">{{item}}</view>
+    </scroll-view>
+  </view>
+  <!--左侧种类栏-->
+  <view class='kind'>
+    <view class='kindItem' wx:for="{{kind}}" wx:key="this">
+      <view id='title'>{{item.class}}</view>
+    </view>
+  </view>
+  <!--具体分类栏-->
+  <view class='sortLab'>
+    <view class='sortItem' bindtap='gosearchDetail' wx:for="{{sortItems}}" wx:for-index="index" data-index='{{index}}' wx:key="this">
+      <image src='{{item.url}}'></image>
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+</view>

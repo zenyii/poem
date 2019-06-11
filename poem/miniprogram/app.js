@@ -3,8 +3,8 @@ App({
   globalData: {
     userId: '',
     hasUserInfo: false,
-    userInfo: null,
-    selfOpenId: "",
+    userInfo:null,
+    selfOpenId: "o6e-P4nvU2HvdRqKOZIwRsw_wgD8",
   },
   onLaunch: function (path) {
     let that = this;

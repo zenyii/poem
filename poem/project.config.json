@@ -2,13 +2,15 @@
 	"miniprogramRoot": "miniprogram/",
 	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
-	"appid": "wx8d5d22897bfc549c",
+	"appid": "wxf093ced586835f28",
 	"projectname": "poem",
 	"libVersion": "2.7.1",
 	"simulatorType": "wechat",

@@ -1,6 +1,13 @@
 {
   "pages": [
     "pages/homepage/homepage",
+    "pages/myCollect/myCollect",
+    "pages/poemHome/poemHome",
+    "pages/createPoemList/createPoemList",
+    "pages/writePoem/writePoem",
+    "pages/sorted/sorted",
+    "pages/search/search",
+    "pages/searchDetail/searchDetail",
     "pages/teaRoom/teaRoom",
     "pages/publicTopic/publicTopic",
     "pages/messageSet/messageSet",
@@ -12,7 +19,10 @@
     "pages/mine/mine",
     "pages/intoTearoom/intoTearoom",
     "pages/teaRoomIntro/teaRoomIntro",
-    "pages/accountSet/accountSet"
+    "pages/accountSet/accountSet",
+    "pages/ListDetail/ListDetail",
+    "pages/sort/sort",
+    "pages/poemDetail/poemDetail"
 
   ],
   "window": {

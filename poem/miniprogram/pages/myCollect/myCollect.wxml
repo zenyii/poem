@@ -1,0 +1,87 @@
+<!--miniprogram/pages/myCollect/myCollect.wxml-->
+<!--miniprogram/pages/poemHome/poemHome.wxml-->
+<view class='poemHome'>
+<!--标题栏-->
+  <view class='topic'>
+    <image id="more" bindtap='moreCard' src='../../images/more.png'></image>
+    <text id='title'>我的收藏</text>
+    <image id='news' src='../../images/news.png'></image>
+  </view>
+  <!--背景栏-->
+  <view class='back'>
+    <image id='backGround' src='cloud://test-cf0c34.7465-test-cf0c34/images/首页插图@2x.png'></image>
+  </view>
+  <!--时间栏-->
+  <view class='time'>
+    <image id='timeLeft' src='../../images/timeLeft.png'></image>
+    己亥年 己巳月辛亥日
+    <image id='timeRight' src='../../images/timeRight.png'></image>
+  </view>
+  <!--推荐栏-->
+  <view class='recommend'>
+<view class='comWrap' wx:for="{{commendList}}" wx:key="this" wx:for-index="com">
+    <!--今日推荐-->
+    <view wx:if="{{com == 0}}" bindtap='goDetail' data-id="{{com}}" class='today'>
+      <image id="Commend" src='../../images/题目框@2x.png'></image>
+      <text id="class">詩</text>
+      <view id='poemTitle'>{{item.title}}</view>
+      <view id='author'>{{item.author}}</view>
+      <view id='poem'>{{item.poem}}</view>
+      <image id='pic' src='{{src}}'></image>
+    </view>
+    <!--往日推荐-->
+    <view wx:if="{{com>0}}" bindtap='goDetail' data-id="{{com}}"  class='ago'>
+      <image id='Commend' src='../../images/题目框@2x.png'></image>
+      <text id="class">詩</text>
+      <view id='poemTitle'>{{item.title}}</view>
+      <view id='author'>{{item.author}}</view>
+      <view id='poem'>{{item.poem}}</view>
+        </view>
+    </view>
+  </view>
+
+
+  <!--左滑栏-->
+  <view class="more {{moreCardShow?'showCard':'hideCard'}}" bindtap="hideCard" id="hideCard">
+    <view class="moreCard {{!moreCardShow&&'hideCard'}}" id="card">
+        <view class="personalCenter">
+            <image class="avatarImg" src="{{userInfo.avatarUrl}}" />
+            <view class="nickName">{{userInfo.nickName}}</view>
+            <view class="mineDetail">
+                <view class="fans">粉丝 : 0</view>
+                <image src="{{imgSrc}}shortLine.png" />
+                <view class="concern">关注 : 0</view>
+            </view>
+            <image class="longLine" src="{{imgSrc}}longLine.png" />
+        </view>
+        <view class="category" bindtap="moreDepth">
+            <view class="categoryItem">
+                <image class="caIcon ge" src="{{imgSrc}}藏诗阁@2x(1).png" data-id="ge"/>
+               <!--  <span>藏诗阁</span> -->
+                <image class="longLine" src="{{imgSrc}}longLine.png" />
+            </view>
+            <view class="categoryItem" id="mark">
+                <image class="caIcon mark" src="{{imgSrc}}mark.png" data-id="mark"/>
+               <!--  <span>藏诗阁</span> -->
+                <image class="longLine" src="{{imgSrc}}longLine.png" />
+            </view>
+            <view class="categoryItem" id="msg">
+                <image class="caIcon msg" src="{{imgSrc}}msg.png" data-id="msg" />
+               <!--  <span>藏诗阁</span> -->
+                <image class="longLine" src="{{imgSrc}}longLine.png"  />
+            </view>
+            <view class="categoryItem" id="set">
+                <image class="caIcon set" src="{{imgSrc}}set.png" data-id="set" />
+               <!--  <span>藏诗阁</span> -->
+                <image class="longLine" src="{{imgSrc}}longLine.png" />
+            </view>
+            <view class="categoryItem">
+                <image class="caIcon night" src="{{imgSrc}}night.png" />
+               <!--  <span>藏诗阁</span> -->
+               <switch color="#C09550" bindchange="switchChange" />
+            </view>
+        </view>
+      </view>
+    </view>
+</view>
+
