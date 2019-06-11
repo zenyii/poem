@@ -1,0 +1,105 @@
+<view class="zhaiHeader">
+    <image bindtap="goBack" class="mine back verticalCenter" src="{{imgSrc}}back.png" />
+    <span class="zhaiTitle">{{title}}</span>
+    <image class="inform share verticalCenter" src="{{imgSrc}}share.png" />
+</view>
+<scroll-view scroll-y="true" scroll-top="{{scrollTop}}" scroll-with-animation="true" style="padding-top:60px;height:100vh;">
+    <view style="height:100%;position:relative">
+        <view class="topicCenter" style="margin-bottom:70px;" bindtap="pickupboard">
+            <view class="topicContent">
+                <view class="contentHeader">
+                    <image bindtap="gotoHome" src="{{topicContent.authorAvatar}}" />
+                    <view class="name_date">
+                        <view class="name">{{topicContent.nickName}}</view>
+                        <view class="date">{{topicContent.date}}</view>
+                    </view>
+                    <view bindtap="concern" class="btn {{concern?'cencernBtnAct':'cencernBtn'}}">
+                        {{concern?'已关注':'关注'}}
+                    </view>
+                </view>
+                <view class="banner">
+                    <image class="bannrtImg" src="{{topicContent.showImg}}" />
+                    <view wx:if="{{author}}" class="bannerMap">
+                        <image class="verticalCenter" src="{{imgSrc}}phote.png" bindtap="changeBg"/>
+                    </view>
+                </view>
+                <view class="title">{{topicContent.title}}</view>
+                <view class="words">
+                    <block wx:for="{{topicContent.poem}}" wx:key="this">
+                        <view class="wordsLine">{{item}}</view>
+                    </block>
+                </view>
+                <view class="interact" catchtap="interact">
+                    <view class="collect">
+                        <image class="{{topicContent.collectYoN&&'collectAct'}}" src="{{topicContent.collectYoN?imgSrc+'collectAct.png':imgSrc+'collect.png'}}" id="topicCollect" />
+                        <text>{{topicContent.collectPeopleID.length}}</text>
+                    </view>
+                    <view class="comment">
+                        <image bindtap="scrollTop" src="{{imgSrc}}commont.png" id="topicCommont" style="margin-top:2rpx;" />
+                        <text>{{Comment.length}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="sort">
+                <view class="sortHeader" bindtap="sort">
+                    <view class="cool {{sortAct==='cool'&&'actColor'}}">
+                        <image src="{{imgSrc}}cool.png" />
+                        <span id="cool" bindtap="scrollTop">精彩回帖</span>
+                    </view>
+                    <view class="inverse {{sortAct==='reverse'&&'actColor'}}">
+                        <image src="{{imgSrc}}reverse.png" />
+                        <span id="reverse" bindtap="scrollTop">倒序查看</span>
+                    </view>
+                </view>
+                <view class="sortContent">
+                    <block wx:for="{{Comment}}" wx:key="this" wx:for-index="parentIndex" wx:for-item="parentItem">
+                        <view class="commentHeader" data-index="{{parentIndex}}" bindtap="gotoComment">
+                            <image src="{{parentItem.reviewerAvatar}}" />
+                            <view class="name_date">
+                                <view class="name">{{parentItem.reviewerName}}</view>
+                                <view class="date">{{parentItem.date}}</view>
+                            </view>
+                        </view>
+                        <view class="commentContent" data-index="{{parentIndex}}" bindtap="gotoComment">
+                            <block wx:for="{{parentItem.content}}" wx:key="this">
+                                <view class="commentLine">{{item}}</view>
+                            </block>
+                        </view>
+                        <view class="commentInteract interact" catchtap="interact" data-index="{{parentIndex}}">
+                            <view class="collect">
+                                <image class="{{parentItem.commentYoN&&'collectAct'}}" src="{{parentItem.commentYoN?imgSrc+'collectAct.png':imgSrc+'collect.png'}}" id="commentCollect" />
+                                <text>{{parentItem.collectPeopleID.length}}</text>
+                            </view>
+                            <view class="comment">
+                                <image src="{{imgSrc}}commont.png" id="commentC" style="margin-top:2rpx;" />
+                                <text>{{parentItem.comment.length}}</text>
+                            </view>
+                        </view>
+                        <view class="line"></view>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="keyBoard" style="bottom:{{keyboard}}px">
+            <image class="image verticalCenter" src="{{imgSrc}}image.png" />
+            <input type="text" cursor-spacing="10" bindfocus="inputFocus" bindconfirm="send" bindinput="bindinput" value="{{value}}" class="verticalCenter" placeholder="点击输入文字" />
+            <image class="emoji verticalCenter" bindtap="emojiShow" src="{{imgSrc}}emoji.png" />
+            <text class="send verticalCenter {{sendAct?'sendAct':'sendNoAct'}}" bindtap="send">发送</text>
+        </view>
+        <view class="emojiBoard {{emojiShow&&'emojiShow'}}">
+            <view style="width:750rpx;height:155px;flex-direction:row;">
+                <swiper>
+                    <block wx:for="{{emojiSwiper}}" wx:key="this" wx:for-item="parentItem" wx:for-index="parentIndex">
+                        <swiper-item style="display:flex;flex-wrap:wrap; align-self:center">
+                            <block wx:for="{{parentItem}}" wx:key="this">
+                                <span data-parentindex="{{parentIndex}}" data-index="{{index}}" class="emojiItem" bindtap="emojiInput">
+                                    {{item}}
+                                </span>
+                            </block>
+                        </swiper-item>
+                    </block>
+                </swiper>
+            </view>
+        </view>
+    </view>
+</scroll-view>

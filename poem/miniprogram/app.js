@@ -24,27 +24,35 @@ App({
     let redirect_url = '';
     let userInfo = wx.getStorageSync('userInfo');
     let selfOpenId = wx.getStorageSync('selfOpenId');
-    if(selfOpenId || userInfo){
-      that.globalData.userInfo = userInfo;
-      that.globalData.selfOpenId = selfOpenId;
-    }
-    //解析url中是否带有参数，若有则拼接成字符串
-    for (let i in path.query) {
-      if (i) {
-        query = query + i + '=' + path.query[i] + '&'
+
+      if (selfOpenId || userInfo) {
+        that.globalData.userInfo = userInfo;
+        that.globalData.selfOpenId = selfOpenId;
       }
-    }
-    if (query) {
-      redirec_url = parh.path + '?' + query;
-    } else {
-      redirect_url = path.path;
-    }
-    if (!selfOpenId || !userInfo.avatarUrl) {
-      wx.reLaunch({
-        url: 'pages/login/login?redirect_url=' + encodeURIComponent(`/${redirect_url}`),
-      })
-      return
-    }
+      //解析url中是否带有参数，若有则拼接成字符串
+      for (let i in path.query) {
+        if (i) {
+          query = query + i + '=' + path.query[i] + '&'
+        }
+      }
+      if (query) {
+        redirec_url = parh.path + '?' + query;
+      } else {
+        redirect_url = path.path;
+      }
+      if (!selfOpenId || !userInfo.avatarUrl) {
+        wx.reLaunch({
+          url: 'pages/login/login?redirect_url=' + encodeURIComponent(`/${redirect_url}`),
+        })
+        return
+      }
+
+  },
+
+  goBack:function(){
+    wx.navigateBack({
+      delta: 1
+    })
   },
 
   //云开发添加记录
@@ -70,6 +78,14 @@ App({
 
     })
   },
+  /*  获取一个集合的数据.then(res => {
+       res.data 是一个包含集合中有权限访问的所有记录的数据，不超过 20 条
+       console.log(res.data)
+     }) */
+  queryCollect: function (collect, filed) {
+    const db = wx.cloud.database();
+    return db.collection(collect).field(filed).get()
+  },
 
   /* 更改二条记录 */
   onUpdateTwo: function (collect, where, data, value, data1, value1) {
@@ -94,6 +110,16 @@ App({
       }
     })
   },
-
+  //自增
+  incNum: function (collect, id, key, num) {
+    const db = wx.cloud.database()
+    const _ = db.command
+    return db.collection(collect).doc(id).update({
+      data: {
+        // 表示指示数据库将字段自增 10
+        [key]: _.inc(num)
+      }
+    })
+  },
 
 })

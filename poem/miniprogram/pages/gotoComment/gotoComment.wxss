@@ -1,0 +1,241 @@
+page {
+    height: 100vh;
+}
+
+view, span {
+    box-sizing: border-box;
+}
+
+.zhaiTitle {
+    height: 36px;
+    width: 50vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.zhaiHeader .back {
+    width: 32rpx;
+    height: 48rpx;
+}
+
+.zhaiHeader .share {
+    width: 47rpx;
+    height: 48rpx;
+    padding-top: 8rpx;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    margin: 150rpx 40rpx 0 55rpx;
+    word-break: break-all;
+}
+
+.content .avatar {
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 50%;
+}
+
+.mainBody {
+    width: 469rpx;
+    margin-left: 20rpx;
+}
+
+.mainBody .name {
+    font-size: 18px;
+    margin-bottom: 20rpx;
+}
+
+.mainBody .body {
+    font-size: 15px;
+}
+
+.mainBody .comment {
+    font-size: 14px;
+    padding: 20rpx;
+    margin: 20rpx 0;
+    background: #f2f2f2;
+}
+
+.comment .reviewer, .beReviewer {
+    color: #C09550;
+}
+
+.comment .reviewer {
+    width: 47%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.comment span {
+    display: inline-block;
+    line-height: 20px;
+    word-break: break-all;
+    margin: 0 2rpx;
+}
+
+.comment .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@keyframes collectAct {
+    0% {
+      transform: scale(1)
+    }
+    25% {
+      transform: scale(1.1)
+    }
+    50% {
+      transform: scale(1.2)
+    }
+    75% {
+      transform: scale(1.1)
+    }
+    100% {
+      transform: scale(1)
+    }
+  }
+  
+  .collectAct {
+    animation: collectAct .3s;
+  }
+  
+
+.header .dates {
+    font-size: 12px;
+    color: gray;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    padding: 0 58rpx 20rpx 58rpx;
+    margin-top: 24rpx;
+}
+
+.comment image {
+    margin-top: 4rpx;
+}
+
+.bottom image {
+    width: 34rpx;
+    height: 34rpx;
+}
+
+.bottom .collect {
+    margin-left: 320rpx;
+    display: flex;
+}
+
+.collect {
+    margin-right: 10rpx;
+}
+
+.collect span, .bottom .comment span {
+    margin: 0 10rpx;
+}
+
+.beReviewer {
+    /* width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.comment .line{
+    background: white;
+    margin: 12rpx 0;
+}
+
+/* 键盘 */
+
+.keyBoard {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 110rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: white;
+    border-top: 1px solid #f2f2f2;
+    transition: all .3s;
+}
+
+.keyBoard .image {
+    width: 38rpx;
+    height: 38rpx;
+}
+
+.keyBoard input {
+    width: 454rpx;
+    height: 64rpx;
+    border: 1px solid #f2f2f2;
+    border-radius: 10rpx;
+    font-size: 13px;
+    padding: 0 12rpx;
+}
+
+.keyBoard .emoji {
+    width: 42rpx;
+    height: 42rpx;
+}
+
+.keyBoard .send {
+    width: 96rpx;
+    height: 64rpx;
+    transition: all .3s;
+    color: white;
+    line-height: 64rpx;
+    font-size: 13px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.sendNoAct {
+    background: gray;
+}
+
+.sendAct {
+    background: #C09550;
+}
+
+.keyBoardAct {
+    background: #C09550;
+}
+
+.emojiBoard {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background: white;
+    position: fixed;
+    transition: all .3s;
+    bottom: -155px;
+}
+
+.emojiBoard span {
+    width: 75rpx;
+    height: 68rpx;
+    text-align: center;
+    display: inline-block;
+    transform: scale(1.2);
+    margin: 0 auto;
+}
+
+.emojiShow {
+    bottom: 0;
+}

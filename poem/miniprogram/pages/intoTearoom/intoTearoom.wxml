@@ -1,0 +1,83 @@
+<view bindtap="pickupboard">
+    <view class="teaZhai" id="zhai">
+        <view class="zhaiHeader">
+            <image  bindtap="goBack" class="mine verticalCenter" src="../../images/back.png" bindtap="moreCard" />
+            <image class="inform verticalCenter" src="{{imgSrc}}dotMore.png" />
+        </view>
+        <view class="banner">
+            <image src="{{teaRoom.showImg}}" />
+            <view class="map">
+                <span class="content verticalCenter">{{teaRoom.title}}</span>
+                <span class="author">话题 : {{teaRoom.commentContent.length}}</span>
+            </view>
+        </view>
+        <view class="master" id="master">
+            <view class="masterMsg">
+                <image class="verticalCenter" src="{{teaRoom.authorAvatar}}" />
+                <span class="verticalCenter">{{teaRoom.nickName}}</span>
+            </view>
+            <view class="view">
+                <image class="verticalCenter" src="{{imgSrc}}view.png" />
+                <span class="verticalCenter">{{teaRoom.view}}</span>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="topicComment">
+            <block wx:for="{{teaRoom.commentContent}}" wx:key="this" wx:for-item="parentItem" 
+            wx:for-index="parentIndex">
+                <view class="topicItem" id="topicItem">
+                    <span class="title">{{parentItem.title}}</span>
+                    <view class="content" bindtap="goToDetail" data-articleid="{{teaRoom._id}}" 
+                    data-index="{{parentIndex}}" data-title="{{parentItem.title}}" 
+                    data-commentid="{{parentItem.commentId}}">
+                        <block wx:for="{{parentItem.poem}}" wx:key="this">
+                            <span class="items">{{item}}</span>
+                        </block>
+                    </view>
+                </view>
+                <view class="bottom" catchtap="interact" data-parentindex="{{parentIndex}}">
+                    <view class="author" id="author">
+                        <image  style="border-radius:50%;"  class="verticalCenter " 
+                        src="{{parentItem.authorAvatar}}" />
+                        <span class="verticalCenter">{{parentItem.nickName}}</span>
+                    </view>
+                    <view class="collect" id="collect">
+                        <image class="verticalCenter {{parentItem.collectYoN&&'actColor'}}" 
+                        src="{{parentItem.collectYoN?imgSrc+'collectAct.png':imgSrc+'collect.png'}}" id="collect"/>
+                        <span class="verticalCenter">{{parentItem.collectPeopleID.length}}</span>
+                    </view>
+                    <view class="comment" id="comment">
+                        <image class="verticalCenter" src="{{imgSrc}}commont.png" />
+                        <span class="verticalCenter">{{parentItem.commentNum}}</span>
+                    </view>
+                </view>
+                <view class="line"></view>
+            </block>
+        </view>
+    </view>
+</view>
+<view id="board">
+    <view class="keyBoard" style="bottom:{{keyboard}}px" id="board">
+        <image class="image verticalCenter" src="{{imgSrc}}image.png" />
+        <input type="text" cursor-spacing="10" bindfocus="inputFocus" bindconfirm="send" bindinput="bindinput" 
+        value="{{value}}" class="verticalCenter" placeholder="点击输入文字" />
+        <image class="emoji verticalCenter" bindtap="emojiShow" src="{{imgSrc}}emoji.png" />
+        <text class="send verticalCenter {{sendAct?'sendAct':'sendNoAct'}}" bindtap="send">发送</text>
+    </view>
+    <view class="emojiBoard {{emojiShow&&'emojiShow'}}">
+        <view style="width:750rpx;height:155px;flex-direction:row;" id="emoji">
+            <swiper>
+                <block wx:for="{{emojiSwiper}}" wx:key="this" wx:for-item="parentItem" wx:for-index="parentIndex">
+                    <swiper-item style="display:flex;flex-wrap:wrap; align-self:center">
+                        <block wx:for="{{parentItem}}" wx:key="this">
+                            <span data-parentindex="{{parentIndex}}" data-index="{{index}}" class="emojiItem" 
+                            bindtap="emojiInput">
+                                {{item}}
+                            </span>
+                        </block>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+    </view>
+</view>

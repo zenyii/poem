@@ -1,0 +1,12 @@
+<view class="zhaiHeader">
+    <image class="mine back verticalCenter" src="{{imgSrc}}back.png" />
+    <span class="zhaiTitle">设置</span>
+</view>
+<view class="set" bindtap="gotoAccount">
+    <span class="verticalCenter">账号管理</span><image class="verticalCenter" src="{{imgSrc}}arrow.png" />
+</view>
+<view class="line"></view>
+<view class="set" bindtap="gotoMessage">
+    <span class="verticalCenter">消息通知</span><image class="verticalCenter" src="{{imgSrc}}arrow.png" />
+</view>
+<view class="line"></view>

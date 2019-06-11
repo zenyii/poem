@@ -1,0 +1,367 @@
+/* miniprogram/pages/homepage/homepage.wxss */
+
+/* header */
+
+.zhaiHeader .mine {
+  width: 54rpx;
+  height: 54rpx;
+}
+.zhaiHeader .inform {
+  width: 41rpx;
+  height: 56rpx;
+}
+
+
+/* banner */
+
+.banner {
+  margin-top: 68px;
+}
+
+.zhaiBanner {
+  width: 100vw;
+  position: relative;
+}
+
+
+.zhaiBanner image {
+  width: 700rpx;
+  height: 360rpx;
+  margin: 22rpx 25rpx 0 25rpx;
+}
+
+.zhaiDate {
+  display: flex;
+  height: 70rpx;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.zhaiDate image {
+  width: 67rpx;
+  height: 32rpx;
+}
+
+.zhaiDate .dateChinese {
+  display: inline-block;
+  font-family: STKaiti;
+  width: 351rpx;
+  height: 34rpx;
+  font-size: 19px;
+  line-height: 34rpx;
+  margin: 0 15rpx;
+}
+
+.zhaiDate .left {
+  margin-bottom: 23rpx;
+}
+
+.zhaiDate .right {
+  margin-top: 23rpx;
+}
+
+/* 发布内容 */
+
+.zhaiItem {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.zhaiItem .line {
+  width: 619rpx;
+  height: 2rpx;
+  margin: 0 66rpx;
+  position: absolute;
+  top: 0px;
+}
+
+.displayClass {
+  width: 70rpx;
+  height: 148rpx;
+  position: absolute;
+  top: 0px;
+  left: 43rpx;
+  background: no-repeat;
+  background-size: 100% 100%;
+  font-family: STKaiti;
+  font-size: 24px;
+  text-align: center;
+  padding-top: 30rpx;
+  box-sizing: border-box;
+}
+
+.zhaiItem .ItemText {
+  padding:100rpx 123rpx 0 123rpx;
+}
+
+.ItemText .textList {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.detailMsg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  padding: 15rpx 0 0 61rpx;
+}
+
+.detailMsg .author {
+  font-size: 12px;
+}
+
+.detailMsg .author image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.detailMsg .author span {
+  position: relative;
+  padding: 0px 0px 5rpx 15rpx;
+  box-sizing: border-box;
+  line-height: 18px;
+  bottom: 12rpx;
+}
+
+.detailMsg .interact {
+  width: 250rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  line-height: 86rpx;
+}
+
+.collectAct {
+  animation: collectAct .3s;
+}
+
+.detailMsg .interact image {
+  width: 35rpx;
+  height: 35rpx;
+  margin: 0 10rpx;
+}
+
+.detailMsg .interact text {
+  font-size: 12px;
+}
+
+.switchNight{
+  position: fixed;
+  left: 0;
+  top:0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0,0,0,.2);
+}
+
+/* more */
+
+.more, .hideCard, .showCard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .7);
+  width: 100vw;
+  height: 100vh;
+  transition: all .1s;
+  transform-origin: left top;
+  z-index: 5;
+}
+
+ .moreCard,.showSmallCard {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 506rpx;
+  height: 100vh;
+  background: #2f2f2f;
+  color: white;
+}
+
+.hideCard {
+  top: 0;
+  left: 0;
+  transform: rotate(90deg);
+  transform: skewX(0.5);
+  border-radius: 50%;
+}
+
+.showCard,.showSmallCard {
+  left: 0;
+  top: 0;
+  transform: rotateX(0deg);
+  transform: skewX(1);
+  border-radius: 0;
+  z-index: 5;
+
+}
+.showSmallCard {
+  transition: all .3s;
+  transform-origin: left top;
+}
+
+
+.personalCenter {
+  position: absolute;
+  left: 0;
+  top: 50rpx;
+  width: 100%;
+  height: 350rpx;
+  margin: 91rpx 0 0 0;
+}
+
+.personalCenter .avatarImg {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin: 0 172rpx;
+}
+
+.personalCenter .nickName {
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  margin: 10rpx 0;
+}
+
+.personalCenter .mineDetail {
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.mineDetail .fans {
+  margin-right: 50rpx;
+}
+
+.mineDetail .concern {
+  margin-left: 50rpx;
+}
+
+.personalCenter .mineDetail image {
+  width: 2rpx;
+  height: 30rpx;
+}
+
+.longLine {
+  width: 339rpx;
+  height: 2rpx;
+  margin: 0 75rpx;
+  position: relative;
+  bottom: 12px;
+}
+
+.category {
+  position: absolute;
+  top: 500rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  font-size: 18px;
+  font-family: PingFangSC-Regular, sans-serif;
+}
+
+.categoryItem {
+  margin: 20rpx 0 0 0;
+  position: relative;
+}
+
+switch {
+  position: absolute;
+  bottom: 8rpx;
+  right: 74rpx;
+}
+
+.wx-switch-input {
+  width: 80rpx !important;
+  height: 40rpx !important;
+}
+
+.wx-switch-input::before {
+  width: 79rpx !important;
+  height: 37rpx !important;
+}
+
+.wx-switch-input::after {
+  width: 37rpx !important;
+  height: 37rpx !important;
+}
+
+.categoryItem .caIcon {
+  padding: 5rpx 20rpx 0 75rpx;
+  position: relative;
+  overflow: visible;
+}
+
+.categoryItem .ge {
+  width: 50rpx;
+  height: 36rpx;
+}
+
+.categoryItem .mark {
+  width: 30rpx;
+  height: 43rpx;
+  padding-left: 85rpx;
+}
+
+.categoryItem .msg {
+  width: 37rpx;
+  height: 38rpx;
+  padding-left: 82rpx;
+}
+
+.categoryItem .set {
+  width: 36rpx;
+  height: 38rpx;
+  padding-left: 82rpx;
+}
+
+.categoryItem .night {
+  width: 40rpx;
+  height: 35rpx;
+  padding-left: 82rpx;
+}
+
+.categoryItem .ge::after {
+  content: "藏诗阁";
+  position: absolute;
+  bottom: 0;
+  right: -110rpx;
+}
+
+.categoryItem .set::after {
+  content: "系统设置";
+  position: absolute;
+  bottom: 0;
+  right: -150rpx;
+}
+
+.categoryItem .mark::after {
+  content: "我的收藏";
+  position: absolute;
+  bottom: 0;
+  right: -155rpx;
+}
+
+.categoryItem .msg::after {
+  content: "我的消息";
+  position: absolute;
+  bottom: 0;
+  right: -150rpx;
+}
+
+.categoryItem .night::after {
+  content: "夜间模式";
+  position: absolute;
+  bottom: 0;
+  right: -150rpx;
+}
+

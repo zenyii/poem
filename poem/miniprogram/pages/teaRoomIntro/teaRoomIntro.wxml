@@ -1,0 +1,49 @@
+        <view>
+    <view class="teaZhai">
+        <view class="zhaiHeader">
+            <image  bindtap="goBack" class="mine verticalCenter" src="{{imgSrc}}back.png" bindtap="moreCard" />
+            <span class="zhaiTitle">茶室详情</span>     
+            <image class="inform verticalCenter" src="{{imgSrc}}dotMore.png" />
+        </view>
+        <view class="master">
+            <image class="avatar verticalCenter" src="{{imgSrc+teaRoom.masterAvatarUrl}}" />
+            <view class="msg">
+                <span>{{teaRoom.masterNickName}}</span>
+                <span class="checked">审核茶室成员</span>
+            </view>
+            <image class="arrow verticalCenter" src="{{imgSrc}}arrow.png" />
+        </view>
+        <view class="line"></view>
+        <view class="intro">
+            <view class="title">茶室信息</view>
+            <span>{{teaRoom.title}}</span>
+            <view class="intross">简介</view>
+            <span>{{teaRoom.annotation}}</span>
+        </view>
+        <view class="line"></view>
+        <view class="nums_date">
+            <view class="nums verticalCenter">
+                <span>话题 :</span>
+                <span class="padding">{{teaRoom.comment}}</span>
+            </view>
+            <view class="date verticalCenter">
+                <span>创建时间 :</span>
+                <span class="padding">{{teaRoom.date}}</span>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="menber">
+            <view class="words">茶室成员</view>
+            <view class="avatar">
+                <block wx:for="{{teaRoom.menbers}}" wx:key="this">
+                    <image src="{{imgSrc+item.avatarUrl}}" />
+                </block>
+            </view>
+            <image class="arrow ver" src="{{imgSrc}}arrow.png" />
+        </view>
+        <view class="line"></view>
+        <view class="join">
+            加入茶室
+        </view>
+    </view>
+</view>

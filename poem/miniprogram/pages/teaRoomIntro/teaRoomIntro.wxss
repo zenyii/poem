@@ -1,0 +1,93 @@
+.zhaiHeader .mine{
+    width: 32rpx;
+    height: 48rpx;
+}
+
+.zhaiHeader .inform{
+    width: 10rpx;
+    height: 42rpx;
+
+}
+
+.master{
+    margin:172rpx 41rpx 41rpx;
+    display: flex;
+    position: relative;
+}
+.master .avatar{
+    width: 101rpx;
+    height: 101rpx;
+    margin-right: 30rpx;
+}
+
+.master .msg{
+    display: flex;
+    flex-direction: column;
+    height: 101rpx;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.master .checked,.nums_date{
+    font-size: 12px;
+}
+
+ .arrow{
+    width: 16rpx;
+    height: 30rpx;
+    position: absolute;
+    right: 0;
+}
+.intro{
+    padding: 52rpx 40rpx 30rpx;
+    font-size: 12px;
+}
+.intro span{
+    margin:16rpx 50rpx;     
+}
+
+.intro .title{
+    font-size: 14px;
+}
+.nums_date{
+    height: 100rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 100rpx;
+    letter-spacing: 1px;
+}
+.padding{
+    padding-left: 8rpx;
+}
+
+.menber{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 120rpx;
+    padding:28rpx 44rpx 22rpx;
+    font-size: 12px;
+}
+.avatar image{
+    width: 61rpx;
+    height: 61rpx;
+    border-radius: 50%;
+    margin: 16rpx 20rpx 16rpx 0;
+}
+.ver{
+    right: 41rpx;
+    top: 68rpx;
+}
+
+.join{
+    width: 300rpx;
+    height: 80rpx;
+    margin:126rpx auto;
+    border-radius:44rpx;
+    border:1px solid #C09550;
+    color: #C09550;
+    font-size: 14px;
+    text-align: center;
+    line-height: 80rpx;
+}

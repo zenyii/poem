@@ -1,0 +1,325 @@
+/* miniprogram/pages/detailTopic/detailTopic.wxss */
+page{
+    height: 100vh;
+}
+view{
+    box-sizing: border-box; 
+}
+.zhaiTitle {
+    height: 36px;
+    width: 50vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.zhaiHeader .back {
+    width: 32rpx;
+    height: 48rpx;
+}
+
+.zhaiHeader .share {
+    width: 47rpx;
+    height: 48rpx;
+    padding-top: 8rpx;
+}
+
+/* 话题内容 */
+
+.topicContent {
+    margin-top: 37rpx;
+}
+
+.contentHeader {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 106rpx;
+    padding: 8rpx 40rpx;
+    box-sizing: border-box;
+}
+
+.contentHeader image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+
+.contentHeader .name_date {
+    width: 52vw;
+    height: 100rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 30rpx;
+    padding: 8rpx 0;
+    box-sizing: border-box;
+}
+
+.name_date .name {
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.name_date .date {
+    font-size: 9px;
+    color: gray;
+}
+
+
+.contentHeader .btn{
+    width: 100rpx;
+    height: 60rpx;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 12px;
+    margin-top: 25rpx;
+    transition: all .2s;
+}
+
+.contentHeader .cencernBtn {
+    background: white;
+    color: #C09550;
+    border: 1px solid #C09550;
+}
+
+.cencernBtnAct{
+    background: #C09550;
+    color: white;
+}
+.bannerMap{
+    background: rgba(0,0,0,.1);
+    display: flex;
+    width: 700rpx;
+    height: 360rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin:0 25rpx;
+    box-sizing: border-box;
+}
+
+.bannerMap image{
+    width: 76rpx;
+    height: 66rpx;
+    margin: 0 auto;
+}
+
+.banner{
+    padding:0 25rpx;
+    position: relative;
+}
+
+.topicContent .banner .bannrtImg{
+    width: 700rpx;
+    height: 360rpx;
+    
+}
+
+.topicContent .words{
+    padding: 10rpx 43rpx;
+}
+
+.words .wordsLine{
+    font-size: 14px;
+    line-height: 16px;
+
+}
+
+.title{
+    text-align: center;
+}
+ .interact{
+    width: 100vw;
+    height: 50rpx;
+    display: flex;
+    flex-direction: row;
+    padding-left:71vw;
+    margin-top: 26rpx;
+}
+
+.interact .collect,.interact .comment{
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+}
+
+.interact image{
+    width: 35rpx;
+    height: 34rpx;
+    margin: 0 20rpx;
+}
+
+.interact text{
+    padding-top: 4rpx;
+}
+
+@keyframes collectAct {
+    0% {
+      transform: scale(1)
+    }
+    25% {
+      transform: scale(1.1)
+    }
+    50% {
+      transform: scale(1.2)
+    }
+    75% {
+      transform: scale(1.1)
+    }
+    100% {
+      transform: scale(1)
+    }
+  }
+  
+  .collectAct {
+    animation: collectAct .3s;
+  }
+
+.topicCenter .sort{
+    width: 100vw;
+    height: 77rpx;
+    font-size: 12px;
+}
+.sort{
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    padding-top: 20rpx;
+    box-sizing: border-box;
+}
+
+.sort .sortHeader image{
+    width: 26rpx;
+    height: 26rpx;
+    margin: 0 10rpx;
+}
+
+.sort .sortContent{
+    margin-top: 32rpx;
+    margin-bottom: 310rpx;
+}
+.sort .sortHeader{
+    display: flex;
+    flex-direction: row;
+    margin-left: 50vw;
+}
+.sortHeader .inverse{
+    margin-left: 20rpx;
+}
+
+.sortHeader span{
+    padding-bottom: 2rpx;
+}
+
+.sort .commentHeader{
+    display: flex;
+    flex-direction: row;
+    padding-left: 42rpx;
+    margin-top:14rpx;
+}
+
+.commentHeader image{
+    width: 60rpx;
+    height: 60rpx;
+
+}
+.commentHeader .name_date{
+    padding-top: 8rpx;
+    padding-left: 14rpx;
+}
+.commentHeader .name_date .name{
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.commentHeader .name_date .date{
+    font-size: 8px;
+}
+
+.sortContent .commentContent{
+    padding: 16rpx 119rpx 20rpx 119rpx;
+    font-size: 12px;
+}
+
+
+
+.actColor{
+    color:#C09550;
+    animation: collectAct .3s;
+}
+.keyBoard{
+    position:fixed;
+    left: 0;
+    width: 100vw;
+    height: 110rpx;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: white;
+    border-top: 1px solid #f2f2f2;
+    transition: all .3s;
+}
+
+.keyBoard .image{
+    width: 38rpx;
+    height: 38rpx;
+}
+.keyBoard input{
+    width: 454rpx;
+    height: 64rpx;
+    border: 1px solid #f2f2f2;
+    border-radius: 10rpx;
+    font-size: 13px;
+    padding:0  12rpx;
+}
+
+.keyBoard .emoji{
+    width:42rpx;
+    height: 42rpx;
+}
+
+.keyBoard .send{
+    width: 96rpx;
+    height: 64rpx;
+    transition: all .3s;
+    color: white;
+    line-height: 64rpx;
+    font-size:13px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.sendNoAct{
+    background: gray;
+}
+
+.sendAct{
+    background: #C09550;
+}
+
+.keyBoardAct{
+    background: #C09550;
+}
+.emojiBoard{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background: white;
+    position: fixed;
+    transition: all .3s; 
+    bottom: -155px;
+}
+
+.emojiBoard span{
+    width: 75rpx;
+    height: 68rpx;
+    text-align:center;
+    display: inline-block;
+    transform: scale(1.2);
+    margin: 0 auto;
+}
+
+.emojiShow{
+    bottom: 0;
+}

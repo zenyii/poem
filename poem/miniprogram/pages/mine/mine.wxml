@@ -1,0 +1,44 @@
+<view class="">
+    <view class="mineHeader" style="background-image:url('{{imgSrc}}minebg.png')">
+        <image class="back" src="{{imgSrc}}whiteBack.png" />
+        <view class="word">我的</view>
+        <view class="mineDetail">
+            <image src="{{user.avatarUrl}}" />
+            <view class="mineDes">
+                <view class="name">{{user.nickName}}</view>
+                <view class="checked">审核茶室人员</view>
+            </view>
+        </view>
+        <view class="bgTrangle"></view>
+    </view>
+    <view class="fensACentain">
+        <span>粉丝 :</span>
+        <span class="padding border">{{user.fans.length}}</span>
+        <span>关注 :</span>
+        <span class="padding">{{user.concern.length}}</span>
+    </view>
+    <view class="mineCenter">
+        <view class="item">
+            <image src="{{imgSrc}}teaRoom.png" />
+            <view class="">TA的茶室</view>
+        </view>
+        <view class="item">
+            <image src="{{imgSrc}}minePoem.png" />
+            <view class="">TA的诗集</view>
+        </view>
+        <view class="item">
+            <image src="{{imgSrc}}mineConcern.png" />
+            <view class="">TA的关注</view>
+        </view>
+    </view>
+    <view class="mineBottom" bindtap="concern">
+        <view class="itemBottom" >
+            <image src="{{concern?imgSrc+'concernYes.png':imgSrc+'concern.png'}}" id="concern"/>
+            <view class="">{{concern?'已关注':'关注'}}</view>
+        </view>
+        <view class="itemBottom">
+            <image src="{{imgSrc}}report.png" id="report"/>
+            <view class="">举报</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,221 @@
+
+.zhaiHeader .mine{
+    width: 32rpx;
+    height: 48rpx;
+}
+
+.zhaiHeader .inform{
+    width: 10rpx;
+    height: 42rpx;
+
+}
+.banner{
+    height: 387rpx;
+    width: 100vw;
+    position: relative;
+    margin-top: 126rpx;
+}
+.banner image{
+    width: 100%;
+    height: 387rpx;
+}
+
+.banner .map {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 101rpx;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    color: white;
+}
+
+.map .content {
+    font-size: 20px;
+    padding-left: 36rpx;
+}
+
+.map .author {
+    font-size: 12px;
+    position: absolute;
+    right: 32rpx;
+    bottom: 10rpx;
+}
+
+
+
+.master{
+    width: 100vw;
+    height: 104rpx;
+    padding:10rpx 45rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 12px;
+    box-sizing:border-box;
+}
+
+.master span{
+    margin: 0 20rpx;
+}
+
+.master .masterMsg,.master .view{
+    display: flex;
+}
+
+.master .masterMsg image{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    align-self: center;
+}
+.master .view image{
+    width: 40rpx;
+    height: 24rpx;
+}
+
+.topicComment{
+    padding: 10rpx 43rpx;
+    width: 100%;
+    box-sizing: border-box;
+}
+.topicItem,.content {
+    display: flex;
+    flex-direction: column;
+    margin:30rpx 0 ;
+}
+
+.content span{
+    line-height: 18px;
+}
+.topicItem span{
+    margin: 0 auto;
+}
+.topicItem .title{
+    font-size: 18px;
+} 
+.topicItem .content{
+    font-size: 12px;
+}
+.bottom{
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    margin-bottom: 20rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+.bottom .author image{
+  width: 49rpx;
+  height: 49rpx;
+  margin: 0 20rpx;
+}
+
+.bottom .collect image{
+    width: 33rpx;
+    height: 34rpx;
+    margin: 0 20rpx;
+}
+
+.bottom .collect{
+    position: absolute;
+    right: 120rpx;
+    bottom: 6rpx;
+}
+.bottom .comment{
+    position: absolute;
+    right: 0rpx;
+    bottom: 6rpx;
+}
+
+.bottom .comment image{
+    width: 28rpx;
+    height: 28rpx;
+    margin: 0 20rpx;
+}
+
+.bottom .author,.bottom .collect, .bottom .comment{
+    display: flex;
+}
+
+
+.actColor{
+    color:#C09550;
+    animation: collectAct .3s;
+}
+.keyBoard{
+    position:fixed;
+    left: 0;
+    width: 100vw;
+    height: 110rpx;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: white;
+    border-top: 1px solid #f2f2f2;
+    transition: all .3s;
+}
+
+.keyBoard .image{
+    width: 38rpx;
+    height: 38rpx;
+}
+.keyBoard input{
+    width: 454rpx;
+    height: 64rpx;
+    border: 1px solid #f2f2f2;
+    border-radius: 10rpx;
+    font-size: 13px;
+    padding:0  12rpx;
+}
+
+.keyBoard .emoji{
+    width:42rpx;
+    height: 42rpx;
+}
+
+.keyBoard .send{
+    width: 96rpx;
+    height: 64rpx;
+    transition: all .3s;
+    color: white;
+    line-height: 64rpx;
+    font-size:13px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.sendNoAct{
+    background: gray;
+}
+
+.sendAct{
+    background: #C09550;
+}
+
+.keyBoardAct{
+    background: #C09550;
+}
+.emojiBoard{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background: white;
+    position: fixed;
+    transition: all .3s; 
+    bottom: -155px;
+}
+
+.emojiBoard span{
+    width: 75rpx;
+    height: 68rpx;
+    text-align:center;
+    display: inline-block;
+    transform: scale(1.2);
+    margin: 0 auto;
+}
+
+.emojiShow{
+    bottom: 0;
+}
