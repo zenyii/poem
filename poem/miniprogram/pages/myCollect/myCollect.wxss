@@ -305,7 +305,7 @@ switch {
 }
 
 .categoryItem .mark::after {
-  content: "我的收藏";
+  content: "藏诗阁";
   position: absolute;
   bottom: 0;
   right: -155rpx;

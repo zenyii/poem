@@ -57,22 +57,22 @@
             <image class="longLine" src="{{imgSrc}}longLine.png" />
         </view>
         <view class="category" bindtap="moreDepth">
-            <view class="categoryItem">
+            <view class="categoryItem" bindtap="chaZhai">
                 <image class="caIcon ge" src="{{imgSrc}}藏诗阁@2x(1).png" data-id="ge"/>
                <!--  <span>藏诗阁</span> -->
                 <image class="longLine" src="{{imgSrc}}longLine.png" />
             </view>
-            <view class="categoryItem" id="mark">
+            <view class="categoryItem" bindtap="myCollect" id="mark">
                 <image class="caIcon mark" src="{{imgSrc}}mark.png" data-id="mark"/>
                <!--  <span>藏诗阁</span> -->
                 <image class="longLine" src="{{imgSrc}}longLine.png" />
             </view>
-            <view class="categoryItem" id="msg">
+            <view class="categoryItem" bindtap="myNews" id="msg">
                 <image class="caIcon msg" src="{{imgSrc}}msg.png" data-id="msg" />
                <!--  <span>藏诗阁</span> -->
                 <image class="longLine" src="{{imgSrc}}longLine.png"  />
             </view>
-            <view class="categoryItem" id="set">
+            <view class="categoryItem" bindtap='setting' id="set">
                 <image class="caIcon set" src="{{imgSrc}}set.png" data-id="set" />
                <!--  <span>藏诗阁</span> -->
                 <image class="longLine" src="{{imgSrc}}longLine.png" />

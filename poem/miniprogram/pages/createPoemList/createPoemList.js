@@ -12,7 +12,8 @@ Page({
       { poemName: "诗集二", tempFilePaths: "cloud://test-cf0c34.7465-test-cf0c34/images/myPoem2.png" },
     ],
     isEdit:false,
-    selectItem:[]
+    selectItem:[],
+    lastPages:0
   },
 
   /**
@@ -69,8 +70,14 @@ Page({
     var that = this;
     let index = e.currentTarget.dataset.index;
     let poemName = that.data.poemList[index].poemName;
+    let lastPages = that.data.lastPages;
     wx.redirectTo({
-      url: '../ListDetail/ListDetail?poemName=' + poemName,
+      url: `../ListDetail/ListDetail?poemName=${poemName}&lastPages=${lastPages}` ,
+    })
+  },
+  goHome:function(){
+    wx.redirectTo({
+      url: '../homepage/homepage',
     })
   },
   /**

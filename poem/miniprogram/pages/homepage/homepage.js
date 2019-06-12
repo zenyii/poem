@@ -2,6 +2,7 @@
 const app = getApp();
 Page({//下拉刷新
   data: {
+    lastPages:1,     //当前页面状态
     night: false,
     buildMapBtn: false,
     buildMap: false,
@@ -112,7 +113,7 @@ Page({//下拉刷新
       //录入诗内容
       app.queryCollect('poemCon', {
         class: true, showImg: true, authorAvatar: true, nickName: true,
-        collectPeopleID: true, commentNum: true, poemCon: true, queue: true
+        collectPeopleID: true, commentNum: true, poemCon: true, queue: true,poemName:true
       }).then(res => {
         let data = res.data;
         console.log(data, 'shi')
@@ -127,6 +128,7 @@ Page({//下拉刷新
           obj.commentNum = item.commentNum;
           obj.poem = item.poemCon;
           obj.queue = item.queue;
+          obj.poemName = item.poemName;
           content.push(obj);
         })
 
@@ -197,13 +199,22 @@ Page({//下拉刷新
     let innerIndex = e.currentTarget.dataset.parentindex;
     let content = zhaiItem[outerIndex].content[innerIndex];
 
-    if (content.class = "茶") {
+    if (content.class == "茶") {
       let topicID = content.id;
       let title = content.title;
       let index = content.index;
       let commentId = content.commentId;
+
       wx.navigateTo({
         url: `../detailTopic/detailTopic?articleId=${topicID}&title=${title}&index=${index}&commentId=${commentId}`
+      })
+    }
+    else{
+      let poemName = content.poemName;
+      let id = content.id;
+      let lastPages = that.data.lastPages;
+      wx.redirectTo({
+        url: `../ListDetail/ListDetail?poemName=${poemName}&id=${id}&lastPages=${lastPages}`,
       })
     }
 
@@ -323,6 +334,12 @@ Page({//下拉刷新
     console.log(authorId, 'id')
     wx.navigateTo({
       url: `../mine/mine?authorId=${authorId}`
+    })
+  },
+
+  createPoem:function(){
+    wx.redirectTo({
+      url: '../createPoemList/createPoemList',
     })
   },
 

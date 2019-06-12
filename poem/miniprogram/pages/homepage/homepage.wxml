@@ -59,8 +59,8 @@
 </scroll-view>
 <view class="buildMap {{buildMap?'buildMapShow':'buildMapHide'}}">
   <view class="buildItem" bindtap="pubilcPoem">
-    <image src="{{imgSrc}}publicPoem.png" />
-    <view>发布诗集</view>
+    <image bindtap='createPoem' src="{{imgSrc}}publicPoem.png" />
+    <view bindtap='createPoem'>发布诗集</view>
   </view>
   <view class="buildItem" bindtap="publicTopic">
     <image src="{{imgSrc}}publicTopic.png" />

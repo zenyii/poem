@@ -8,7 +8,7 @@ Page({
     title:'',
     label:'',
     poemList:[],
-    lastPages: 2           //上一页面标识，默认0,1为poemHome，2为searchDetail
+    lastPages: 2,           //上一页面标识，默认0,1为poemHome，2为searchDetail
   },
 
   /**
