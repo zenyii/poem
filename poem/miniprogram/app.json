@@ -1,6 +1,12 @@
 {
   "pages": [
     "pages/homepage/homepage",
+    "pages/zanList/zanList",
+
+    "pages/commentList/commentList",
+    "pages/teaRoom/teaRoom",
+    "pages/myMsg/myMsg",
+    "pages/messageSet/messageSet",
     "pages/poemHome/poemHome",
     "pages/myCollect/myCollect",
     "pages/createPoemList/createPoemList",
@@ -8,9 +14,7 @@
     "pages/sorted/sorted",
     "pages/search/search",
     "pages/searchDetail/searchDetail",
-    "pages/teaRoom/teaRoom",
     "pages/publicTopic/publicTopic",
-    "pages/messageSet/messageSet",
     "pages/systermSet/systermSet",
     "pages/message/message",
     "pages/login/login",

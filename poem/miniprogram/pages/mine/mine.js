@@ -7,6 +7,7 @@ Page({
   data: {
     concern: false,
     imgSrc: '../../images/',
+    isMaster:false
     /* user: {
       id: '112233',
       authorAvatar: '../../images/cartoon.png',
@@ -25,6 +26,12 @@ Page({
     let that = this;
     let authorId = options.authorId;//'oGw5W49WStN-HbdVgfbSxykI8SC0';// options.authorId;
     let selfOpenId = app.globalData.selfOpenId;
+    if(authorId===selfOpenId){
+      let isMaster = true;
+      this.setData({
+        isMaster:true
+      })
+    }
     //先查询帖主的粉丝是否有参与者
     console.log(authorId, 'au')
     app.onQuery('poemUsers', { openId: authorId }, {
@@ -39,7 +46,7 @@ Page({
       that.setData({
         user: data,
         concern,
-        authorId
+        authorId,
       })
     })
   },
@@ -92,7 +99,9 @@ Page({
   onReady: function () {
 
   },
-
+  goBack:function(){
+    app.goBack();
+  },
   /**
    * 生命周期函数--监听页面显示
    */

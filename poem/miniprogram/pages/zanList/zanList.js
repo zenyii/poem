@@ -1,23 +1,26 @@
-// miniprogram/pages/messageSet/messageSet.js
+// miniprogram/pages/zanList/zanList.js
+const app = getApp();
 Page({
   data: {
-    imgSrc:'../../images/'
+    imgSrc:'../../images/',
+
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function (options) {
-
-  },
-
-  newMsg:function(){
-
+    this.setData({
+      userInfo:app.globalData.userInfo
+    })
   },
   goBack:function(){
     app.goBack();
   },
 
-  showMsg:function(){
-
-  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
   onReady: function () {
 
   },

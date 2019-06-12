@@ -11,7 +11,8 @@
             <view class="body">{{page.content}}</view>
             <view wx:if="{{page.comment.length!==0}}" class="comment">
                 <block wx:for="{{page.comment}}" wx:key="this">
-                    <view catchtap="commentSend" data-id="{{item.reviewerId}}" data-name="{{item.reviewerName}}">
+                    <view catchtap="commentSend" data-id="{{item.reviewerId}}" data-name="{{item.reviewerName}}"
+                    data-avatar="{{item.reviewerAvatar}}">
                         <view class="header verticalCenter">
                             <span class="reviewer" data-id="{{item.reviewerId}}" catchtap="gotoMine">
                                 {{item.reviewerName}}

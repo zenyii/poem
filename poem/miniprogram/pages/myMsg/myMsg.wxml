@@ -1,0 +1,20 @@
+<view class="zhaiHeader">
+    <image  bindtap="goBack" class="mine back verticalCenter" src="{{imgSrc}}back.png" />
+    <span class="zhaiTitle">我的消息</span>
+</view>
+<view class="set" bindtap="goZan">
+    <view class="msg">
+        <image class="{{redDotZ&&'redDot'}}" src="{{imgSrc}}zanMsg.png" />
+        <span class="verticalCenter">赞我的</span>
+    </view>
+    <image class="verticalCenter" src="{{imgSrc}}arrow.png" />
+</view>
+<view class="line"></view>
+<view class="set" bindtap="commentList">
+    <view class="msg">
+        <image class="{{redDot&&'redDot'}}" src="{{imgSrc}}commentMsg.png" />
+        <span class="verticalCenter">评论我的</span>
+    </view>
+    <image class="verticalCenter" src="{{imgSrc}}arrow.png" />
+</view>
+<view class="line"></view>

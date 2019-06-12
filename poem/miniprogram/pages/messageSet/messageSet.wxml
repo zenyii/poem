@@ -1,5 +1,5 @@
 <view class="zhaiHeader">
-    <image class="mine back verticalCenter" src="{{imgSrc}}back.png" />
+    <image bindtap="goBack" class="mine back verticalCenter" src="{{imgSrc}}back.png" />
     <span class="zhaiTitle">消息管理</span>
 </view>
 <view class="set">

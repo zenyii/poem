@@ -1,0 +1,27 @@
+<view class="zhaiHeader">
+    <image  bindtap="goBack" class="mine back verticalCenter" src="{{imgSrc}}back.png" />
+    <span class="zhaiTitle">赞</span>
+</view>
+<scroll-view scroll-y="{{true}}">
+    <view class="main">
+    <block>
+        <view class="item" bindtap="goComment">
+            <view class="header">
+                <view class="reviewer">
+                    <image src="{{imgSrc}}girl.png" />
+                    <view class="name_date">
+                        <text class="name verticalCenter" >仓央嘉措 </text>
+                        <text class="verticalCenter">赞了你</text>
+                    </view>
+                </view>
+                <view class="reply verticalCenter" >06/07 04:17</view>
+            </view>
+            <view class="article">
+                <image src="{{userInfo.avatarUrl}}" />
+                <view class="words  verticalCenter">上阙寥寥数句，把一个闺中少妇心事重重的愁态描写出来</view>
+            </view>
+        </view>
+        <view class="line"></view>
+    </block>
+</view>
+</scroll-view>

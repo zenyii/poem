@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
   try {
     return await db.collection(event.collect).where(event.where).update({
       data: {
-        [event.key]: event.value,
+        [event.key]: _.push(event.value),
         [event.key1]: event.value1,
       }
     })

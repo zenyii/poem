@@ -13,6 +13,8 @@ Page({//下拉刷新
     selected: 0,
     color: "#000000",
     selectedColor: "#C09550",
+    fans:[],
+    concern:[],
     list: [{
       iconPath: "../../images/一壶未激活@2x.png",
       selectedIconPath: "../../images/一壶激活@2x.png",
@@ -82,13 +84,16 @@ Page({//下拉刷新
     let zhaiItem = that.data.zhaiItem;//
     let content = zhaiItem[0].content;
     let collectYoN;
+    let chaLength ;
+    let shiLenght ;
 
     //获取话题内容 index commentId articleId title
     app.onQuery('tearoom', { class: '茶' }, { commentContent: true }).then(res => {
       let count = -1;
       let data = res.data;
-
-      console.log(data, 'data')
+      //chaLength  = data.length;
+      //console.log(data,'data')
+      //console.log(chaLength, 'chaLength')
       data.forEach((items, indexs) => {
         items.commentContent.forEach((item, index) => {
           count++;
@@ -108,6 +113,9 @@ Page({//下拉刷新
           content[count].queue = item.queue;
         })
       })
+
+      chaLength = content.length;
+      //console.log(chaLength, 'chaLength')
     }).then(() => {
       //录入诗内容
       app.queryCollect('poemCon', {
@@ -115,7 +123,8 @@ Page({//下拉刷新
         collectPeopleID: true, commentNum: true, poemCon: true, queue: true
       }).then(res => {
         let data = res.data;
-        console.log(data, 'shi')
+        shiLenght = data.length;
+        //console.log(shiLenght, 'shiLenght')
         data.forEach(item => {
           let obj = {};
           obj.class = item.class;
@@ -140,7 +149,26 @@ Page({//下拉刷新
         });
 
       }).then(() => {
-        content.sort((a, b) => a.queue - b.queue);
+        let newContent = [];
+        //content.sort((a, b) => a.queue - b.queue);
+        if(chaLength>=shiLenght){//茶诗排序展示
+          
+          for(let cha = 0;cha<chaLength;cha++){
+            console.log(content[cha],"content")
+            newContent.push(content[cha]);
+            if(chaLength+cha<chaLength+shiLenght){
+              newContent.push(content[chaLength+cha])
+            }
+          }
+        }else{
+          for(let shi = 0;shi<shiLength;shi++){
+            newContent.push(content[shi]);
+            if(shiLength+shi<chaLength+shiLenght){
+              newContent.push(content[shiLength+shi])
+            }
+          }
+        }
+        zhaiItem[0].content = newContent;
         that.setData({
           zhaiItem
         })
@@ -149,8 +177,9 @@ Page({//下拉刷新
 
 
     //先查询是否有此用户记录，再创建users表
-    app.onQuery('poemUsers', { openId: app.globalData.selfOpenId }, { nickName: true }).then(res => {
+    app.onQuery('poemUsers', { openId: app.globalData.selfOpenId }, { nickName: true,fans:true,concern:true }).then(res => {
       let data = res.data;
+
       console.log(res, 'userData');
       if (data.length === 0) {//如果后台没有此用户记录，则加入
         app.onAdd('poemUsers', {
@@ -164,8 +193,14 @@ Page({//下拉刷新
           collect: []
 
         }).then(res => {
+          
           console.log('创建users记录成功！')
         })
+      }else{
+          that.setData({
+            fans:data[0].fans,
+            concern:data[0].concern
+          })
       }
     })
   },
@@ -197,7 +232,7 @@ Page({//下拉刷新
     let innerIndex = e.currentTarget.dataset.parentindex;
     let content = zhaiItem[outerIndex].content[innerIndex];
 
-    if (content.class = "茶") {
+    if (content.class === "茶") {
       let topicID = content.id;
       let title = content.title;
       let index = content.index;
@@ -250,7 +285,7 @@ Page({//下拉刷新
           duration: 2000
         })
       }
-      console.log(content, 'content')
+      //console.log(content, 'content')
       zhaiItem[outerIndex].content[innerIndex].collectYoN = !zhaiItem[outerIndex].content[innerIndex].collectYoN;
       //console.log(collectPeopleID,'id');
       //console.log(collectNum,'num')
@@ -323,6 +358,17 @@ Page({//下拉刷新
     console.log(authorId, 'id')
     wx.navigateTo({
       url: `../mine/mine?authorId=${authorId}`
+    })
+  },
+
+  goMyMsg:function(){
+    wx.navigateTo({
+      url: '../myMsg/myMsg'
+    })
+  },
+  goSystermSet:function(){
+    wx.navigateTo({
+      url: '../systermSet/systermSet'
     })
   },
 

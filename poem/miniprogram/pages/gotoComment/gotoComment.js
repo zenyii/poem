@@ -19,13 +19,14 @@ Page({
     value: '',
     id: "",//被回复者id
     name: "",//被回复者名字
+    avatar:'',//被回复者头像
     placeholder: '点击输入文字'
   },
   onLoad: function (options) {
     let that = this;
     let selfOpenId = app.globalData.selfOpenId;
     let commentId =options.commentId; //"dec80a9e5cfb982001e7d9b17e34c811";//options.commentId;
-    let index = 0;// options.index;
+    let index =options.index;// 0;// options.index;
 
     //拆分emoji
     let emojiArr = that.data.emojiArr;
@@ -196,9 +197,11 @@ Page({
     console.log(e, 'e')
     let id = this.data.id;
     let name = this.data.name;
+    let avatar = this.data.avatar;
     let placeholder = this.data.placeholder;
     id = e.currentTarget.dataset.id;
     name = e.currentTarget.dataset.name;
+    avatar = e.currentTarget.dataset.avatar;
     if (name) {
       placeholder = `回复 ${name}`;
     }
@@ -206,6 +209,7 @@ Page({
       focus: true,
       id,
       name,
+      avatar,
       placeholder
     })
 
@@ -215,13 +219,15 @@ Page({
     let that = this;
     let selfOpenId = app.globalData.selfOpenId;
     let nickName = app.globalData.userInfo.nickName;
+    let avatarUrl = app.globalData.userInfo.avatarUrl;
     let time = new Date();
     time = util.formatTime(time)
     let times = time.slice(0, 16);
     //time = `${dates} ${times}`;//获取时间格式
     let page = this.data.page;//实时更新
     let comment = page.comment;
-    let value = this.data.value
+    let value = this.data.value;
+    let index  = this.data.index;
     this.setData({
       //点击外部时focus为false，keyboard为0，emoji隐藏
       keyboard: 0,
@@ -235,12 +241,26 @@ Page({
       date: times,
       reviewerId: selfOpenId,
       reviewerName: nickName,
+      reviewerAvatar:avatarUrl,
       content: that.data.value,
       beReviewerId: that.data.id,
       beReviewerName: that.data.name,
+      beReviewerAvatar:that.data.avatar
+    }
+    let commentList = {
+      commentId:that.data.commentId,
+      content:that.data.value,
+      date: times,
+      reviewerId: selfOpenId,
+      reviewerName: nickName,
+      reviewerAvatar:avatarUrl,
+      index:index,
+      authorAvatar:page.reviewerAvatar,
+      article:page.content.join('')
     }
     comment.push(object);
-    console.log(comment, "comment");
+    console.log(commentList, "commentList");
+    console.log(page.reviewerId,'page.reviewerId')
     that.setData({
       page,
       value: "",
@@ -257,7 +277,27 @@ Page({
         key: `content.${that.data.index}.comment`,
         value: comment
       }
+    }).then(res=>{  //通知更新
+      wx.cloud.callFunction({
+        name: 'update2Complex',
+        data: {
+          collect: 'poemUsers',
+          where: { openId: page.reviewerId },
+          key: 'commentList',
+          value: commentList,
+          key1:'newCMsg',
+          value1:true
+        }
+      })
     })
+
+  
+    if(that.data.name)//被回复者
+    {
+
+    }
+    //app.onUpdate('poemUsers','')
+
 
   },
   goBack:function(){

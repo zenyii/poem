@@ -1,0 +1,98 @@
+/* miniprogram/pages/detailTopic/detailTopic.wxss */
+page{
+    height: 100vh;
+}
+.zhaiHeader{
+    position: relative;
+    padding:25px 20px 0 20px;
+}
+view{
+    box-sizing: border-box; 
+}
+.zhaiTitle {
+    height: 36px;
+    margin: 0 auto;
+}
+
+.zhaiHeader .back {
+    width: 32rpx;
+    height: 48rpx;
+    position: absolute;
+}
+
+/* 正文 */
+.item{
+    padding: 20rpx 33rpx;
+    font-size: 16px;
+}
+.item .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.header image{
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 50%;
+}
+.reviewer{
+    display: flex;
+    flex-direction: row;
+}
+.name_date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 20rpx;
+}
+.name{
+    color: #C09550;
+    line-height: 18px;
+    margin-right: 4rpx;
+}
+.date{
+    font-size: 12px;
+    color: gray;
+}
+.reply{
+    width: 169rpx;
+    height: 47rpx;
+    line-height: 47rpx;
+    border-radius: 2px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: gray;
+    font-size: 12px;
+}
+
+.content{
+    margin: 20rpx 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:3;
+}
+.article{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20rpx;
+    background: #f2f2f2;
+    margin: 20rpx 0;
+}
+.article image{
+    width: 129rpx;
+    height: 129rpx;
+    border-radius: 50%;
+}
+.words{
+    width: 469rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:2;
+}

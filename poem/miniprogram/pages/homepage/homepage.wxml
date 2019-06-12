@@ -85,9 +85,9 @@
     <image class="avatarImg" bindtap="gotoHome" src="{{userInfo.avatarUrl}}" />
     <view class="nickName">{{userInfo.nickName}}</view>
     <view class="mineDetail">
-      <view class="fans">粉丝 : 0</view>
+      <view class="fans">粉丝 : {{fans.length}}</view>
       <image src="{{imgSrc}}shortLine.png" />
-      <view class="concern">关注 : 0</view>
+      <view class="concern">关注 : {{concern.length}}</view>
     </view>
     <image class="longLine" src="{{imgSrc}}longLine.png" />
   </view>
@@ -102,12 +102,12 @@
       <!-- <span>藏诗阁</span> -->
       <image class="longLine" src="{{imgSrc}}longLine.png" />
     </view>
-    <view class="categoryItem" id="msg">
+    <view class="categoryItem" id="msg" bindtap="goMyMsg">
       <image class="caIcon msg" src="{{imgSrc}}msg.png" data-id="msg" />
       <!-- <span>藏诗阁</span> -->
       <image class="longLine" src="{{imgSrc}}longLine.png" />
     </view>
-    <view class="categoryItem" id="set">
+    <view class="categoryItem" id="set" bindtap="goSystermSet">
       <image class="caIcon set" src="{{imgSrc}}set.png" data-id="set" />
       <!-- <span>藏诗阁</span> -->
       <image class="longLine" src="{{imgSrc}}longLine.png" />

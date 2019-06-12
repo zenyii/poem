@@ -1,0 +1,28 @@
+<view class="zhaiHeader">
+    <image  bindtap="goBack" class="mine back verticalCenter" src="{{imgSrc}}back.png" />
+    <span class="zhaiTitle">评论</span>
+</view>
+<scroll-view scroll-y="{{true}}">
+    <view class="main">
+    <block wx:for="{{commentList}}" wx:key="this">
+        <view class="item" bindtap="goComment" data-index="{{index}}">
+            <view class="header">
+                <view class="reviewer">
+                    <image src="{{item.reviewerAvatar}}" />
+                    <view class="name_date">
+                        <text class="name">{{item.reviewerName}}</text>
+                        <text class="date">{{item.date}}</text>
+                    </view>
+                </view>
+                <view class="reply verticalCenter" >回复</view>
+            </view>
+            <view class="content verticalCenter">{{item.content}}</view>
+            <view class="article">
+                <image data-set="{{item.authorAvatar}}" src="{{item.authorAvatar}}" />
+                <view class="words  verticalCenter">{{item.article}}</view>
+            </view>
+        </view>
+        <view class="line"></view>
+    </block>
+</view>
+</scroll-view>

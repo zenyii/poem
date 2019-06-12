@@ -1,6 +1,6 @@
 <view class="">
     <view class="mineHeader" style="background-image:url('{{imgSrc}}minebg.png')">
-        <image class="back" src="{{imgSrc}}whiteBack.png" />
+        <image  bindtap="goBack" class="back" src="{{imgSrc}}whiteBack.png" />
         <view class="word">我的</view>
         <view class="mineDetail">
             <image src="{{user.avatarUrl}}" />
@@ -31,7 +31,7 @@
             <view class="">TA的关注</view>
         </view>
     </view>
-    <view class="mineBottom" bindtap="concern">
+    <view wx:if="{{!isMaster}}" class="mineBottom" bindtap="concern">
         <view class="itemBottom" >
             <image src="{{concern?imgSrc+'concernYes.png':imgSrc+'concern.png'}}" id="concern"/>
             <view class="">{{concern?'已关注':'关注'}}</view>
