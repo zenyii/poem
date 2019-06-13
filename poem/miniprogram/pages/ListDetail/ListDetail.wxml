@@ -37,10 +37,10 @@
     <view class='topBan'>
     <view class='contentLab'>
       <view id='content' wx:for="{{item.poemCon}}" wx:key="this">{{item}}</view></view>
-      <view id='userName'>{{userInfo.nickName}}</view>
+      <view id='userName'>{{item.nickName}}</view>
       <view class='bottomLab'>
-        <image id='like' src='../../images/收藏.png'>{{item.like}}</image>{{item.like}}
-        <image id='comment' src='../../images/评论.png'>{{item.like}}</image>{{item.comment}}
+        <image id='like' src='../../images/收藏.png'></image>{{item.like}}
+        <image id='comment' src='../../images/评论.png'></image>{{item.commentNum}}
       </view>
     </view>
     <view class='pageNum'>{{index+3}}/{{pages+2}}</view>

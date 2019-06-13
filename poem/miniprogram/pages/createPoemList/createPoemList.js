@@ -6,11 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    poemList:[
-      {
-        poemName: "诗集一", tempFilePaths:"cloud://test-cf0c34.7465-test-cf0c34/images/诗集梅.png"},
-      { poemName: "诗集二", tempFilePaths: "cloud://test-cf0c34.7465-test-cf0c34/images/myPoem2.png" },
-    ],
+    poemList:[],
     isEdit:false,
     selectItem:[],
     lastPages:0

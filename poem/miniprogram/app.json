@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/createPoemList/createPoemList",
     "pages/poemHome/poemHome",
     "pages/homepage/homepage",
     "pages/myCollect/myCollect",
-    "pages/createPoemList/createPoemList",
     "pages/writePoem/writePoem",
     "pages/sorted/sorted",
     "pages/search/search",
@@ -23,7 +23,6 @@
     "pages/ListDetail/ListDetail",
     "pages/sort/sort",
     "pages/poemDetail/poemDetail"
-
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

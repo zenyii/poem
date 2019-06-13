@@ -6,23 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    poemItem:[
-      {
-        poemCon:["就让得到的淡淡的来，","就让失去的好好的去。","来便来了，来了就珍惜，","去便去了，去了就回忆。" ],
-        like:3,
-        comment:2
-      },
-      {
-        poemCon: ["岁月你别催，","该来的我不催，该还的还，该给我的给。","走远的我不追，走过的不后悔"],
-        like: 3,
-        comment: 2
-      }
-    ],
+    poemItem:[],
     userInfo:null,
-    poemIntro:'灵感随记',
-    poemName:'无悔',
+    poemIntro:'',
+    poemName:'',
     pages:0,
-    tempFilePaths:'cloud://test-cf0c34.7465-test-cf0c34/images/诗集梅.png',
+    tempFilePaths:'',
     newPoemCon:[],
     poemCon:'',
     current:0,        //当前页码
@@ -49,8 +38,9 @@ Page({
           let poemMsg = {};
           poemMsg.poemCon = res.data[x].poemCon;
           poemMsg.like = res.data[x].like;
-          poemMsg.comment = res.data[x].comment;
+          poemMsg.commentNum = res.data[x].commentNum;
           poemMsg.id = res.data[x]._id;
+          poemMsg.nickName = res.data[x].nickName;
           that.data.poemItem.push(poemMsg);
         }
         that.setData({
