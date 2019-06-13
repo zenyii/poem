@@ -1,4 +1,4 @@
-<view bindtap="pickupboard">
+<view bindtap="keyboardShou" bindtouchstart="keyboardShou" style="height:100vh">
     <view class="teaZhai" id="zhai">
         <view class="zhaiHeader">
             <image  bindtap="goBack" class="mine verticalCenter" src="../../images/back.png" />
@@ -59,7 +59,8 @@
 <view id="board">
     <view class="keyBoard" style="bottom:{{keyboard}}px" id="board">
         <image class="image verticalCenter" src="{{imgSrc}}image.png" />
-        <input type="text" cursor-spacing="10" bindfocus="inputFocus" bindconfirm="send" bindinput="bindinput" 
+        <input type="text" adjust-position="{{false}}" cursor-spacing="10" bindfocus="inputFocus" 
+        bindconfirm="send" bindinput="bindinput" 
         value="{{value}}" class="verticalCenter" placeholder="点击输入文字" />
         <image class="emoji verticalCenter" bindtap="emojiShow" src="{{imgSrc}}emoji.png" />
         <text class="send verticalCenter {{sendAct?'sendAct':'sendNoAct'}}" bindtap="send">发送</text>

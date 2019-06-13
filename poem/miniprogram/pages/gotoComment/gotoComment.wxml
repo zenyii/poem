@@ -1,7 +1,7 @@
-<view bindtap="keyboardShou">
+<view bindtap="keyboardShou" bindtouchstart="keyboardShou" style="height:100vh">
     <view class="zhaiHeader">
         <image bindtap="goBack" class="mine back verticalCenter" src="{{imgSrc}}back.png" />
-        <span class="zhaiTitle">查看原文</span>
+        <span bindtap="goBack" class="zhaiTitle">查看原文</span>
         <image class="inform share verticalCenter" src="{{imgSrc}}share.png" />
     </view>
     <view class="content">

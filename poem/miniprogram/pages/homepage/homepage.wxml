@@ -21,7 +21,7 @@
           <block wx:for="{{GparentItem.content}}" wx:key="this" wx:for-item="parentItem" wx:for-index="parentIndex">
             <view class="zhaiItem" >
               <image class="line" src="{{imgSrc}}line.png" />
-              <span class="displayClass" style="background-image:url('{{imgSrc}}题目框@2x.png')">
+              <span class="displayClass" style="background-image:url('https://7465-test-3bvt0-1259186518.tcb.qcloud.la/images/%E9%A2%98%E7%9B%AE%E6%A1%86%402x.png?sign=07394d72917464a2d2cbd0157b130cd7&t=1560410725')">
                 {{parentItem.class}}
               </span>
               <view class="ItemText" data-gparentindex="{{GparentIndex}}" data-parentindex="{{parentIndex}}" bindtap="detailMsg">
@@ -143,7 +143,7 @@
 </scroll-view>
 
 <view class="buildMap {{buildMap?'buildMapShow':'buildMapHide'}}">
-  <view class="buildItem" bindtap="pubilcPoem">
+  <view class="buildItem">
     <image bindtap='createPoem' src="{{imgSrc}}publicPoem.png" />
     <view bindtap='createPoem'>发布诗集</view>
   </view>
@@ -177,12 +177,12 @@
     <image class="longLine" src="{{imgSrc}}longLine.png" />
   </view>
   <view class="category" bindtap="moreDepth">
-    <view class="categoryItem">
+    <view class="categoryItem" bindtap='cangshige'>
       <image class="caIcon ge" src="{{imgSrc}}藏诗阁@2x(1).png" data-id="ge" />
       <!-- <span>藏诗阁</span> -->
       <image class="longLine" src="{{imgSrc}}longLine.png" />
     </view>
-    <view class="categoryItem" id="mark">
+    <view class="categoryItem" id="mark" bindtap='myCollect'>
       <image class="caIcon mark" src="{{imgSrc}}mark.png" data-id="mark" />
       <!-- <span>藏诗阁</span> -->
       <image class="longLine" src="{{imgSrc}}longLine.png" />

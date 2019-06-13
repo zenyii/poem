@@ -7,10 +7,10 @@
     "pages/messageSet/messageSet",
     "pages/poemHome/poemHome",
     "pages/myCollect/myCollect",
-    "pages/createPoemList/createPoemList",
     "pages/writePoem/writePoem",
     "pages/sorted/sorted",
     "pages/search/search",
+    "pages/createPoemList/createPoemList",
     "pages/searchDetail/searchDetail",
     "pages/publicTopic/publicTopic",
     "pages/systermSet/systermSet",
@@ -25,7 +25,6 @@
     "pages/ListDetail/ListDetail",
     "pages/sort/sort",
     "pages/poemDetail/poemDetail"
-
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

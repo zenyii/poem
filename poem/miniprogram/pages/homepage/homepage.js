@@ -284,6 +284,18 @@ Page({//下拉刷新
 
   },
 
+  cangshige:function(){
+    wx.navigateTo({
+      url: '../poemHome/poemHome',
+    })
+  },
+
+  myCollect:function(){
+    wx.navigateTo({
+      url: '../myCollect/myCollect',
+    })
+  },
+
   tearoom:function(){
     let that = this;
     let teaRoom = this.data.teaRoom;

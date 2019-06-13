@@ -214,9 +214,11 @@ Page({
       })
     }
   },
-  inputFocus: function () {
+  inputFocus: function (e) {
+    let keyboard = e.detail.height;
     this.setData({
       emojiShow: false,
+      keyboard
     })
   },
 
@@ -496,6 +498,16 @@ Page({
         })
 
       }
+
+    })
+  },
+
+  keyboardShou: function () {
+    this.setData({
+      keyboard: 0,
+      emojiShow: false,
+      focus: false,
+      placeholder: '点击输入文字'
 
     })
   },
