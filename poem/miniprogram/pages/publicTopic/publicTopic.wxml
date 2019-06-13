@@ -1,7 +1,7 @@
 <view style="height:100vh;overflow:hidden;">
     <view class="teaZhai">
         <view class="zhaiHeader">
-            <image  bindtap="goBack" class="mine verticalCenter" src="{{imgSrc}}back.png" bindtap="moreCard" />
+            <image  bindtap="goBack" class="mine verticalCenter" src="{{imgSrc}}back.png" />
             <span class="zhaiTitle">创建话题</span>
             <span class="zhaiTitle" bindtap="submitForm">提交审核</span>
         </view>

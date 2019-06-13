@@ -1,4 +1,5 @@
 // miniprogram/pages/messageSet/messageSet.js
+const app = getApp();
 Page({
   data: {
     imgSrc:'../../images/'

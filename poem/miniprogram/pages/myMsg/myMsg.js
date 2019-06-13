@@ -11,7 +11,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    let selfOpenId = 'oGw5W49WStN-HbdVgfbSxykI8SC0';  //app.globalData.selfOpenId
+    let selfOpenId = app.globalData.selfOpenId;  //app.globalData.selfOpenId
     app.onQuery('poemUsers',{openId:selfOpenId},{newCMsg:true}).then(res=>{
       let data = res.data[0];
       console.log(data,'data')
@@ -26,7 +26,6 @@ Page({
   },
   commentList:function(){
     this.setData({
-      redDotZ:false,
       redDot:false
     })
     app.onUpdate('poemUsers',this.data.userId,'newCMsg',false).then(()=>{
@@ -37,6 +36,9 @@ Page({
   },
 
   goZan:function(){
+    this.setData({
+      redDotZ:false,
+    })
     wx.navigateTo({
       url:`../zanList/zanList`
     })

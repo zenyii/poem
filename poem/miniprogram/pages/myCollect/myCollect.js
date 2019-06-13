@@ -12,7 +12,8 @@ Page({
     lastPages: 1,           //上一页面标识，默认0,1为poemHome，2为searchDetail
     src:'cloud://test-cf0c34.7465-test-cf0c34/images/金鱼.png',
     collect:[],           //收藏列表
-    lastPages:3
+    lastPages:3,
+    userInfo:null
   },
 
   /**
@@ -28,7 +29,8 @@ Page({
       collect:true
     }).get().then(res=>{
       that.setData({
-        collect: res.data[0].collect
+        collect: res.data[0].collect,
+        userInfo:app.globalData.userInfo 
       })
     }).then(()=>{
       //根据收藏列表拉取诗词数据
@@ -76,7 +78,7 @@ Page({
   },
   gopoemHome: function () {
     wx.redirectTo({
-      url: '../sort/sort',
+      url: '../poemHome/poemHome',
     })
   },
   /**

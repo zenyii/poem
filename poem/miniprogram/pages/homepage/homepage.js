@@ -1,7 +1,11 @@
 // miniprogram/pages/homepage/homepage.js
 const app = getApp();
+var util = require('../../utils/util.js')
 Page({//下拉刷新
   data: {
+    selectNum:0,
+    onLoad:false,
+    lastPages: 1,     //当前页面状态
     night: false,
     buildMapBtn: false,
     buildMap: false,
@@ -13,8 +17,8 @@ Page({//下拉刷新
     selected: 0,
     color: "#000000",
     selectedColor: "#C09550",
-    fans:[],
-    concern:[],
+    fans: [],
+    concern: [],
     list: [{
       iconPath: "../../images/一壶未激活@2x.png",
       selectedIconPath: "../../images/一壶激活@2x.png",
@@ -47,9 +51,9 @@ Page({//下拉刷新
           _id: '33',
           class: '茶',
           date: '2019-4-25',
-          poem: ['"我爱你"，用古诗怎么说？', '古人思想比较保守，却很深刻。', '爱恨情仇，古今同；',
-            '问世间情为何物。', '古人表达爱情很优美，压制，刻骨，', '能甩现代人好几条街。"山无棱，天地合，', '乃敢与君绝。'],
+          poem: ["我爱你"，用古诗怎么说？古人思想比较保守，却很深刻。爱恨情仇，古今同；问世间情为何物。古人表达爱情很优美，压制，刻骨，能甩现代人好几条街。山无棱，天地合，乃敢与君绝。],
           showImg: '',
+          一个专注与研究探讨诗经的小舍 一直以来都很喜欢诗经，希望能在这里聚集一群志同道合的小伙伴们，一起探讨诗经的奥妙吧！
           authorId: '',
           authorAvatar: 'cartoon.png',
           nickName: '白日梦',
@@ -71,7 +75,70 @@ Page({//下拉刷新
           commentNum: 3
         }, */],
       }
-    ]
+    ],
+
+      //茶室
+    buildMapBtn:false,
+    buildMap:false,
+    toggleBuild:false,
+    current: 0,
+    bannerMsg: [
+      {
+        image: 'cloud://test-3bvt0.7465-test-3bvt0/images/bannerbg.png',
+        author: '阿狸',
+        content: '酒醉微醺，花开半夏'
+      },
+      {
+        image: 'cloud://test-3bvt0.7465-test-3bvt0/images/bannerbg.png',
+        author: '阿狸',
+        content: '酒醉微醺，花开半夏'
+      },
+      {
+        image: 'cloud://test-3bvt0.7465-test-3bvt0/images/bannerbg.png',
+        author: '阿狸',
+        content: '酒醉微醺，花开半夏'
+      },
+      {
+        image: 'cloud://test-3bvt0.7465-test-3bvt0/images/bannerbg.png',
+        author: '阿狸',
+        content: '酒醉微醺，花开半夏'
+      },
+    ],
+    teaRoom:[/* {
+      _id: '112233',
+      authorAvatar: '../../images/teahoo.png',
+      nickName: '室主',
+      title: '诗经',
+      annotation: '一个专注与研究探讨诗经的小舍，一直以来都很喜欢诗经，希望能在这里聚集一群志同道合的伙伴，一起交流探讨喜欢的诗经',
+      view: 1233,
+      commentNum: 2342,
+      showImg:'../../images/pic1.png',
+     
+    },
+    {
+      _id:'1234234',
+      masterId: '112233',
+      authorAvatar: '../../images/girls.png',
+      nickName: '抬头望天',
+      title: '逝去的青春',
+      annotation: '时光荏苒，青春易逝，用感动的言语，精致的文字记录最美好的一分一秒。',
+      view: 1233,
+      commentNum: 2342,
+      showImg:'../../images/pic2.png',
+      
+    },{
+      _id:'8764853',
+      masterId: '112233',
+      authorAvatar: '../../images/girlsss.png',
+      nickName: '低头看水',
+      title: '上下联',
+      annotation: '对精彩的对诗现成，欢迎各位喜欢对诗和对联的小伙伴加入，一起感受对联的魅力。',
+      view: 1233,
+      commentNum: 2342,
+      showImg:'../../images/pic3.png',
+      
+    } */]
+      
   },
 
   /**
@@ -79,108 +146,119 @@ Page({//下拉刷新
    */
   onLoad: function (options) {
     let that = this;
-    console.log(app.globalData, 'userins')
+    //console.log(app.globalData, 'userins')
     //是否收藏，变换图标样式
-    let zhaiItem = that.data.zhaiItem;//
-    let content = zhaiItem[0].content;
-    let collectYoN;
-    let chaLength ;
-    let shiLenght ;
-
-    //获取话题内容 index commentId articleId title
-    app.onQuery('tearoom', { class: '茶' }, { commentContent: true }).then(res => {
-      let count = -1;
-      let data = res.data;
-      //chaLength  = data.length;
-      //console.log(data,'data')
-      //console.log(chaLength, 'chaLength')
-      data.forEach((items, indexs) => {
-        items.commentContent.forEach((item, index) => {
-          count++;
-          //console.log(items._id,"_id")
-          content[count] = {};
-          content[count].id = items._id;
-          content[count].index = index;
-          content[count].class = item.class;
-          content[count].poem = item.poem;
-          content[count].showImg = "";
-          content[count].authorAvatar = item.authorAvatar;
-          content[count].nickName = item.nickName;
-          content[count].collectPeopleID = item.collectPeopleID;
-          content[count].commentId = item.commentId;
-          content[count].title = item.title;
-          content[count].commentNum = item.commentNum;
-          content[count].queue = item.queue;
+ 
+      let zhaiItem = that.data.zhaiItem;//
+      let content = zhaiItem[0].content;
+      let collectYoN;
+      let chaLength;
+      let shiLength;
+     
+      if(options.selected){
+        this.setData({
+          selected:Number(options.selected)
         })
-      })
+        console.log(this.data.selected,'selected')
+        this.tearoom();
+      }
 
-      chaLength = content.length;
-      //console.log(chaLength, 'chaLength')
-    }).then(() => {
-      //录入诗内容
-      app.queryCollect('poemCon', {
-        class: true, showImg: true, authorAvatar: true, nickName: true,
-        collectPeopleID: true, commentNum: true, poemCon: true, queue: true
-      }).then(res => {
+      //获取话题内容 index commentId articleId title
+      app.onQuery('tearoom', { class: '茶' }, { commentContent: true }).then(res => {
+        let count = -1;
         let data = res.data;
-        shiLenght = data.length;
-        //console.log(shiLenght, 'shiLenght')
-        data.forEach(item => {
-          let obj = {};
-          obj.class = item.class;
-          obj.id = item._id;
-          obj.showImg = item.showImg;
-          obj.authorAvatar = item.authorAvatar;
-          obj.nickName = item.nickName;
-          obj.collectPeopleID = item.collectPeopleID;
-          obj.commentNum = item.commentNum;
-          obj.poem = item.poemCon;
-          obj.queue = item.queue;
-          content.push(obj);
-        })
-
-      }).then(() => {
-        //判断是否有点赞
-        zhaiItem.forEach((Gitem, Gindex) => {
-          Gitem.content.forEach((Pitem, Pindex) => {
-            collectYoN = Pitem.collectPeopleID.some(item => item === app.globalData.selfOpenId)//selfId
-            zhaiItem[Gindex].content[Pindex].collectYoN = collectYoN;
+        //chaLength  = data.length;
+        //console.log(data,'data')
+        //console.log(chaLength, 'chaLength')
+        data.forEach((items, indexs) => {
+          items.commentContent.forEach((item, index) => {
+            count++;
+            //console.log(items._id,"_id")
+            content[count] = {};
+            content[count].id = items._id;
+            content[count].index = index;
+            content[count].class = item.class;
+            content[count].poem = item.poem;
+            content[count].showImg = "";
+            content[count].authorAvatar = item.authorAvatar;
+            content[count].nickName = item.nickName;
+            content[count].collectPeopleID = item.collectPeopleID;
+            content[count].commentId = item.commentId;
+            content[count].title = item.title;
+            content[count].commentNum = item.commentNum;
+            content[count].queue = item.queue;
           })
-        });
-
-      }).then(() => {
-        let newContent = [];
-        //content.sort((a, b) => a.queue - b.queue);
-        if(chaLength>=shiLenght){//茶诗排序展示
-          
-          for(let cha = 0;cha<chaLength;cha++){
-            console.log(content[cha],"content")
-            newContent.push(content[cha]);
-            if(chaLength+cha<chaLength+shiLenght){
-              newContent.push(content[chaLength+cha])
-            }
-          }
-        }else{
-          for(let shi = 0;shi<shiLength;shi++){
-            newContent.push(content[shi]);
-            if(shiLength+shi<chaLength+shiLenght){
-              newContent.push(content[shiLength+shi])
-            }
-          }
-        }
-        zhaiItem[0].content = newContent;
-        that.setData({
-          zhaiItem
         })
-      })
-    })
+
+        chaLength = content.length;
+        //console.log(chaLength, 'chaLength')
+      }).then(() => {
+        //录入诗内容
+        app.queryCollect('poemCon', {
+          class: true, showImg: true, authorAvatar: true, nickName: true,
+          collectPeopleID: true, commentNum: true, poemCon: true, queue: true, poemName: true
+        }).then(res => {
+          console.log(res,'res')
+          let data = res.data;
+          shiLength = data.length;
+          //console.log(shiLenght, 'shiLenght')
+          data.forEach(item => {
+            let obj = {};
+            obj.class = item.class;
+            obj.id = item._id;
+            obj.showImg = item.showImg;
+            obj.authorAvatar = item.authorAvatar;
+            obj.nickName = item.nickName;
+            obj.collectPeopleID = item.collectPeopleID;
+            obj.commentNum = item.commentNum;
+            obj.poem = item.poemCon;
+            obj.queue = item.queue;
+            obj.poemName = item.poemName;
+            content.push(obj);
+          })
+
+        }).then(() => {
+          //判断是否有点赞
+          zhaiItem.forEach((Gitem, Gindex) => {
+            Gitem.content.forEach((Pitem, Pindex) => {
+              collectYoN = Pitem.collectPeopleID.some(item => item === app.globalData.selfOpenId)//selfId
+              zhaiItem[Gindex].content[Pindex].collectYoN = collectYoN;
+            })
+          });
+
+        }).then(() => {
+          let newContent = [];
+          //content.sort((a, b) => a.queue - b.queue);
+          if (chaLength >= shiLength) {//茶诗排序展示
+
+            for (let cha = 0; cha < chaLength; cha++) {
+              //console.log(content[cha],"content")
+              newContent.push(content[cha]);
+              if (chaLength + cha < chaLength + shiLength) {
+                newContent.push(content[chaLength + cha])
+              }
+            }
+          } else {
+            for (let shi = 0; shi < shiLength; shi++) {
+              newContent.push(content[shi]);
+              if (shiLength + shi < chaLength + shiLength) {
+                newContent.push(content[shiLength + shi])
+              }
+            }
+          }
+          zhaiItem[0].content = newContent;
+          that.setData({
+            zhaiItem
+          })
+        })
+      })  
 
 
-    //先查询是否有此用户记录，再创建users表
-    app.onQuery('poemUsers', { openId: app.globalData.selfOpenId }, { nickName: true,fans:true,concern:true }).then(res => {
+          //先查询是否有此用户记录，再创建users表
+     app.onQuery('poemUsers', { openId: app.globalData.selfOpenId }, { nickName: true, fans: true, concern: true }).then(res => {
       let data = res.data;
 
-      console.log(res, 'userData');
+      //console.log(res, 'userData');
       if (data.length === 0) {//如果后台没有此用户记录，则加入
         app.onAdd('poemUsers', {
           avatarUrl: app.globalData.userInfo.avatarUrl,
@@ -193,20 +271,48 @@ Page({//下拉刷新
           collect: []
 
         }).then(res => {
-          
-          console.log('创建users记录成功！')
+
+          //console.log('创建users记录成功！')
         })
-      }else{
-          that.setData({
-            fans:data[0].fans,
-            concern:data[0].concern
-          })
+      } else {
+        that.setData({
+          fans: data[0].fans,
+          concern: data[0].concern
+        })
       }
+    })
+
+  },
+
+  tearoom:function(){
+    let that = this;
+    let teaRoom = this.data.teaRoom;
+    app.queryCollect('tearoom', {
+      authorAvatar: true, nickName: true, title: true, annotation: true, view: true, commentContent: true, showImg: true
+    }).then(res => {
+      let data = res.data;
+      data.forEach(item => {
+        let newTopic = {};
+        newTopic.authorAvatar = item.authorAvatar;
+        newTopic._id = item._id;
+        newTopic.nickName = item.nickName;
+        newTopic.title = item.title;
+        newTopic.annotation = item.annotation;
+        newTopic.view = item.view;
+        newTopic.commentNum = item.commentContent.length;
+        newTopic.showImg = item.showImg;
+        teaRoom.unshift(newTopic);
+      })
+
+      that.setData({
+        teaRoom
+      })
+
     })
   },
 
   mapNight: function (e) {
-    console.log(e)
+    //console.log(e)
   },
 
   moreCard: function () {//显示更多
@@ -231,14 +337,23 @@ Page({//下拉刷新
     let outerIndex = e.currentTarget.dataset.gparentindex;
     let innerIndex = e.currentTarget.dataset.parentindex;
     let content = zhaiItem[outerIndex].content[innerIndex];
-
     if (content.class === "茶") {
+
       let topicID = content.id;
       let title = content.title;
       let index = content.index;
       let commentId = content.commentId;
+
       wx.navigateTo({
         url: `../detailTopic/detailTopic?articleId=${topicID}&title=${title}&index=${index}&commentId=${commentId}`
+      })
+    }
+    else {
+      let poemName = content.poemName;
+      let id = content.id;
+      let lastPages = that.data.lastPages;
+      wx.redirectTo({
+        url: `../ListDetail/ListDetail?poemName=${poemName}&id=${id}&lastPages=${lastPages}`,
       })
     }
 
@@ -287,8 +402,6 @@ Page({//下拉刷新
       }
       //console.log(content, 'content')
       zhaiItem[outerIndex].content[innerIndex].collectYoN = !zhaiItem[outerIndex].content[innerIndex].collectYoN;
-      //console.log(collectPeopleID,'id');
-      //console.log(collectNum,'num')
 
       that.setData({//修改对应数据上传到数据库！
         zhaiItem: zhaiItem,
@@ -312,14 +425,16 @@ Page({//下拉刷新
     }
   },
   switchTab: function (e) {
-    console.log(e, 'switch')
     const data = e.currentTarget.dataset
     const url = data.path
     if (data.index === 1) {
-      this.setData({
-        selected: 1
-      })
+      /*  this.setData({
+         selected: 1
+       }) */
     } else {
+      if(data.index===2){
+        this.tearoom();
+      }
       this.setData({
         selected: data.index
       })
@@ -355,23 +470,75 @@ Page({//下拉刷新
   },
   gotoHome: function () {
     let authorId = app.globalData.selfOpenId;
-    console.log(authorId, 'id')
+ 
     wx.navigateTo({
       url: `../mine/mine?authorId=${authorId}`
     })
   },
 
-  goMyMsg:function(){
+  goMyMsg: function () {
     wx.navigateTo({
       url: '../myMsg/myMsg'
     })
   },
-  goSystermSet:function(){
+  goSystermSet: function () {
     wx.navigateTo({
       url: '../systermSet/systermSet'
     })
   },
+  createPoem: function () {
+    wx.redirectTo({
+      url: '../createPoemList/createPoemList',
+    })
+  },
 
+
+
+  //茶室
+  swiperDots: function (e) {
+    let current = e.detail.current;
+    this.setData({
+      current,
+    })
+
+  },
+
+  intoTearoom:function(e){
+    let id = e.currentTarget.dataset.id;
+  
+    wx.navigateTo({
+      url:`../intoTearoom/intoTearoom?id=${id}`
+    })
+  },
+
+  
+  toggleBuild:function(){
+    let that = this;
+    let toggleBuild = this.data.toggleBuild;
+    let buildMapBtn = this.data.buildMapBtn;
+    this.setData({
+      toggleBuild:!toggleBuild,
+      buildMap:!this.data.buildMap
+    })
+    if(buildMapBtn){
+      setTimeout(function(){
+        that.setData({
+          buildMapBtn:!buildMapBtn
+        })
+      },300)
+    }else{
+      that.setData({
+        buildMapBtn:!buildMapBtn
+      })
+    }
+    
+  },
+
+  publicTopic:function(){
+    wx.navigateTo({
+      url:'../publicTopic/publicTopic'
+    })
+  },
 
 
   /**
@@ -385,7 +552,12 @@ Page({//下拉刷新
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(this.data.onLoad){
+      let options={};
+      options.selected=this.data.selectNum;
+      this.onLoad(options)
+    }
+    
   },
 
   /**

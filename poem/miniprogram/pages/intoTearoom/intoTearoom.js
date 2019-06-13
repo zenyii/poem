@@ -2,6 +2,8 @@
 const app = getApp();
 Page({
   data: {
+    id:'',
+    onLoad:false,
     emojiSwiper: [],
     keyboard: 0,
     emojiShow: false,
@@ -20,12 +22,12 @@ Page({
       view: 2233,
       commentNum: 1342,
       showImg: '',
-      commentContent: [{
+      commentContent: [/* {
         class: '茶',
         firstSend: '',
         date: "16分钟前",
-        /*         articleId: "33", */
-        /*  reviewerId: '', */
+                articleId: "33", 
+         reviewerId: '',
         title: '蒹葭',
         poem: ["蒹葭苍苍，白露为霜。", "所谓伊人，在水一方，", "溯洄从之，道阻且长。", "溯游从之，宛在水中央。",
           "蒹葭萋萋，白露未晞。", "所谓伊人，在水之湄。", "溯洄从之，道阻且跻。", "溯游从之，宛在水中坻。", "蒹葭采采，白露未已。",
@@ -44,7 +46,7 @@ Page({
         class: '茶',
         firstSend: '',
         date: "16分钟前",
-        /*    reviewerId: '', */
+          reviewerId: '', 
         title: '活动3:诗经赏析',
         poem: ["小伙伴们可以选择一首自己喜欢的诗经，针对诗经的一句进行赏析和探讨，与大家一起分享诗经的意蕴。"
         ],
@@ -56,7 +58,7 @@ Page({
         collectPeopleID: [],
         commentNum: 234,
         commentId: '',
-      }]
+      } */]
     },
 
   },
@@ -118,6 +120,21 @@ Page({
   },
 
   goBack:function(){
+    let pages = getCurrentPages();
+    let currPage = null; //当前页面
+    let prevPage = null; //上一个页面
+
+    if (pages.length >= 2) {
+      currPage = pages[pages.length - 1]; //当前页面
+      prevPage = pages[pages.length - 2]; //上一个页面
+    }
+    if (prevPage) {
+      prevPage.setData({
+        onLoad: true,
+        selectNum:2
+      });
+    }
+
     app.goBack();
   },
 
@@ -253,30 +270,7 @@ Page({
     return value
 
   },
-  //获取发布时间差
-  /*   getTimeDiff: function (first1) {
-      let date = new Date();
-      let first = first1;
-      let cha = date - first;
-      cha /= 1000;
-      cha = Math.floor(cha);
-      if (cha >= 31536000) {
-        let year = Math.floor(cha / 31536000);
-        return (year + "年前");
-      } else if (cha >= 86400) {
-        let day = Math.floor(cha / 86400);
-        return (day + "天前");
-      } else if (cha >= 3600) {
-        let hour = Math.floor(cha / 3600);
-        return (hour + "小时前")
-      } else if (cha >= 60) {
-        let minute = Math.floor(cha / 60);
-        return (minute + "分钟前")
-      } else {
-        return ("刚刚")
-      }
-    }, */
-
+ 
   send: function (e) {//先获取到发布者的openid，然后获取到头像和昵称
     let dates = new Date();
     let year = dates.getFullYear();
@@ -313,7 +307,7 @@ Page({
         collectNum: 0,
         commentNum: 0,
         class: '茶',
-        showImg: 'cloud://test-3bvt0.7465-test-3bvt0-1259186518/images/cbdb40.jpg',
+        showImg: 'cloud://test-3bvt0.7465-test-3bvt0/images/showbg.png',
         authorId: app.globalData.selfOpenId,
         commentId: resss._id,//第三季评论记录id，并存入tearoom的_id
       }
@@ -354,7 +348,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(this.data.onLoad){
+      let options={};
+      options.id = this.data.id;
+      this.onLoad(options)
+    }
   },
 
   /**

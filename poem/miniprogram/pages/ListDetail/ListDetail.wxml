@@ -7,7 +7,7 @@
     <button id='share' open-type='share'><image src='../../images/share.png'></image></button>
   </view>
   <!--展示诗集内容栏-->
-  <swiper class='content'>
+  <swiper current='{{current}}' class='content'>
   <swiper-item>
   <!--创建诗集封面-->
     <view class='topBan'>

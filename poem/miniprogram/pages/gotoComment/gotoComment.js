@@ -27,6 +27,8 @@ Page({
     let selfOpenId = app.globalData.selfOpenId;
     let commentId =options.commentId; //"dec80a9e5cfb982001e7d9b17e34c811";//options.commentId;
     let index =options.index;// 0;// options.index;
+    let articleId = options.articleId;
+    let title = options.title;
 
     //拆分emoji
     let emojiArr = that.data.emojiArr;
@@ -44,14 +46,16 @@ Page({
     that.setData({
       emojiSwiper,
       commentId,
-      index
+      index,
+      articleId,
+      title
     })
 
 
     app.onQuery('comment', { _id: commentId }, { content: true }).then(res => {
       let data = res.data[0];
       let page = data.content[index];
-      page.firstSend = page.firstSend.slice(0, 10).replace(/-/g,'/');
+      page.firstSend = page.timess;
       //判断收藏
       let collectYoN = page.collectPeopleID.some(item => item === selfOpenId);
       that.setData({
@@ -259,8 +263,7 @@ Page({
       article:page.content.join('')
     }
     comment.push(object);
-    console.log(commentList, "commentList");
-    console.log(page.reviewerId,'page.reviewerId')
+  
     that.setData({
       page,
       value: "",
@@ -301,6 +304,23 @@ Page({
 
   },
   goBack:function(){
+    let pages = getCurrentPages();
+    let currPage = null; //当前页面
+    let prevPage = null; //上一个页面
+
+    if (pages.length >= 2) {
+      currPage = pages[pages.length - 1]; //当前页面
+      prevPage = pages[pages.length - 2]; //上一个页面
+    }
+    if (prevPage) {
+      prevPage.setData({
+        onLoad: true,
+        articleId:this.data.articleId,
+        title:this.data.title,
+        commentId:this.data.commentId,
+        index:this.data.index
+      });
+    }
     app.goBack();
   },
 

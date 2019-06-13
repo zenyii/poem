@@ -100,6 +100,20 @@ Page({
 
   },
   goBack:function(){
+    let pages = getCurrentPages();
+    let currPage = null; //当前页面
+    let prevPage = null; //上一个页面
+
+    if (pages.length >= 2) {
+      currPage = pages[pages.length - 1]; //当前页面
+      prevPage = pages[pages.length - 2]; //上一个页面
+    }
+    if (prevPage) {
+      prevPage.setData({
+        moreCardShow:true,
+        onLoad: true,
+      });
+    }
     app.goBack();
   },
   /**

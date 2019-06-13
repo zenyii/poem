@@ -1,4 +1,5 @@
 // miniprogram/pages/systermSet/systermSet.js
+const app = getApp();
 Page({
   data: {
     imgSrc:'../../images/'
@@ -9,6 +10,10 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  
+  goBack:function(){
+    app.goBack();
   },
 
   gotoAccount:function(){

@@ -3,9 +3,10 @@
     <span class="zhaiTitle">{{title}}</span>
     <image class="inform share verticalCenter" src="{{imgSrc}}share.png" />
 </view>
-<scroll-view scroll-y="true" scroll-top="{{scrollTop}}" scroll-with-animation="true" style="padding-top:60px;height:100vh;">
-    <view style="height:100%;position:relative">
-        <view class="topicCenter" style="margin-bottom:70px;" bindtap="pickupboard">
+<view style="margin-bottom:70px;padding-top:70px;">
+   
+    <view style="height:100vh;position:relative; margin-bottom:70px; padding-top:70px;">
+        <view class="topicCenter" style="" bindtap="pickupboard">
             <view class="topicContent">
                 <view class="contentHeader">
                     <image bindtap="gotoHome" src="{{topicContent.authorAvatar}}" />
@@ -44,11 +45,11 @@
                 <view class="sortHeader" bindtap="sort">
                     <view class="cool {{sortAct==='cool'&&'actColor'}}">
                         <image src="{{imgSrc}}cool.png" />
-                        <span id="cool" bindtap="scrollTop">精彩回帖</span>
+                        <span id="cool" >精彩回帖</span>
                     </view>
                     <view class="inverse {{sortAct==='reverse'&&'actColor'}}">
                         <image src="{{imgSrc}}reverse.png" />
-                        <span id="reverse" bindtap="scrollTop">倒序查看</span>
+                        <span id="reverse">倒序查看</span>
                     </view>
                 </view>
                 <view class="sortContent">
@@ -80,7 +81,10 @@
                 </view>
             </view>
         </view>
-        <view class="keyBoard" style="bottom:{{keyboard}}px">
+        
+    </view>
+
+<view class="keyBoard" style="bottom:{{keyboard}}px">
             <image class="image verticalCenter" src="{{imgSrc}}image.png" />
             <input type="text" cursor-spacing="10" bindfocus="inputFocus" bindconfirm="send" bindinput="bindinput" value="{{value}}" class="verticalCenter" placeholder="点击输入文字" />
             <image class="emoji verticalCenter" bindtap="emojiShow" src="{{imgSrc}}emoji.png" />
@@ -101,5 +105,4 @@
                 </swiper>
             </view>
         </view>
-    </view>
-</scroll-view>
+</view>

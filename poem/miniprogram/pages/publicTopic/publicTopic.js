@@ -126,7 +126,7 @@ Page({
           .then(e => {//数据发送到服务器并反馈成功后页面跳转
             wx.hideLoading();
             wx.redirectTo({
-              url:'../teaRoom/teaRoom'
+              url:`../homepage/homepage?selected=2`
             })
           })
         wx.hideLoading()

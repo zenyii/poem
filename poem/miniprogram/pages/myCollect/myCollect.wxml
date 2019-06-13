@@ -60,7 +60,7 @@
                <!--  <span>藏诗阁</span> -->
                 <image class="longLine" src="{{imgSrc}}longLine.png" />
             </view>
-            <view class="categoryItem" id="mark">
+            <view class="categoryItem" bindtap='gopoemHome' id="mark">
                 <image class="caIcon mark" src="{{imgSrc}}mark.png" data-id="mark"/>
                <!--  <span>藏诗阁</span> -->
                 <image class="longLine" src="{{imgSrc}}longLine.png" />

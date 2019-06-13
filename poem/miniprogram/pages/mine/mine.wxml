@@ -1,6 +1,6 @@
 <view class="">
-    <view class="mineHeader" style="background-image:url('{{imgSrc}}minebg.png')">
-        <image  bindtap="goBack" class="back" src="{{imgSrc}}whiteBack.png" />
+    <view class="mineHeader" style="background-image:url('https://7465-test-3bvt0-1259186518.tcb.qcloud.la/images/minebg.png?sign=22c39d6c2deca4fbb0bc0d5a2f4226ed&t=1560348946')">
+        <image bindtap="goBack" class="back" src="{{imgSrc}}whiteBack.png" />
         <view class="word">我的</view>
         <view class="mineDetail">
             <image src="{{user.avatarUrl}}" />
@@ -31,13 +31,14 @@
             <view class="">TA的关注</view>
         </view>
     </view>
-    <view wx:if="{{!isMaster}}" class="mineBottom" bindtap="concern">
-        <view class="itemBottom" >
-            <image src="{{concern?imgSrc+'concernYes.png':imgSrc+'concern.png'}}" id="concern"/>
+    <!-- <view wx:if="{{!isMaster}}" class="mineBottom" bindtap="concern"> -->
+    <view class="mineBottom" bindtap="concern">
+        <view class="itemBottom">
+            <image src="{{concern?imgSrc+'concernYes.png':imgSrc+'concern.png'}}" id="concern" />
             <view class="">{{concern?'已关注':'关注'}}</view>
         </view>
         <view class="itemBottom">
-            <image src="{{imgSrc}}report.png" id="report"/>
+            <image src="{{imgSrc}}report.png" id="report" />
             <view class="">举报</view>
         </view>
     </view>

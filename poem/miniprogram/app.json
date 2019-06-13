@@ -2,9 +2,7 @@
   "pages": [
     "pages/homepage/homepage",
     "pages/zanList/zanList",
-
     "pages/commentList/commentList",
-    "pages/teaRoom/teaRoom",
     "pages/myMsg/myMsg",
     "pages/messageSet/messageSet",
     "pages/poemHome/poemHome",

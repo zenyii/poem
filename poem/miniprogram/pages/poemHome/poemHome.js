@@ -1,4 +1,5 @@
 // miniprogram/pages/poemHome/poemHome.js
+const app = getApp()
 Page({
 
   /**
@@ -8,7 +9,8 @@ Page({
     imgSrc: '../../images/',
     moreCardShow: false,
     commendList:[],
-    lastPages:1           //上一页面标识，默认0,1为poemHome，2为searchDetail
+    lastPages:1,           //上一页面标识，默认0,1为poemHome，2为searchDetail
+    userInfo:null
   },
 
   /**
@@ -19,7 +21,8 @@ Page({
     const db = wx.cloud.database();
     db.collection("Commend").limit(3).get().then(res=>{
       that.setData({
-        commendList:res.data
+        commendList:res.data,
+        userInfo:app.globalData.userInfo
       })
     })
   },
@@ -52,6 +55,16 @@ Page({
   gopoemHome:function(){
     wx.redirectTo({
       url: '../sort/sort',
+    })
+  },
+  myCollect:function(){
+    wx.redirectTo({
+      url: '../myCollect/myCollect',
+    })
+  },
+  chaZhai:function(){
+    wx.redirectTo({
+      url: '../homepage/homepage',
     })
   },
   /**

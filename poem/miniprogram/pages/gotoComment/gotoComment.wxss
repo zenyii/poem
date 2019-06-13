@@ -131,7 +131,7 @@ view, span {
 }
 
 .bottom .collect {
-    margin-left: 320rpx;
+    margin-left: 240rpx;
     display: flex;
 }
 

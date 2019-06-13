@@ -204,7 +204,7 @@
     background: white;
     position: fixed;
     transition: all .3s; 
-    bottom: -155px;
+    bottom: -9999px;
 }
 
 .emojiBoard span{

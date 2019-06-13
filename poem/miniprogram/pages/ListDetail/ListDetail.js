@@ -24,7 +24,9 @@ Page({
     pages:0,
     tempFilePaths:'cloud://test-cf0c34.7465-test-cf0c34/images/诗集梅.png',
     newPoemCon:[],
-    poemCon:''
+    poemCon:'',
+    current:0,        //当前页码
+    lastPages: 0       //跳转的上一级界面状态，0为createPoemList，1为homePage
   },
 
   /**
@@ -33,7 +35,8 @@ Page({
   onLoad: function (options) {
     var that = this;
     this.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
+      lastPages: options.lastPages
     })
     const db = wx.cloud.database();
     db.collection("poemCon").where({
@@ -47,6 +50,7 @@ Page({
           poemMsg.poemCon = res.data[x].poemCon;
           poemMsg.like = res.data[x].like;
           poemMsg.comment = res.data[x].comment;
+          poemMsg.id = res.data[x]._id;
           that.data.poemItem.push(poemMsg);
         }
         that.setData({
@@ -56,6 +60,13 @@ Page({
           poemItem: that.data.poemItem,
           pages: that.data.poemItem.length
         })
+        for (let y = 0; y < that.data.poemItem.length;y++){
+          if (options.id == that.data.poemItem[y].id){
+           that.setData({
+             current:y+2
+           })
+          }
+        }
       }
       else{
         that.setData({
@@ -66,9 +77,16 @@ Page({
   },
 
   gopoemList:function(){
-    wx.redirectTo({
-      url: '../createPoemList/createPoemList',
-    })
+    if(this.data.lastPages==0){
+      wx.redirectTo({
+        url: '../createPoemList/createPoemList',
+      })
+    }
+    else{
+      wx.redirectTo({
+        url: '../homepage/homepage',
+      })
+    }
   },
   inputCon: function (e) {
     this.data.newPoemCon = e.detail.value.split("\n");

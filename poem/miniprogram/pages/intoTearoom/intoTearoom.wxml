@@ -1,7 +1,7 @@
 <view bindtap="pickupboard">
     <view class="teaZhai" id="zhai">
         <view class="zhaiHeader">
-            <image  bindtap="goBack" class="mine verticalCenter" src="../../images/back.png" bindtap="moreCard" />
+            <image  bindtap="goBack" class="mine verticalCenter" src="../../images/back.png" />
             <image class="inform verticalCenter" src="{{imgSrc}}dotMore.png" />
         </view>
         <view class="banner">
@@ -25,11 +25,11 @@
         <view class="topicComment">
             <block wx:for="{{teaRoom.commentContent}}" wx:key="this" wx:for-item="parentItem" 
             wx:for-index="parentIndex">
-                <view class="topicItem" id="topicItem">
-                    <span class="title">{{parentItem.title}}</span>
-                    <view class="content" bindtap="goToDetail" data-articleid="{{teaRoom._id}}" 
+                <view class="topicItem" id="topicItem" bindtap="goToDetail" data-articleid="{{teaRoom._id}}" 
                     data-index="{{parentIndex}}" data-title="{{parentItem.title}}" 
                     data-commentid="{{parentItem.commentId}}">
+                    <span class="title" >{{parentItem.title}}</span>
+                    <view class="content" >
                         <block wx:for="{{parentItem.poem}}" wx:key="this">
                             <span class="items">{{item}}</span>
                         </block>

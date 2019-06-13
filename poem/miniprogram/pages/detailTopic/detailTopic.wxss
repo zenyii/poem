@@ -108,6 +108,7 @@ view{
 
 .banner{
     padding:0 25rpx;
+    margin: 20rpx 0;
     position: relative;
 }
 
@@ -119,12 +120,13 @@ view{
 
 .topicContent .words{
     padding: 10rpx 43rpx;
+
 }
 
 .words .wordsLine{
     font-size: 14px;
     line-height: 16px;
-
+    text-align: center;
 }
 
 .title{

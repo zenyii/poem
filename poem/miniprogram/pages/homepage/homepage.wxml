@@ -1,4 +1,4 @@
-<scroll-view scroll-y="true" style="height:100vh;">
+<scroll-view wx:if="{{selected===0}}" scroll-y="true" style="height:100vh;">
   <view style="padding-bottom:50px;">
     <view class="teaZhai">
       <view class="zhaiHeader" style="{{night&&'background:#DDDDDD;border-bottom:1px solid gray;'}}">
@@ -7,7 +7,7 @@
         <image class="inform verticalCenter" src="{{imgSrc}}news.png" />
       </view>
       <view class="zhaiBanner banner">
-        <image src="{{imgSrc}}首页插图@2x.png" />
+        <image src="cloud://test-3bvt0.7465-test-3bvt0/images/首页插图@2x.png" />
       </view>
       <view class="zhaiContent">
         <block wx:for="{{zhaiItem}}" wx:key="this" wx:for-item="GparentItem" wx:for-index="GparentIndex">
@@ -57,10 +57,95 @@
     <view wx:if="{{night}}" class="switchNight" catchtap="mapNight"></view>
   </view>
 </scroll-view>
+
+<scroll-view wx:if="{{selected===2}}" scroll-y="true" style="height:100vh;">
+<view style="padding-bottom:50px">
+    <view class="teaZhai">
+        <view class="zhaiHeader">
+            <image class="mine verticalCenter" src="{{imgSrc}}more.png" bindtap="moreCard" />
+            <span class="zhaiTitle">茶室</span>
+            <image class="inform verticalCenter" src="{{imgSrc}}news.png" />
+        </view>
+        <view class="searchBar">
+            <view class="searchBarBg">
+                <input class="search" type="text" confirm-type="search" placeholder="话题关键字搜索" placeholder-style="font-size:12px;color:gray;" bindconfirm="inputConfirm" />
+                <image src="{{imgSrc}}search.png" />
+            </view>
+        </view>
+        <view class="cbanner">
+            <swiper class="swiper" autoplay="true" circular="true" bindchange="swiperDots">
+                <block wx:for="{{bannerMsg}}" wx:key="this">
+                    <swiper-item>
+                        <image src="{{item.image}}" />
+                        <view class="cmap">
+                            <span class="ccontent">{{item.content}}</span>
+                            <span class="cauthor">{{item.author}}</span>
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+            <view class="dots">
+                <block wx:for="{{bannerMsg}}" wx:key="this">
+                    <span class="{{current===index&&'dotsAct'}}"></span>
+                </block>
+            </view>
+        </view>
+        <view class="ccategory">
+            <view class="ccategoryItem">
+                <image src="{{imgSrc}}hotTopic.png" />
+                <view class="">热门话题</view>
+            </view>
+            <view class="ccategoryItem">
+                <image src="{{imgSrc}}jiangtan.png" />
+                <view class="">百家讲坛</view>
+            </view>
+            <view class="ccategoryItem">
+                <image src="{{imgSrc}}sibao.png" />
+                <view class="">文房四宝</view>
+            </view>
+            <view class="ccategoryItem">
+                <image src="{{imgSrc}}ge.png" />
+                <view class="">藏诗阁</view>
+            </view>
+            <view class="ccategoryItem">
+                <image src="{{imgSrc}}myTeaRoom.png" />
+                <view class="">我的茶室</view>
+            </view>
+        </view>
+        <view class="topicGroup">
+            <block wx:for="{{teaRoom}}" wx:key="this">
+                <view class="groupItems" bindtap="intoTearoom" data-id="{{item._id}}">
+                    <image class="pic" src="{{item.showImg}}" />
+                    <view class="detail">
+                        <view class="title">{{item.title}}</view>
+                        <view class="annotation">{{item.annotation}}</view>
+                        <view class="master">
+                            <image src="{{item.authorAvatar}}" />
+                            <span class="name">{{item.nickName}}</span>
+                        </view>
+                        <view class="view_comment">
+                            <view class="view">
+                                <image src="{{imgSrc}}view.png" />
+                                <span>{{item.view}}</span>
+                            </view>
+                            <view class="comment">
+                                <image src="{{imgSrc}}commont.png" />
+                                <span>{{item.commentNum}}</span>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="line"></view>
+            </block>
+        </view>
+    </view>
+</view>
+</scroll-view>
+
 <view class="buildMap {{buildMap?'buildMapShow':'buildMapHide'}}">
   <view class="buildItem" bindtap="pubilcPoem">
-    <image src="{{imgSrc}}publicPoem.png" />
-    <view>发布诗集</view>
+    <image bindtap='createPoem' src="{{imgSrc}}publicPoem.png" />
+    <view bindtap='createPoem'>发布诗集</view>
   </view>
   <view class="buildItem" bindtap="publicTopic">
     <image src="{{imgSrc}}publicTopic.png" />
