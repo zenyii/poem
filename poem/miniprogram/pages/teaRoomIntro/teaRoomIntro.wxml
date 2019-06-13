@@ -3,7 +3,6 @@
         <view class="zhaiHeader">
             <image  bindtap="goBack" class="mine verticalCenter" src="{{imgSrc}}back.png" bindtap="moreCard" />
             <span class="zhaiTitle">茶室详情</span>     
-            <image class="inform verticalCenter" src="{{imgSrc}}dotMore.png" />
         </view>
         <view class="master">
             <image class="avatar verticalCenter" src="{{imgSrc+teaRoom.masterAvatarUrl}}" />

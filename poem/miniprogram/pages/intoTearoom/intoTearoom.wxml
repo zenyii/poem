@@ -2,7 +2,6 @@
     <view class="teaZhai" id="zhai">
         <view class="zhaiHeader">
             <image  bindtap="goBack" class="mine verticalCenter" src="../../images/back.png" />
-            <image class="inform verticalCenter" src="{{imgSrc}}dotMore.png" />
         </view>
         <view class="banner">
             <image src="{{teaRoom.showImg}}" />
@@ -59,9 +58,9 @@
 <view id="board">
     <view class="keyBoard" style="bottom:{{keyboard}}px" id="board">
         <image class="image verticalCenter" src="{{imgSrc}}image.png" />
-        <input type="text" adjust-position="{{false}}" cursor-spacing="10" bindfocus="inputFocus" 
+        <input type="text" adjust-position="{{false}}" cursor-spacing="5" bindfocus="inputFocus" 
         bindconfirm="send" bindinput="bindinput" 
-        value="{{value}}" class="verticalCenter" placeholder="点击输入文字" />
+        value="{{value}}" class="verticalCenter" placeholder="空格代表转行！第一句是标题哦" />
         <image class="emoji verticalCenter" bindtap="emojiShow" src="{{imgSrc}}emoji.png" />
         <text class="send verticalCenter {{sendAct?'sendAct':'sendNoAct'}}" bindtap="send">发送</text>
     </view>

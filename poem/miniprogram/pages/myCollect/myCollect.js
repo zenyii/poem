@@ -10,7 +10,7 @@ Page({
     moreCardShow: false,
     commendList: [],
     lastPages: 1,           //上一页面标识，默认0,1为poemHome，2为searchDetail
-    src:'cloud://test-cf0c34.7465-test-cf0c34/images/金鱼.png',
+    src:'cloud://test-3bvt0.7465-test-3bvt0/images/金鱼.png',
     collect:[],           //收藏列表
     lastPages:3,
     userInfo:null

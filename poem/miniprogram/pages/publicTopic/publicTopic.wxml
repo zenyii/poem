@@ -3,7 +3,6 @@
         <view class="zhaiHeader">
             <image  bindtap="goBack" class="mine verticalCenter" src="{{imgSrc}}back.png" />
             <span class="zhaiTitle">创建话题</span>
-            <span class="zhaiTitle" bindtap="submitForm">提交审核</span>
         </view>
         <view>
             <view class="header">
@@ -26,6 +25,9 @@
                 <image wx:if="{{!photeSrc}}" class="photeIcon" src="{{imgSrc}}phote.png" bindtap="chooseImg" />
                 <image wx:if="{{photeSrc}}" class="deleteIcon" src="{{imgSrc}}delete.png" bindtap="deleteImg" />
             </view>
+        </view>
+        <view class="btn">
+             <span class="submitBtn" bindtap="submitForm">提交审核</span>
         </view>
     </view>
 </view>

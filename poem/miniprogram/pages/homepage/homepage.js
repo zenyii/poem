@@ -3,8 +3,8 @@ const app = getApp();
 var util = require('../../utils/util.js')
 Page({//下拉刷新
   data: {
-    selectNum:0,
-    onLoad:false,
+    selectNum: 0,
+    onLoad: false,
     lastPages: 1,     //当前页面状态
     night: false,
     buildMapBtn: false,
@@ -34,53 +34,14 @@ Page({//下拉刷新
     zhaiItem: [//数据库每条说说记录存储_id,date和content的对象，检测到对应date对象就把contentpush进对应content里
       {
         date: '己亥年己巳月辛亥日',
-        content: [/* {
-          _id: 'ff',
-          class: '诗',
-          date: '2019-4-25',
-          poem: ['谈天谈地，谈上谈下谈左谈右，',
-            '谈来谈去，谈人生不过一场闹剧。'],
-          showImg: 'showbg.png',
-          authorId: '112233',
-          authorAvatar: 'eye.png',
-          nickName: '白马非马',
-          collectPeopleID: ['112233', '111133'],
-          collectNum: 6,
-          commentNum: 3
-        }, {
-          _id: '33',
-          class: '茶',
-          date: '2019-4-25',
-          poem: ["我爱你"，用古诗怎么说？古人思想比较保守，却很深刻。爱恨情仇，古今同；问世间情为何物。古人表达爱情很优美，压制，刻骨，能甩现代人好几条街。山无棱，天地合，乃敢与君绝。],
-          showImg: '',
-          一个专注与研究探讨诗经的小舍 一直以来都很喜欢诗经，希望能在这里聚集一群志同道合的小伙伴们，一起探讨诗经的奥妙吧！
-          authorId: '',
-          authorAvatar: 'cartoon.png',
-          nickName: '白日梦',
-          collectPeopleID: ['345345'],
-          collectNum: 6,
-          commentNum: 5
-        }, {
-          _id: '22',
-          class: '诗',
-          date: '2019-4-25',
-          poem: ['岁月你别催，', '该来的我不催，该还的还，', '该给我的给',
-            '走远的我不追', '走过的不后悔。'],
-          showImg: 'bamboo.png',
-          authorId: '',
-          authorAvatar: 'girl.png',
-          nickName: '小黑与小白',
-          collectPeopleID: ['456456'],
-          collectNum: 1,
-          commentNum: 3
-        }, */],
+        content: [],
       }
     ],
 
-      //茶室
-    buildMapBtn:false,
-    buildMap:false,
-    toggleBuild:false,
+    //茶室
+    buildMapBtn: false,
+    buildMap: false,
+    toggleBuild: false,
     current: 0,
     bannerMsg: [
       {
@@ -104,41 +65,8 @@ Page({//下拉刷新
         content: '酒醉微醺，花开半夏'
       },
     ],
-    teaRoom:[/* {
-      _id: '112233',
-      authorAvatar: '../../images/teahoo.png',
-      nickName: '室主',
-      title: '诗经',
-      annotation: '一个专注与研究探讨诗经的小舍，一直以来都很喜欢诗经，希望能在这里聚集一群志同道合的伙伴，一起交流探讨喜欢的诗经',
-      view: 1233,
-      commentNum: 2342,
-      showImg:'../../images/pic1.png',
-     
-    },
-    {
-      _id:'1234234',
-      masterId: '112233',
-      authorAvatar: '../../images/girls.png',
-      nickName: '抬头望天',
-      title: '逝去的青春',
-      annotation: '时光荏苒，青春易逝，用感动的言语，精致的文字记录最美好的一分一秒。',
-      view: 1233,
-      commentNum: 2342,
-      showImg:'../../images/pic2.png',
-      
-    },{
-      _id:'8764853',
-      masterId: '112233',
-      authorAvatar: '../../images/girlsss.png',
-      nickName: '低头看水',
-      title: '上下联',
-      annotation: '对精彩的对诗现成，欢迎各位喜欢对诗和对联的小伙伴加入，一起感受对联的魅力。',
-      view: 1233,
-      commentNum: 2342,
-      showImg:'../../images/pic3.png',
-      
-    } */]
-      
+    teaRoom: []
+
   },
 
   /**
@@ -148,114 +76,30 @@ Page({//下拉刷新
     let that = this;
     //console.log(app.globalData, 'userins')
     //是否收藏，变换图标样式
- 
-      let zhaiItem = that.data.zhaiItem;//
-      let content = zhaiItem[0].content;
-      let collectYoN;
-      let chaLength;
-      let shiLength;
-     
-      if(options.selected){
-        this.setData({
-          selected:Number(options.selected)
-        })
-        console.log(this.data.selected,'selected')
-        this.tearoom();
-      }
 
-      //获取话题内容 index commentId articleId title
-      app.onQuery('tearoom', { class: '茶' }, { commentContent: true }).then(res => {
-        let count = -1;
-        let data = res.data;
-        //chaLength  = data.length;
-        //console.log(data,'data')
-        //console.log(chaLength, 'chaLength')
-        data.forEach((items, indexs) => {
-          items.commentContent.forEach((item, index) => {
-            count++;
-            //console.log(items._id,"_id")
-            content[count] = {};
-            content[count].id = items._id;
-            content[count].index = index;
-            content[count].class = item.class;
-            content[count].poem = item.poem;
-            content[count].showImg = "";
-            content[count].authorAvatar = item.authorAvatar;
-            content[count].nickName = item.nickName;
-            content[count].collectPeopleID = item.collectPeopleID;
-            content[count].commentId = item.commentId;
-            content[count].title = item.title;
-            content[count].commentNum = item.commentNum;
-            content[count].queue = item.queue;
-          })
-        })
+  
+    if (!app.globalData.userInfo.avatarUrl) {
+      return
+    }
 
-        chaLength = content.length;
-        //console.log(chaLength, 'chaLength')
-      }).then(() => {
-        //录入诗内容
-        app.queryCollect('poemCon', {
-          class: true, showImg: true, authorAvatar: true, nickName: true,
-          collectPeopleID: true, commentNum: true, poemCon: true, queue: true, poemName: true
-        }).then(res => {
-          console.log(res,'res')
-          let data = res.data;
-          shiLength = data.length;
-          //console.log(shiLenght, 'shiLenght')
-          data.forEach(item => {
-            let obj = {};
-            obj.class = item.class;
-            obj.id = item._id;
-            obj.showImg = item.showImg;
-            obj.authorAvatar = item.authorAvatar;
-            obj.nickName = item.nickName;
-            obj.collectPeopleID = item.collectPeopleID;
-            obj.commentNum = item.commentNum;
-            obj.poem = item.poemCon;
-            obj.queue = item.queue;
-            obj.poemName = item.poemName;
-            content.push(obj);
-          })
+    if (options.selected) {
+      this.setData({
+        selected: Number(options.selected)
+      })
 
-        }).then(() => {
-          //判断是否有点赞
-          zhaiItem.forEach((Gitem, Gindex) => {
-            Gitem.content.forEach((Pitem, Pindex) => {
-              collectYoN = Pitem.collectPeopleID.some(item => item === app.globalData.selfOpenId)//selfId
-              zhaiItem[Gindex].content[Pindex].collectYoN = collectYoN;
-            })
-          });
-
-        }).then(() => {
-          let newContent = [];
-          //content.sort((a, b) => a.queue - b.queue);
-          if (chaLength >= shiLength) {//茶诗排序展示
-
-            for (let cha = 0; cha < chaLength; cha++) {
-              //console.log(content[cha],"content")
-              newContent.push(content[cha]);
-              if (chaLength + cha < chaLength + shiLength) {
-                newContent.push(content[chaLength + cha])
-              }
-            }
-          } else {
-            for (let shi = 0; shi < shiLength; shi++) {
-              newContent.push(content[shi]);
-              if (shiLength + shi < chaLength + shiLength) {
-                newContent.push(content[shiLength + shi])
-              }
-            }
-          }
-          zhaiItem[0].content = newContent;
-          that.setData({
-            zhaiItem
-          })
-        })
-      })  
+      this.tearoom();
+    }
+    this.setData({
+      userInfo: app.globalData.userInfo,
+    })
+    //console.log(app.globalData.userInfo,'uu')
+    if (this.data.selected === 0) {
+      this.homepage();
+    }
 
 
-          //先查询是否有此用户记录，再创建users表
-     app.onQuery('poemUsers', { openId: app.globalData.selfOpenId }, { nickName: true, fans: true, concern: true }).then(res => {
+    //先查询是否有此用户记录，再创建users表
+    app.onQuery('poemUsers', { openId: app.globalData.selfOpenId }, { nickName: true, fans: true, concern: true }).then(res => {
       let data = res.data;
 
       //console.log(res, 'userData');
@@ -284,19 +128,126 @@ Page({//下拉刷新
 
   },
 
-  cangshige:function(){
+  cangshige: function () {
     wx.navigateTo({
       url: '../poemHome/poemHome',
     })
   },
 
-  myCollect:function(){
+  myCollect: function () {
     wx.navigateTo({
       url: '../myCollect/myCollect',
     })
   },
 
-  tearoom:function(){
+  homepage: function () {
+    let that = this;
+    let zhaiItem = that.data.zhaiItem;//
+    let content = zhaiItem[0].content;
+    let collectYoN;
+    let chaLength;
+    let shiLength;
+    //获取话题内容 index commentId articleId title
+    app.onQuery('tearoom', { class: '茶' }, { commentContent: true }).then(res => {
+      let count = -1;
+      let data = res.data;
+     
+      data.forEach((items, indexs) => {
+        items.commentContent.forEach((item, index) => {
+          if (item.poem) {
+            count++;
+            //console.log(items._id,"_id")
+            content[count] = {};
+            content[count].id = items._id;
+            content[count].index = index;
+            content[count].class = item.class;
+            content[count].poem = item.poem;
+            content[count].showImg = "";
+            content[count].authorAvatar = item.authorAvatar;
+            content[count].nickName = item.nickName;
+            content[count].collectPeopleID = item.collectPeopleID;
+            content[count].commentId = item.commentId;
+            content[count].title = item.title;
+            content[count].commentNum = item.commentNum;
+            content[count].queue = item.queue;
+          }
+
+        })
+      })
+
+      chaLength = content.length;
+    
+    }).then(() => {
+      //录入诗内容
+      app.queryCollect('poemCon', {
+        class: true, showImg: true, authorAvatar: true, nickName: true,
+        collectPeopleID: true, commentNum: true, poemCon: true, queue: true, _openid: true, poemName: true
+
+      }).then(res => {
+     
+        let data = res.data;
+        shiLength = data.length;
+     
+        data.forEach(item => {
+          let obj = {};
+          obj.class = item.class;
+          obj.id = item._id;
+          obj.showImg = item.showImg;
+          obj.authorAvatar = item.authorAvatar;
+          obj.nickName = item.nickName;
+          obj.collectPeopleID = item.collectPeopleID;
+          obj.commentNum = item.commentNum;
+          obj.openid = item._openid;
+          obj.poem = item.poemCon;
+          obj.queue = item.queue;
+          obj.poemName = item.poemName;
+          content.push(obj);
+        })
+
+      }).then(() => {
+        //判断是否有点赞
+        zhaiItem.forEach((Gitem, Gindex) => {
+          Gitem.content.forEach((Pitem, Pindex) => {
+           
+            if (Pitem.collectPeopleID.length === 0) {
+              collectYoN = false;
+            } else {
+              collectYoN = Pitem.collectPeopleID.some(item => item === app.globalData.selfOpenId)//selfId
+            }
+
+            zhaiItem[Gindex].content[Pindex].collectYoN = collectYoN;
+          })
+        });
+
+      }).then(() => {
+        let newContent = [];
+        //content.sort((a, b) => a.queue - b.queue);
+        if (chaLength >= shiLength) {//茶诗排序展示
+
+          for (let cha = 0; cha < chaLength; cha++) {
+            //console.log(content[cha],"content")
+            newContent.push(content[cha]);
+            if (chaLength + cha < chaLength + shiLength) {
+              newContent.push(content[chaLength + cha])
+            }
+          }
+        } else {
+          for (let shi = 0; shi < shiLength; shi++) {
+            newContent.push(content[shi]);
+            if (shiLength + shi < chaLength + shiLength) {
+              newContent.push(content[shiLength + shi])
+            }
+          }
+        }
+        zhaiItem[0].content = newContent;
+        that.setData({
+          zhaiItem
+        })
+      })
+    })
+  },
+
+  tearoom: function () {
     let that = this;
     let teaRoom = this.data.teaRoom;
     app.queryCollect('tearoom', {
@@ -364,8 +315,9 @@ Page({//下拉刷新
       let poemName = content.poemName;
       let id = content.id;
       let lastPages = that.data.lastPages;
+      let openid = content.openid;
       wx.redirectTo({
-        url: `../ListDetail/ListDetail?poemName=${poemName}&id=${id}&lastPages=${lastPages}`,
+        url: `../ListDetail/ListDetail?poemName=${poemName}&id=${id}&lastPages=${lastPages}&openid=${openid}`,
       })
     }
 
@@ -444,8 +396,11 @@ Page({//下拉刷新
          selected: 1
        }) */
     } else {
-      if(data.index===2){
+      if (data.index === 2) {
         this.tearoom();
+      }
+      if(data.index===1){
+        this.homepage();
       }
       this.setData({
         selected: data.index
@@ -482,7 +437,7 @@ Page({//下拉刷新
   },
   gotoHome: function () {
     let authorId = app.globalData.selfOpenId;
- 
+
     wx.navigateTo({
       url: `../mine/mine?authorId=${authorId}`
     })
@@ -515,40 +470,40 @@ Page({//下拉刷新
 
   },
 
-  intoTearoom:function(e){
+  intoTearoom: function (e) {
     let id = e.currentTarget.dataset.id;
-  
+
     wx.navigateTo({
-      url:`../intoTearoom/intoTearoom?id=${id}`
+      url: `../intoTearoom/intoTearoom?id=${id}`
     })
   },
 
-  
-  toggleBuild:function(){
+
+  toggleBuild: function () {
     let that = this;
     let toggleBuild = this.data.toggleBuild;
     let buildMapBtn = this.data.buildMapBtn;
     this.setData({
-      toggleBuild:!toggleBuild,
-      buildMap:!this.data.buildMap
+      toggleBuild: !toggleBuild,
+      buildMap: !this.data.buildMap
     })
-    if(buildMapBtn){
-      setTimeout(function(){
+    if (buildMapBtn) {
+      setTimeout(function () {
         that.setData({
-          buildMapBtn:!buildMapBtn
+          buildMapBtn: !buildMapBtn
         })
-      },300)
-    }else{
+      }, 300)
+    } else {
       that.setData({
-        buildMapBtn:!buildMapBtn
+        buildMapBtn: !buildMapBtn
       })
     }
-    
+
   },
 
-  publicTopic:function(){
+  publicTopic: function () {
     wx.navigateTo({
-      url:'../publicTopic/publicTopic'
+      url: '../publicTopic/publicTopic'
     })
   },
 
@@ -564,12 +519,13 @@ Page({//下拉刷新
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if(this.data.onLoad){
-      let options={};
-      options.selected=this.data.selectNum;
+
+    if (this.data.onLoad) {
+      let options = {};
+      options.selected = this.data.selectNum;
       this.onLoad(options)
     }
-    
+
   },
 
   /**

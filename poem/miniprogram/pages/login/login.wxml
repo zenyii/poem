@@ -1,10 +1,4 @@
 <view class="body" style="background-image:url('https://7465-test-3bvt0-1259186518.tcb.qcloud.la/images/loginbg.png?sign=ddad66d4a3248772ad316302f49510bf&t=1560168392')">
-    <view class="des">
-        <view class='bottomTips'>
-            <view class="text">该程序将获得以下授权</view>
-            <view class="text">-获得您的公开信息(头像、昵称等)</view>
-        </view>
-    </view>
     <view class="center">
         <image class="logo" src="../../images/logologin.png" />
         <view class="words">
@@ -12,7 +6,13 @@
             <image class="word" src="../../images/words.png" />
         </view>
     </view>
-    <button open-type='getUserInfo' bindgetuserinfo='handleLogin'>
+    <button open-type='getUserInfo' hover-class="btn-hover" bindgetuserinfo='handleLogin'>
         <image src="../../images/loginGo.png" />
     </button>
+    <view class="des">
+        <view class='bottomTips'>
+            <view class="text">该程序将获得以下授权</view>
+            <view class="text">-获得您的公开信息(头像、昵称等)</view>
+        </view>
+    </view>
 </view>

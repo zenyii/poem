@@ -30,7 +30,7 @@ Page({
     let commentId = this.data.commentList[index].commentId;
     let account = this.data.commentList[index].index;
     wx.navigateTo({
-      url:`../gotoComment/gotoComment?commentId=${commentId}&index=${account}`
+      url:`../gotoComment/gotoComment?commentId=${commentId}&index=${account}&articleId=hui&title=hh`
     })
 
   },

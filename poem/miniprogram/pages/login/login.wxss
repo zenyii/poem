@@ -1,66 +1,77 @@
-.body{
+.body {
     height: 100vh;
     background: no-repeat;
     background-size: 100%;
 }
-.des{
+
+.des {
     width: 100%;
     height: 17vh;
     position: relative;
     bottom: 0;
 }
-.des .text{
-    color: #C09550;
-    font-size: 14px;
-    margin: 10px 10px;  
+
+.des .text {
+    color: lightgray;
+    font-size: 12px;
+    margin: 2px 10px;
 }
-.bottomTips{
-  position: absolute;
-  bottom: 0;
-}
-button{
+
+.bottomTips {
     position: fixed;
-    bottom: 0;
+    bottom: 118rpx;
+    left:172rpx;
+}
+
+button {
+    position: fixed;
+    bottom: 195rpx;
     background-color: transparent;
     width: 100%;
 }
+
 button::after {
     border: none;
 }
 
-button image{
+.btn-hover{
+    background-color: transparent;
+}
+
+button image {
     width: 128rpx;
     height: 128rpx;
 }
 
-.center{
+.center {
     width: 100vw;
     display: flex;
     flex-direction: column;
-    margin-top: 190rpx;
+    padding-top: 115rpx;
 }
 
-.center .logo{
+.center .logo {
     width: 230rpx;
     height: 230rpx;
     margin: 0 auto;
 }
-.center .words{
+
+.center .words {
     position: relative;
     margin: 42rpx 0;
     display: flex;
 }
 
-.words .name{
-    width: 42rpx;
-    height: 101rpx;
+.words .name {
+    width: 81rpx;
+    height: 195rpx;
     margin: 0 auto
 }
 
-.words .word{
-    width:27rpx;
-    height: 148rpx;
+.words .word {
+    width: 38rpx;
+    height: 211rpx;
     position: absolute;
-    left: 40vw;
+    left: 37vw;
     top: 30rpx;
 }

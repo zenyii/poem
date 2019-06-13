@@ -2,7 +2,6 @@
     <view class="zhaiHeader">
         <image bindtap="goBack" class="mine back verticalCenter" src="{{imgSrc}}back.png" />
         <span bindtap="goBack" class="zhaiTitle">{{title}}</span>
-        <image class="inform share verticalCenter" src="{{imgSrc}}share.png" />
     </view>
     <view style="margin-bottom:70px;padding-top:70px;">
         <view style="height:100vh;position:relative; margin-bottom:70px; padding-bottom:70px;">
@@ -86,7 +85,7 @@
 </view>
 <view class="keyBoard" style="bottom:{{keyboard}}px">
     <image class="image verticalCenter" src="{{imgSrc}}image.png" />
-    <input adjust-position="{{false}}" type="text" cursor-spacing="10" bindfocus="inputFocus" bindconfirm="send" bindinput="bindinput" value="{{value}}" class="verticalCenter" placeholder="点击输入文字" />
+    <input adjust-position="{{false}}" type="text" cursor-spacing="5" bindfocus="inputFocus" bindconfirm="send" bindinput="bindinput" value="{{value}}" class="verticalCenter" placeholder="点击输入文字" />
     <image class="emoji verticalCenter" bindtap="emojiShow" src="{{imgSrc}}emoji.png" />
     <text class="send verticalCenter {{sendAct?'sendAct':'sendNoAct'}}" bindtap="send">发送</text>
 </view>

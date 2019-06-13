@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/homepage/homepage",
+    "pages/publicTopic/publicTopic",
     "pages/zanList/zanList",
     "pages/commentList/commentList",
     "pages/myMsg/myMsg",
@@ -12,16 +13,13 @@
     "pages/search/search",
     "pages/createPoemList/createPoemList",
     "pages/searchDetail/searchDetail",
-    "pages/publicTopic/publicTopic",
     "pages/systermSet/systermSet",
-    "pages/message/message",
     "pages/login/login",
     "pages/gotoComment/gotoComment",
     "pages/detailTopic/detailTopic",
     "pages/mine/mine",
     "pages/intoTearoom/intoTearoom",
     "pages/teaRoomIntro/teaRoomIntro",
-    "pages/accountSet/accountSet",
     "pages/ListDetail/ListDetail",
     "pages/sort/sort",
     "pages/poemDetail/poemDetail"

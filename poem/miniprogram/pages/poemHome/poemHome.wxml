@@ -14,7 +14,7 @@
   </view>
   <!--背景栏-->
   <view class='back'>
-    <image id='backGround' src='cloud://test-cf0c34.7465-test-cf0c34/images/backGround.png'></image>
+    <image id='backGround' src='cloud://test-3bvt0.7465-test-3bvt0/images/backGround.png'></image>
   </view>
   <!--时间栏-->
   <view class='time'>

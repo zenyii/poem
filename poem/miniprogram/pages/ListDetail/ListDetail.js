@@ -30,7 +30,7 @@ Page({
     const db = wx.cloud.database();
     db.collection("poemCon").where({
       poemName:options.poemName,
-      _openid: app.globalData.selfOpenId
+      _openid: options.openid
     }).get().then(res=>{
       if(res.data.length){
         that.data.poemItem = [];

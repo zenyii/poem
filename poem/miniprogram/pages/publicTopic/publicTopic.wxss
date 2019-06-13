@@ -102,3 +102,23 @@ textarea span ,.header span {
     -ms-transform: translateX(50%) translateY(-50%);
     transform: translateX(50%) translateY(-50%); */
 }
+
+.btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 50rpx;
+}
+
+.submitBtn{
+    font-family: STKaiti;
+    font-size: 26px;
+    padding-top: 2px;
+    line-height: 36px;
+    background:#c09550;
+    width: 500rpx;
+    height: 100rpx;
+    border-radius: 16rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: white;
+}

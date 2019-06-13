@@ -8,7 +8,8 @@ Page({
     contentNum: 0,
     photeSrc: '',
     title: '',
-    content: ''
+    content: '',
+    first: true
   },
 
   onLoad: function (options) {
@@ -70,7 +71,7 @@ Page({
     }
     let photeSrc = this.data.photeSrc;
     if (photeSrc === "") {//没有背景图
-
+      photeSrc = ""
     } else {
 
       //上传到云储存中
@@ -94,41 +95,46 @@ Page({
         // get resource ID
         console.log(res.fileID, 'file')
         /* 在数据库中插入数据 */
-        app.onAdd('tearoom',
-          {
-            authorId: app.globalData.selfOpenId,
-            authorAvatar: app.globalData.userInfo.avatarUrl,
-            nickName: app.globalData.userInfo.nickName,
-            date: dates,
-            roommates: [{
-              openid: app.globalData.selfOpenId,
-              avatarUrl: app.globalData.userInfo.avatarUrl,
-              nickname: app.globalData.userInfo.nickName,
-            }],
-            class:'茶',
-            title: that.data.title,
-            annotation: that.data.content,
-            poem:[],
-            view: 0,
-            commentNum: 0,
-            collectNum:0,
-            collectPeopleID:[],
-            showImg: res.fileID,
-            commentContent:[]
+        if (that.data.first) {
+          that.setData({
+            first:false
           })
-          .then(ress => {
-           
-            console.log('[数据库] [新增room记录] 成功，记录 _id: ', ress._id);
-            
-          }, err => {
-            console.error('[数据库] [新增room记录] 失败：', err)
-          })
-          .then(e => {//数据发送到服务器并反馈成功后页面跳转
-            wx.hideLoading();
-            wx.redirectTo({
-              url:`../homepage/homepage?selected=2`
+          app.onAdd('tearoom',
+            {
+              authorId: app.globalData.selfOpenId,
+              authorAvatar: app.globalData.userInfo.avatarUrl,
+              nickName: app.globalData.userInfo.nickName,
+              date: dates,
+              roommates: [{
+                openid: app.globalData.selfOpenId,
+                avatarUrl: app.globalData.userInfo.avatarUrl,
+                nickname: app.globalData.userInfo.nickName,
+              }],
+              class: '茶',
+              title: that.data.title,
+              annotation: that.data.content,
+              poem: [],
+              view: 0,
+              commentNum: 0,
+              collectNum: 0,
+              collectPeopleID: [],
+              showImg: res.fileID,
+              commentContent: []
             })
-          })
+            .then(ress => {
+
+              console.log('[数据库] [新增room记录] 成功，记录 _id: ', ress._id);
+
+            }, err => {
+              console.error('[数据库] [新增room记录] 失败：', err)
+            })
+            .then(e => {//数据发送到服务器并反馈成功后页面跳转
+              wx.hideLoading();
+              wx.redirectTo({
+                url: `../homepage/homepage?selected=2`
+              })
+            })
+        }
         wx.hideLoading()
       }).catch(error => {//图片上传失败
         // handle error
@@ -142,7 +148,7 @@ Page({
     })
   },
 
-  goBack:function(){
+  goBack: function () {
     app.goBack();
   },
 

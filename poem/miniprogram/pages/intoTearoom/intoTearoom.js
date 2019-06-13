@@ -245,7 +245,7 @@ Page({
       keyboard: 0,
       emojiShow: false,
       focus: false,
-      placeholder: '点击输入文字'
+      placeholder: '空格代表转行！第一句是标题哦'
 
     })
   },

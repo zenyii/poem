@@ -7,13 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    TopUrl:'',
-    poemName:'',
-    poemIntro:'',
-    tempFilePaths: 'cloud://test-cf0c34.7465-test-cf0c34/images/poemBack.png',
-    userInfo:null,
-    poemCon:'',
-    poemList:[],
+    TopUrl: '',
+    poemName: '',
+    poemIntro: '',
+    tempFilePaths: 'cloud://test-3bvt0.7465-test-3bvt0/images/poemBack.png',
+    userInfo: null,
+    poemCon: '',
+    poemList: [],
   },
 
   /**
@@ -25,13 +25,13 @@ Page({
     })
   },
 
-  poemName:function(e){
+  poemName: function (e) {
     this.setData({
-      poemName:e.detail.value
+      poemName: e.detail.value
     })
   },
 
-  gocreatPoem:function(){
+  gocreatPoem: function () {
     wx.showToast({
       title: '已发布',
     })
@@ -40,13 +40,13 @@ Page({
     })
   },
 
-  inputIntro:function(e){
+  inputIntro: function (e) {
     this.setData({
       poemIntro: e.detail.value
     })
   },
 
-  inputCon:function(e){
+  inputCon: function (e) {
     this.setData({
       poemCon: e.detail.value
     })
@@ -60,7 +60,7 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有 
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片 
-        let date = util.formatTime(new Date()).replace(/\/|\s|:/g,"");
+        let date = util.formatTime(new Date()).replace(/\/|\s|:/g, "");
         let photeSrc = res.tempFilePaths[0];
         console.log(photeSrc);
         wx.showLoading({
@@ -75,50 +75,55 @@ Page({
           filePath: photeSrc, // 文件路径
         }).then(res => {
           console.log(res.fileID);
-           _this.setData({
-             tempFilePaths: res.fileID
+          _this.setData({
+            tempFilePaths: res.fileID
           })
           wx.hideLoading();
-        })       
+        })
       }
     })
   },
 
-  publish:function(){
+  publish: function () {
     var that = this;
     let a = this.data;
     let poemConArr = this.data.poemCon.split("\n");
     console.log(poemConArr);
-    if (a.poemName && a.poemIntro && a.poemCon && a.tempFilePaths){
-    const db = wx.cloud.database();
-    db.collection("poemCon").add({
-      data:{
-      poemName: that.data.poemName,          //诗名
-      poemIntro:that.data.poemIntro,         //诗简介
-      poemCon: poemConArr,                   //诗内容
-      nickName:that.data.userInfo.nickName,  //作者昵称
-      tempFilePaths:that.data.tempFilePaths, //封面链接
-      like:0,                                //点赞数
-      comment:0                              //评论数
-      }
-    })
-    db.collection("poemList").add({
-      data:{
-        poemName: that.data.poemName,
-        nickName: that.data.userInfo.nickName,
-        tempFilePaths: that.data.tempFilePaths
-      }
-    })
+    if (a.poemName && a.poemIntro && a.poemCon && a.tempFilePaths) {
+      const db = wx.cloud.database();
+      db.collection("poemCon").add({
+        data: {
+          authorAvatar:app.globalData.userInfo.avatarUrl,
+          class:'诗',
+          collectedPeopleID:[],
+          commentNum:0,
+          showImg:'',
+          poemName: that.data.poemName,          //诗名
+          poemIntro: that.data.poemIntro,         //诗简介
+          poemCon: poemConArr,                   //诗内容
+          nickName: that.data.userInfo.nickName,  //作者昵称
+          tempFilePaths: that.data.tempFilePaths, //封面链接
+          like: 0,                                //点赞数
+          comment: 0                              //评论数
+        }
+      })
+      db.collection("poemList").add({
+        data: {
+          poemName: that.data.poemName,
+          nickName: that.data.userInfo.nickName,
+          tempFilePaths: that.data.tempFilePaths
+        }
+      })
       wx.redirectTo({
         url: '../createPoemList/createPoemList',
       })
     }
-    else{
+    else {
       wx.showToast({
         title: '请填写所有信息噢~',
       })
     }
-    
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

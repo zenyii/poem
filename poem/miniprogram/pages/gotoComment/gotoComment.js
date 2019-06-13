@@ -27,6 +27,7 @@ Page({
     let selfOpenId = app.globalData.selfOpenId;
     let commentId =options.commentId; //"dec80a9e5cfb982001e7d9b17e34c811";//options.commentId;
     let index =options.index;// 0;// options.index;
+ 
     let articleId = options.articleId;
     let title = options.title;
 

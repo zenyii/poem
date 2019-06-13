@@ -4,7 +4,6 @@
       <view class="zhaiHeader" style="{{night&&'background:#DDDDDD;border-bottom:1px solid gray;'}}">
         <image class="mine verticalCenter" src="{{imgSrc}}more.png" bindtap="moreCard" />
         <span class="zhaiTitle">茶斋</span>
-        <image class="inform verticalCenter" src="{{imgSrc}}news.png" />
       </view>
       <view class="zhaiBanner banner">
         <image src="cloud://test-3bvt0.7465-test-3bvt0/images/首页插图@2x.png" />
@@ -34,9 +33,9 @@
               </view>
               <view class="detailMsg" data-gparentindex="{{GparentIndex}}" data-parentindex="{{parentIndex}}" 
               catchtap="interact">
-                <view class="author">
+                <view class="author verticalCenter">
                   <image src="{{parentItem.authorAvatar}}" id="author" />
-                  <span>{{parentItem.nickName}}</span>
+                  <span class="verticalCenter">{{parentItem.nickName}}</span>
                 </view>
                 <view class="interact">
                   <view class="collect">
